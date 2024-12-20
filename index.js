@@ -5,7 +5,7 @@ const cors = require("cors"); // Import the cors middleware
 const path = require("path"); // Import the path module
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 // Middleware
 app.use(cors()); // Enable CORS
@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 });
 
 // Component Routes
-const componentRoutes = require("./routes/dataRoutes");
+const componentRoutes = require("./routes/componentRoutes");
 app.use("/components", componentRoutes);
 
 // MongoDB connection

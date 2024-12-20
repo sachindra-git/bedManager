@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
     "restart": ""
   },
   "keywords": [],
   "author": "",
-  "license": "MIT",
+  "license": "ISC",
   "engines": {
     "node": "14.21.3"
   },
