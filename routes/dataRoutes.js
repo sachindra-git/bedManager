@@ -15,16 +15,21 @@ async function fetchData() {
   }
 }
 
+router.get("/:id", getData, (req, res) => {
+  res.json(res.icudetail);
+});
+
 async function getData(req, res, next) {
   try {
-    const ICUdetails = await ICUdetails.findById(req.params.id);
-    if (ICUdetails == null) {
+    const icudetail = await ICUdetails.findById(req.params.id);
+    if (icudetail == null) {
       return res.status(404).json({ message: "data not found" });
     }
-    res.ICUdetails = ICUdetails;
+    res.icudetail = icudetail;
     next();
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 }
+
 
