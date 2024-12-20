@@ -1,20 +1,37 @@
-const { MongoClient } = require('mongodb');
+const mongoose = require('mongoose');
 
-const uri = "<Your Connection String>";
-const client = new MongoClient(uri);
+// MongoDB Atlas URI (replace <username>, <password>, and <dbname>)
+const uri = 'mongodb://chathurangawijayarathneeb:HNesZUAawQsCOkl3@cluster01.mongodb.net/bedManager?retryWrites=true&w=majority';
 
-async function run() {
+// Define a schema
+const userSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+  email: String,
+});
+
+
+// Create a model
+const User = mongoose.model('User', userSchema);
+
+// Connect to MongoDB
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB');
+
+    // Fetch and print data
+    fetchData();
+  })
+  .catch(err => console.error('Error connecting to MongoDB:', err));
+
+// Function to fetch and print data
+async function fetchData() {
   try {
-    await client.connect();
-    const db = client.db('sample_mflix');
-    const collection = db.collection('movies');
-
-    // Find the first document in the collection
-    const first = await collection.findOne();
-    console.log(first);
+    const users = await User.find(); // Fetch all documents in the "users" collection
+    console.log('Data from database:', users);
+  } catch (err) {
+    console.error('Error fetching data:', err);
   } finally {
-    // Close the database connection when finished or an error occurs
-    await client.close();
+    mongoose.connection.close(); // Close the connection
   }
 }
-run().catch(console.error);
