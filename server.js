@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 
 // MongoDB connection
 mongoose.connect(
-  "mongodb+srv://chathurangawijayarathneeb:HNesZUAawQsCOkl3@cluster01.nzv8k.mongodb.net/?retryWrites=true&w=majority&appName=Cluster01",
+  "mongodb://chathurangawijayarathneeb:HNesZUAawQsCOkl3@cluster01.nzv8k.mongodb.net/?retryWrites=true&w=majority&appName=bedManager",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
