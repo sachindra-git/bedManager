@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const express = require("express");
-const router = express.Router();
+const app = require("express");
+const router = app.Router();
 
 // MongoDB connection
 mongoose.connect(
@@ -32,27 +32,40 @@ const userSchema = new mongoose.Schema({
 // Create a model
 const icuList = mongoose.model('icuList', userSchema);
 
-router.get("/", async (req, res) => {
+
+// Route to Get Data from MongoDB and Return as JSON
+app.get('/data', async (req, res) => {
   try {
-    const iculist = await icuList.find();
-    res.json(iculist);
-    console.log(res.json(iculist), '');
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    const icudata = await icuList.find(); // Fetch all users
+    res.status(200).json(icudata); // Return data as JSON
+  } catch (err) {
+    res.status(500).json({ error: err.message }); // Handle errors
   }
 });
 
-// Fetch and print data
-async function fetchData() {
-  try {
-    const icudata = await icuList.find(); // Fetch all documents from the "users" collection
-    console.log('Data from the database aaaaaaaaaaaa:', icudata);
-  } catch (err) {
-    console.error('Error fetching data:', err);
-  } finally {
-    // Close the database connection
-    mongoose.connection.close();
-  }
-}
 
-fetchData();
+
+
+// router.get("/", async (req, res) => {
+//   try {
+//     const iculist = await icuList.find();
+//     res.json(iculist);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
+
+// Fetch and print data
+// async function fetchData() {
+//   try {
+//     const icudata = await icuList.find(); // Fetch all documents from the "users" collection
+//     console.log('Data from the database aaaaaaaaaaaa:', icudata);
+//   } catch (err) {
+//     console.error('Error fetching data:', err);
+//   } finally {
+//     // Close the database connection
+//     mongoose.connection.close();
+//   }
+//}
+
+//fetchData();
