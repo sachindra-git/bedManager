@@ -1,6 +1,28 @@
-const mongoose = require('mongoose');
-const app = require("express");
-const router = app.Router();
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const cors = require("cors"); // Import the cors middleware
+const path = require("path"); // Import the path module
+
+const app = express();
+const port = process.env.PORT || 5000;
+
+// Middleware
+app.use(cors()); // Enable CORS
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, "public")));
+
+// Routes
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html")); // Serve index.html as the default page
+});
+
+// Component Routes
+const componentRoutes = require("./routes/dataRoutes");
+app.use("/components", componentRoutes);
 
 // MongoDB connection
 mongoose.connect(
@@ -15,57 +37,10 @@ const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => {
-  console.log("Connected to MongoDBaaa");
+  console.log("Connected to MongoDB");
 });
 
-
-
-// Define a schema
-const userSchema = new mongoose.Schema({
-  name: String,
-  totalBeds: Number,
-  occupiedBeds: Number,
-  reserveBeds: Number,
-  availableBeds: Number,
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
-
-// Create a model
-const icuList = mongoose.model('icuList', userSchema);
-
-
-// Route to Get Data from MongoDB and Return as JSON
-app.get('/data', async (req, res) => {
-  try {
-    const icudata = await icuList.find(); // Fetch all users
-    res.status(200).json(icudata); // Return data as JSON
-  } catch (err) {
-    res.status(500).json({ error: err.message }); // Handle errors
-  }
-});
-
-
-
-
-// router.get("/", async (req, res) => {
-//   try {
-//     const iculist = await icuList.find();
-//     res.json(iculist);
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// });
-
-// Fetch and print data
-// async function fetchData() {
-//   try {
-//     const icudata = await icuList.find(); // Fetch all documents from the "users" collection
-//     console.log('Data from the database aaaaaaaaaaaa:', icudata);
-//   } catch (err) {
-//     console.error('Error fetching data:', err);
-//   } finally {
-//     // Close the database connection
-//     mongoose.connection.close();
-//   }
-//}
-
-//fetchData();
