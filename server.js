@@ -20,11 +20,6 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html")); // Serve index.html as the default page
 });
 
-// Component Routes
-const dataRoutes = require("./routes/dataRoutes");
-app.use("/data", dataRoutes);
-
-
 // MongoDB connection
 mongoose.connect(
   "mongodb+srv://supunadmin:T394Gh54Vd9pO121@cluster01.leeclw9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster01",
@@ -45,3 +40,4 @@ db.once("open", () => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
