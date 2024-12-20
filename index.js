@@ -5,7 +5,7 @@ const cors = require("cors"); // Import the cors middleware
 const path = require("path"); // Import the path module
 
 const app = express();
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors()); // Enable CORS
