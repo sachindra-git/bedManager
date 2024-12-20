@@ -20,9 +20,9 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html")); // Serve index.html as the default page
 });
 
-// // Component Routes
-// const componentRoutes = require("./routes/componentRoutes");
-// app.use("/components", componentRoutes);
+// Component Routes
+const componentRoutes = require("./routes/componentRoutes");
+app.use("/components", componentRoutes);
 
 
 
@@ -46,4 +46,3 @@ db.once("open", () => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
