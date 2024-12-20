@@ -21,8 +21,8 @@ app.get("/", (req, res) => {
 });
 
 // Component Routes
-// const componentRoutes = require("./routes/componentRoutes");
-// app.use("/components", componentRoutes);
+const dataRoutes = require("./routes/dataRoutes");
+app.use("/data", dataRoutes);
 
 
 // MongoDB connection
