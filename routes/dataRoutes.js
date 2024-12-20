@@ -1,12 +1,16 @@
 const express = require("express");
 const router = express.Router();
+const mongoose = require("mongoose");
 const ICUdetails = require("../models/dataModel");
 
-router.get("/", async (req, res) => {
+async function fetchData() {
   try {
-    const icuData = await ICUdetails.find();
-    res.json(icuData);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    const ICUdetails = await ICUdetails.find(); // Fetch all documents in the collection
+    console.log("Data from the collection:", ICUdetails);
+  } catch (err) {
+    console.error("Error fetching data:", err);
+  } finally {
+    // Close the connection
+    mongoose.connection.close();
   }
-});
+}
