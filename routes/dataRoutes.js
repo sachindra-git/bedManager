@@ -14,3 +14,17 @@ async function fetchData() {
     mongoose.connection.close();
   }
 }
+
+async function getData(req, res, next) {
+  try {
+    const ICUdetails = await ICUdetails.findById(req.params.id);
+    if (ICUdetails == null) {
+      return res.status(404).json({ message: "data not found" });
+    }
+    res.ICUdetails = ICUdetails;
+    next();
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}
+

@@ -20,6 +20,10 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html")); // Serve index.html as the default page
 });
 
+// Component Routes
+const dataRoutes = require("./routes/dataRoutes");
+app.use("/data", dataRoutes);
+
 // MongoDB connection
 mongoose.connect(
   "mongodb+srv://chathurangawijayarathneeb:HNesZUAawQsCOkl3@cluster01.nzv8k.mongodb.net/?retryWrites=true&w=majority&appName=bedManager",
