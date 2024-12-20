@@ -1,37 +1,49 @@
-const mongoose = require('mongoose');
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const cors = require("cors"); // Import the cors middleware
+const path = require("path"); // Import the path module
 
-// MongoDB Atlas URI (replace <username>, <password>, and <dbname>)
-const uri = 'mongodb://chathurangawijayarathneeb:HNesZUAawQsCOkl3@cluster01.mongodb.net/bedManager?retryWrites=true&w=majority';
+const app = express();
+const port = process.env.PORT || 5000;
 
-// Define a schema
-const userSchema = new mongoose.Schema({
-  name: String,
-  age: Number,
-  email: String,
+// Middleware
+app.use(cors()); // Enable CORS
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, "public")));
+
+// Routes
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html")); // Serve index.html as the default page
 });
 
+// // Component Routes
+// const componentRoutes = require("./routes/componentRoutes");
+// app.use("/components", componentRoutes);
 
-// Create a model
-const User = mongoose.model('User', userSchema);
 
-// Connect to MongoDB
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('Connected to MongoDB');
 
-    // Fetch and print data
-    fetchData();
-  })
-  .catch(err => console.error('Error connecting to MongoDB:', err));
-
-// Function to fetch and print data
-async function fetchData() {
-  try {
-    const users = await User.find(); // Fetch all documents in the "users" collection
-    console.log('Data from database:', users);
-  } catch (err) {
-    console.error('Error fetching data:', err);
-  } finally {
-    mongoose.connection.close(); // Close the connection
+// MongoDB connection
+mongoose.connect(
+  "mongodb+srv://supunadmin:T394Gh54Vd9pO121@cluster01.leeclw9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster01",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   }
-}
+);
+
+const db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", () => {
+  console.log("Connected to MongoDB");
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+

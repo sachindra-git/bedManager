@@ -12,15 +12,15 @@ const Component = require("../models/componentModel");
 router.get("/", async (req, res) => {
   try {
     const components = await Component.find();
+    console.log("components" + components)
     res.json(components);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-
 // Get a single component
-router.get("/:id", getData, (req, res) => {
+router.get("/:id", getComponent, (req, res) => {
   res.json(res.component);
 });
 
@@ -103,17 +103,17 @@ router.get("/:id", getData, (req, res) => {
 //   }
 // });
 
-async function getData(req, res, next) {
-  try {
-    const component = await Component.findById(req.params.id);
-    if (component == null) {
-      return res.status(404).json({ message: "Component not found" });
-    }
-    res.component = component;
-    next();
-  } catch (error) {
-    return res.status(500).json({ message: error.message });
-  }
-}
+// async function getComponent(req, res, next) {
+//   try {
+//     const component = await Component.findById(req.params.id);
+//     if (component == null) {
+//       return res.status(404).json({ message: "Component not found" });
+//     }
+//     res.component = component;
+//     next();
+//   } catch (error) {
+//     return res.status(500).json({ message: error.message });
+//   }
+// }
 
 module.exports = router;
