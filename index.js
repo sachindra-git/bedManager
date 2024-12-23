@@ -7,8 +7,6 @@ const path = require("path"); // Import the path module
 const app = express();
 const port = process.env.PORT || 5000; 
 
-console.log(port + "portportportport")
-
 // Middleware
 app.use(cors()); // Enable CORS
 app.use(bodyParser.json());
@@ -26,7 +24,7 @@ app.get("/", (req, res) => {
 const componentRoutes = require("./routes/componentRoutes");
 app.use("/components", componentRoutes);
 
-
+console.log("componentRoutes" + componentRoutes)
 
 // MongoDB connection
 mongoose.connect(
@@ -35,7 +33,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }
-);
+); 
 
 const db = mongoose.connection;
 
