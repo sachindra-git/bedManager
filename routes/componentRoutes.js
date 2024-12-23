@@ -8,7 +8,7 @@ const Component = require("../models/componentModel");
   next();
 });*/
 
-//console.log(Component, 'aaaaaaaaaaaaaaaaaaa');
+console.log(Component, 'aaaaaaaaaaaaaaaaaaa'); 
 
 // Welcome message for the /components route
 router.get("/", async (req, res) => {
@@ -115,7 +115,7 @@ async function getComponent(req, res, next) {
     next();
   } catch (error) {
     return res.status(500).json({ message: error.message });
-  }
+  } 
 }
 
 module.exports = router;

@@ -7,6 +7,8 @@ const path = require("path"); // Import the path module
 const app = express();
 const port = process.env.PORT || 5000;
 
+console.log(port + "portportportport") 
+
 // Middleware
 app.use(cors()); // Enable CORS
 app.use(bodyParser.json());
