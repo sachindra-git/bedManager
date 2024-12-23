@@ -15,6 +15,4 @@ const componentSchema = new mongoose.Schema({
 
 const Component = mongoose.model('Component', componentSchema);
 
-module.exports = Component; 
-
-//console.log("tests"+Component)
+module.exports = Component;

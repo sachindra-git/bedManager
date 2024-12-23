@@ -4,18 +4,245 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Design Estimation</title>
-<!--     <link
+    <link
       rel="stylesheet"
       type="text/css"
       href="css/_data-collection-form.css"
-    /> -->
+    />
   </head>
   <body>
     <div class="container">
-      <h1>B</h1>
-      <div id="collectedData">
-        
+      <h1>Web Design Estimation</h1>
+      <!-- Form to create a new component -->
+      <form id="createForm">
+        <h2>Create New Component</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+        <br />
+        <label for="defaultTime">Default Time:</label>
+        <input type="number" id="defaultTime" name="defaultTime" required />
+        <br />
+        <!-- Inside the form for creating/updating a component -->
+        <label for="defaultElements">Default Elements:</label>
+        <input type="text" id="defaultElements" name="defaultElements" />
+        <br />
+        <label for="referenceLink">Reference Link:</label>
+        <input type="text" id="referenceLink" name="referenceLink" />
+        <br />
+        <!-- Options Section -->
+        <h3>Options</h3>
+        <div id="options">
+          <div>
+            <label for="optionName">Option Name:</label>
+            <input type="text" id="optionName" name="optionName" required />
+            <label for="optionTime">Option Time:</label>
+            <input type="number" id="optionTime" name="optionTime" required />
+            <button type="button" onclick="addOption()" class="button">
+              Add Option
+            </button>
+          </div>
+        </div>
+        <br />
+        <button type="button" onclick="createComponent()" class="button">
+          Create Component
+        </button>
+      </form>
+
+      <!-- Display components as a table with options in separate columns -->
+      <div id="componentsList">
+        <h2>Components</h2>
+        <table id="listTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Default Time</th>
+              <th>Default Elements</th>
+              <th>Reference Link</th>
+              <th>Options</th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="componentsTable">
+            <!-- Components will be displayed here -->
+          </tbody>
+        </table>
       </div>
     </div>
+
+    <script>
+      // Function to add a new option
+      function addOption() {
+        const optionName = document.getElementById("optionName").value;
+        const optionTime = document.getElementById("optionTime").value;
+
+        // Create option object
+        const option = { name: optionName, defaultTime: optionTime };
+
+        // Append the option to the options list
+        const optionsList = document.getElementById("options");
+        optionsList.innerHTML += `
+      <div>
+        <strong>${optionName}:</strong> ${optionTime} hours
+        <input type="hidden" name="options[]" value='${JSON.stringify(option)}'>
+      </div>
+    `;
+
+        // Debug logging
+        console.log("Options:", JSON.stringify(collectOptions()));
+        console.log("Form Data:", collectFormData());
+
+        // Clear option input fields
+        document.getElementById("optionName").value = "";
+        document.getElementById("optionTime").value = "";
+      }
+
+      // Function to collect options from the form
+      function collectOptions() {
+        const optionInputs = document.getElementsByName("options[]");
+        const options = Array.from(optionInputs).map((input) =>
+          JSON.parse(input.value)
+        );
+        return options;
+      }
+
+      // Function to collect form data for debugging
+      function collectFormData() {
+        const formData = {
+          name: document.getElementById("name").value,
+          defaultTime: document.getElementById("defaultTime").value,
+          defaultElements: document.getElementById("defaultElements").value,
+          referenceLink: document.getElementById("referenceLink").value,
+          options: collectOptions(),
+        };
+        return formData;
+      }
+
+      // Function to create a new component
+      async function createComponent() {
+        // Debug logging
+        console.log("Options:", JSON.stringify(collectOptions()));
+        console.log("Form Data:", collectFormData());
+
+        const name = document.getElementById("name").value;
+        const defaultTime = document.getElementById("defaultTime").value;
+        const defaultElements =
+          document.getElementById("defaultElements").value;
+        const referenceLink = document.getElementById("referenceLink").value;
+
+        // Collect options from the form
+        const options = collectOptions();
+
+        try {
+          const response = await fetch("/components", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name,
+              defaultTime: defaultTime,
+              defaultElements,
+              referenceLink,
+              options,
+            }),
+          });
+
+          const newComponent = await response.json();
+          console.log("New component:", newComponent);
+
+          // Clear form fields and options list
+          document.getElementById("name").value = "";
+          document.getElementById("defaultTime").value = "";
+          document.getElementById("defaultElements").value = "";
+          document.getElementById("referenceLink").value = "";
+          document.getElementById("options").innerHTML = "";
+
+          // Refresh components list
+          getComponents();
+          location.reload();
+        } catch (error) {
+          console.error("Error creating component:", error);
+        }
+      }
+
+      // Function to get and display all components as a table
+      async function getComponents() {
+        try {
+          const response = await fetch("/components");
+          const components = await response.json();
+          
+          console.log("test"+response)
+
+          // Display components in the table
+          const componentsTable = document.getElementById("componentsTable");
+          componentsTable.innerHTML = components
+            .map(
+              (component) =>
+                `<tr>
+          <td>${component.name}</td>
+          <td>${component.defaultTime}</td>
+          <td>${component.defaultElements}</td>
+          <td>${component.referenceLink}</td>
+          ${formatOptionsColumns(component.options)}
+        </tr>`
+            )
+            .join("");
+
+          // Fixed number of cells for each row
+          var fixedCells = 14;
+          var tbodyRows = document
+            .getElementById("listTable")
+            .getElementsByTagName("tbody")[0]
+            .getElementsByTagName("tr");
+
+          // Add or remove cells in each row to ensure a fixed number
+          for (var i = 0; i < tbodyRows.length; i++) {
+            var cells = tbodyRows[i].getElementsByTagName("td").length;
+
+            if (cells < fixedCells) {
+              // Add empty cells to reach the fixed number
+              for (var j = cells; j < fixedCells; j++) {
+                var emptyCell = document.createElement("td");
+                emptyCell.innerHTML = "&nbsp;"; // Add non-breaking space to maintain cell height
+                tbodyRows[i].appendChild(emptyCell);
+              }
+            } else if (cells > fixedCells) {
+              // Remove excess cells beyond the fixed number
+              for (var j = fixedCells; j < cells; j++) {
+                tbodyRows[i].removeChild(tbodyRows[i].lastElementChild);
+              }
+            }
+            // If cells === fixedCells, do nothing as the row already has the correct number of cells
+          }
+        } catch (error) {
+          console.error("Error fetching components:", error);
+        }
+      }
+
+      // Function to format options for display in separate columns
+      function formatOptionsColumns(options) {
+        const checkboxColumns = options
+          .map(
+            (option) =>
+              `<td>
+        <label>
+          ${option.name} : ${option.defaultTime}hrs
+        </label>
+      </td>`
+          )
+          .join("");
+
+        return checkboxColumns;
+      }
+
+      // Initial load of components
+      getComponents();
+    </script>
   </body>
-</html>
+</html> 
