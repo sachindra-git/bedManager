@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
 
 // Get a single component
 router.get("/:id", getComponent, (req, res) => {
-  res.json(res.component);
+  res.json(res.component); 
 });
 
 // Create a component

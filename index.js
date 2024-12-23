@@ -28,7 +28,7 @@ app.use("/components", componentRoutes);
 
 // MongoDB connection
 mongoose.connect(
-  "mongodb+srv://chathurangawijayarathneeb:hneszuaawqscokl3@cluster01.nzv8k.mongodb.net/<YourDatabaseName>?retryWrites=true&w=majority&appName=bedManager",
+  "mongodb+srv://chathurangawijayarathneeb:AzSMaBPouG5uLxEY@cluster01.nzv8k.mongodb.net/<YourDatabaseName>?retryWrites=true&w=majority&appName=bedManager",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
