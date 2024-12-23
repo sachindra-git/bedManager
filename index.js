@@ -24,8 +24,6 @@ app.get("/", (req, res) => {
 const componentRoutes = require("./routes/componentRoutes");
 app.use("/components", componentRoutes);
 
-console.log("componentRoutes" + componentRoutes)
-
 // MongoDB connection
 mongoose.connect(
   "mongodb+srv://supunadmin:T394Gh54Vd9pO121@cluster01.leeclw9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster01",
