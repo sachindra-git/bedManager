@@ -8,6 +8,8 @@ const Component = require("../models/componentModel");
   next();
 });*/
 
+//console.log(Component, 'aaaaaaaaaaaaaaaaaaa');
+
 // Welcome message for the /components route
 router.get("/", async (req, res) => {
   try {
