@@ -13,6 +13,7 @@ const componentSchema = new mongoose.Schema({
   options: [optionSchema], // Array of options
 });
 
+
 const Component = mongoose.model('testDB', componentSchema);
 
 console.log("ComponentComponent" + Component) 

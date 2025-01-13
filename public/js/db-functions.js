@@ -153,6 +153,7 @@ async function updateSelectedComponents() {
       return;
     }
 
+    
     // Confirm the update
     const confirmMessage = `Are you sure you want to update the selected components?`;
     
