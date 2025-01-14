@@ -82,11 +82,10 @@ $( document ).ready(function() {
                     display: true,
                     position: "right",
                     labels: {
-                      boxWidth: 30,
+                      boxWidth: 10,
                       fontColor: "#000",
                       fontFamily: "Roboto",
                       fullWidth: true,
-                      fontSize: 16,
                     } 
 									},
               }
