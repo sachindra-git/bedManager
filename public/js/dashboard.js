@@ -27,8 +27,8 @@ $( document ).ready(function() {
               newDiv2.classList.add('name');
               newDiv3.classList.add('bed-count');
               
-              newDiv2.innerHTML= data.name;
-              newDiv3.innerHTML= data.availableBeds;
+              newDiv2.innerHTML += data.name;
+              newDiv3.innerHTML += data.availableBeds;
               
               wrapperDiv.appendChild(newDiv2);
               wrapperDiv.appendChild(newDiv3);
