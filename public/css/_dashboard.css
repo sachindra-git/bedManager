@@ -132,7 +132,7 @@
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
-  padding: 10px 8px;
+  padding: 10px 10px;
   border-bottom: 2px solid #cccccc;
   font-weight: 500;
 }
@@ -153,6 +153,10 @@
 .table_row {
   display: flex;
   flex-wrap: wrap;
-  padding: 19px 0 0;
+  padding: 19px 10px 19px;
   background-color: #FFFFFF;
+  margin-top: 12px;
+}
+.table_row:first-child {
+  margin-top: 0;
 }
