@@ -80,6 +80,7 @@
   padding: 15px 25px;
   margin-top: 20px;
   height: calc(calc(100dvh - 233px)/2);
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 

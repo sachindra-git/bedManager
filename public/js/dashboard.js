@@ -67,7 +67,7 @@ $( document ).ready(function() {
           let myChart = new Chart(chartEl, {
               type: 'pie',
               data: {
-                labels: ["Total Occupied Beds [" +parseFloat(totalOccupiedBedsPerc.toFixed(2))+"%]",	"Total Reserve Beds [" +parseFloat(totalReserveBedsPerc.toFixed(2))+"%]",	"Total Available Beds[" +parseFloat(totalAvailableBedsPerc.toFixed(2))+"%]"],
+                labels: ["Occupied Beds [" +parseFloat(totalOccupiedBedsPerc.toFixed(2))+"%]",	"Reserve Beds [" +parseFloat(totalReserveBedsPerc.toFixed(2))+"%]",	"Available Beds [" +parseFloat(totalAvailableBedsPerc.toFixed(2))+"%]"],
                 datasets: [{    
                     data: [totalOccupiedBeds,	totalReserveBeds,	totalAvailableBeds],
 
@@ -79,15 +79,22 @@ $( document ).ready(function() {
                 responsive: true,
                 maintainAspectRatio: false, 
 								legend: {
-                    display: true,
-                    position: "right",
-                    labels: {
-                      boxWidth: 10,
-                      fontColor: "#000",
-                      fontFamily: "Roboto",
-                      fullWidth: true,
-                    } 
-									},
+                  display: true,
+                  position: "right",
+                  labels: {
+                    boxWidth: 10,
+                    fontColor: "#000",
+                    fontFamily: "Roboto",
+                    fullWidth: true,
+                  } 
+								},
+                title: {
+                  display: true,
+                  text: 'Bed Availability Chart',
+                  fontColor: "#4d4d4d",
+                  fontFamily: "Roboto",
+                  fontSize: 16
+                }
               }
           });
       
