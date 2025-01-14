@@ -148,7 +148,9 @@
   padding: 19px 15px 30px;
 }
 .table_body {
-    padding: 19px 0 0;
+  padding: 19px 0 0;
+  max-height: 49dvh;
+  overflow-y: auto;
 }
 .table_row {
   display: flex;
