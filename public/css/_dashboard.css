@@ -133,18 +133,26 @@
   flex-wrap: wrap;
   background-color: #fff;
   padding: 10px 8px;
+  border-bottom: 2px solid #cccccc;
+  font-weight: 500;
 }
 .table_col.col-name,.table_row .name {
   width: 75%;
 }
 .table_col.col-count,.table_row .bed-count {
   width: 25%;
+  text-align: center;
 }
 .table_inner {
   background-color: #f2f2f2;
   padding: 19px 15px 30px;
 }
+.table_body {
+    padding: 19px 0 0;
+}
 .table_row {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 19px 0 0;
+  background-color: #FFFFFF;
 }
