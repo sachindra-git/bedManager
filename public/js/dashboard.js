@@ -4,8 +4,10 @@ $( document ).ready(function() {
           const response = await fetch("/components");
           const components = await response.json();
           
-          console.log("aaaa"+components)
-
+          console.log(components, 'ssssssssssss')
+          components.forEach(data => {
+            console.log(data,'datadatadatadatadatadata');
+          });
       
         } catch (error) {
           console.error("Error fetching components:", error);
