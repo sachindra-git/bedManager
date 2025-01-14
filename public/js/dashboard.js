@@ -15,12 +15,12 @@ $( document ).ready(function() {
           console.log(components.length, 'ssssssssssss')
           totalICUEl.innerHTML= components.length;
           
-          components.forEach(data => {
+          components.forEach((data, index) => {
             totalBeds += data.totalBeds;
             totalAvailableBeds += data.availableBeds;
           
-            if( data.availableBeds > 0 ) {
-              console.log(data.name,'data.namedata.namedata.name');
+            if( data.availableBeds > 0 && index < 6 ) {
+              console.log(index,'indexindexindexindexindexindex');
                     wrapperDiv = document.createElement('DIV');
               const newDiv2 = document.createElement('DIV');
               const newDiv3 = document.createElement('DIV');
