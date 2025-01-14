@@ -28,7 +28,7 @@ app.use("/components", componentRoutes);
 
 // MongoDB connection
 mongoose.connect(
-  "mongodb+srv://chathurangawijayarathneeb:AzSMaBPouG5uLxEY@cluster01.nzv8k.mongodb.net/bedManager?retryWrites=true&w=majority&appName=bedManager",
+  "mongodb+srv://chathurangawijayarathneeb:AzSMaBPouG5uLxEY@cluster01.nzv8k.mongodb.net/<YourDatabaseName>?retryWrites=true&w=majority&appName=bedManager",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -40,7 +40,7 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => {
   console.log("Connected to MongoDB");
-});
+}); 
 
 // Start the server
 app.listen(port, () => {
