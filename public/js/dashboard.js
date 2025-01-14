@@ -26,8 +26,8 @@ $( document ).ready(function() {
             totalReserveBeds += data.reserveBeds;
             totalOccupiedBeds += data.occupiedBeds;
             totalAvailableBedsPerc = totalAvailableBeds/totalBeds * 100;
-            totalReserveBedsPerc = totalAvailableBeds/totalBeds * 100;
-            totalOccupiedBedsPerc = totalAvailableBeds/totalBeds * 100;
+            totalReserveBedsPerc = totalReserveBeds/totalBeds * 100;
+            totalOccupiedBedsPerc = totalOccupiedBeds/totalBeds * 100;
           
             if( data.availableBeds > 0 && index < 9 ) {
               console.log(index,'indexindexindexindexindexindex');
@@ -51,7 +51,6 @@ $( document ).ready(function() {
             }
             
           });
-          console.log(totalAvailableBedsPerc, 'totalAvailableBedsPerctotalAvailableBedsPerctotalAvailableBedsPerc');
           
             if(totalAvailableBeds < 1) {
               totalAvailableBedsCount = 'No';
@@ -63,17 +62,17 @@ $( document ).ready(function() {
           availableBedsEl.innerHTML = totalAvailableBedsCount;
           
           //Chart
-          let chartEl = document.getElementById("pieChart").getContext('2d');
+          let chartEl = document.getElementById("pieChart").getContext('3d');
 
           let myChart = new Chart(chartEl, {
               type: 'pie',
               data: {
-                labels: ["Total Occupied Beds [" +parseFloat(totalAvailableBedsPerc.toFixed(2))+"%]",	"Total Reserve Beds",	"Total Available Beds"],
+                labels: ["Total Occupied Beds [" +parseFloat(totalOccupiedBedsPerc.toFixed(2))+"%]",	"Total Reserve Beds [" +parseFloat(totalReserveBedsPerc.toFixed(2))+"%]",	"Total Available Beds[" +parseFloat(totalAvailableBedsPerc.toFixed(2))+"%]"],
                 datasets: [{    
                     data: [totalOccupiedBeds,	totalReserveBeds,	totalAvailableBeds],
 
-                    borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'],
-                    backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'],
+                    borderColor: ['#2196f38c', '#f443368c', '#3f51b570'],
+                    backgroundColor: ['#2196f38c', '#f443368c', '#99ffbb',],
                     borderWidth: 1
                 }]},         
               options: {
