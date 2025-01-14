@@ -7,10 +7,10 @@ const optionSchema = new mongoose.Schema({
 
 const componentSchema = new mongoose.Schema({
   name: String,
-  defaultTime: Number,
-  defaultElements: String,
-  referenceLink: String,
-  options: [optionSchema], // Array of options
+  totalBeds: Number,
+  occupiedBeds: Number,
+  reserveBeds: Number,
+  availableBeds: Number, // Array of options
 });
 //console.log(componentSchema)
 
