@@ -18,4 +18,4 @@ const Component = mongoose.model('Component', componentSchema);
 
 module.exports = Component;
 
-console.log("aaaa"+Component) 
+console.log("tests"+Component) 

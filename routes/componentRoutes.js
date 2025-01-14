@@ -8,14 +8,15 @@ const Component = require("../models/componentModel");
   next();
 });*/
 
-console.log('mmmmmmmmmmmmmmmm', Component);
+console.log(Component, 'fffffffffffffffffffffffffffffffffff');
 
 // Welcome message for the /components route
 router.get("/", async (req, res) => {
   try {
     const components = await Component.find();
-    console.log("components" + components)
+    
     res.json(components);
+    console.log("componentscomponentscomponentscomponentscomponents" + components)
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

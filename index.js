@@ -25,6 +25,7 @@ const componentRoutes = require("./routes/componentRoutes");
 app.use("/components", componentRoutes);
 
 
+
 // MongoDB connection
 mongoose.connect(
   "mongodb+srv://chathurangawijayarathneeb:AzSMaBPouG5uLxEY@cluster01.nzv8k.mongodb.net/bedManager?retryWrites=true&w=majority&appName=bedManager",
@@ -39,11 +40,10 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => {
   console.log("Connected to MongoDB");
-}); 
+});
 
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
 

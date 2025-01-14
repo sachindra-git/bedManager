@@ -153,7 +153,6 @@ async function updateSelectedComponents() {
       return;
     }
 
-    
     // Confirm the update
     const confirmMessage = `Are you sure you want to update the selected components?`;
     
@@ -166,7 +165,6 @@ async function updateSelectedComponents() {
       }
       const components = await response.json();
 
-      
       const updates = components
         .filter((component) => componentIds.includes(component._id))
         .map((component) => {
