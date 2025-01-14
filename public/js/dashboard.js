@@ -57,22 +57,22 @@ $( document ).ready(function() {
           availableBedsEl.innerHTML = totalAvailableBedsCount;
           
           //Chart
-          let chartEl = document.getElementById("myChart").getContext('2d');
+          let chartEl = document.getElementById("pieChart").getContext('2d');
 
-          let myChart = new Chart(ctx, {
+          let myChart = new Chart(chartEl, {
               type: 'pie',
               data: {
-                  labels: ["Tokyo",	"Mumbai",	"Mexico City",	"Shanghai"],
-                  datasets: [{    
-                      data: [500,	50,	2424,	14040], // Specify the data values array
+                labels: ["Total Occupied Beds",	"Total Reserve Beds",	"Total Available Beds"],
+                datasets: [{    
+                    data: [totalOccupiedBeds,	totalReserveBeds,	totalAvailableBeds],
 
-                      borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
-                      backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
-                      borderWidth: 1 // Specify bar border width
-                  }]},         
+                    borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'],
+                    backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'],
+                    borderWidth: 1
+                }]},         
               options: {
-                responsive: true, // Instruct chart js to respond nicely.
-                maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
+                responsive: true,
+                maintainAspectRatio: false, 
               }
           });
       
