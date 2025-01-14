@@ -27,17 +27,23 @@ $( document ).ready(function() {
               newDiv2.classList.add('name');
               newDiv3.classList.add('bed-count');
               
-              newDiv2.innerHTML= 'data.name';
+              newDiv2.innerHTML= data.name;
               newDiv3.innerHTML= data.availableBeds;
               
-              wrapperDiv.innerHTML= newDiv2;
+              wrapperDiv.appendChild(newDiv2);
+              wrapperDiv.appendChild(newDiv3);
               
-              availableBedsTableWrap.innerHTML= newDiv2;
+             // wrapperDiv.innerHTML= newDiv2;
+              
+
+              console.log(wrapperDiv, 'wrapperDivwrapperDiv');
+              
               
             }
             
-            
           });
+          
+          availableBedsTableWrap.appendChild(wrapperDiv);
             
           
             if(totalAvailableBeds < 1) {
