@@ -4,9 +4,11 @@ $( document ).ready(function() {
           const response = await fetch("/components");
           const components = await response.json();
           
-          console.log(components, 'ssssssssssss')
+          console.log(components.length, 'ssssssssssss')
+          
+          
           components.forEach(data => {
-            console.log(data,'datadatadatadatadatadata');
+            console.log(data.name,'datadatadatadatadatadata');
           });
       
         } catch (error) {
