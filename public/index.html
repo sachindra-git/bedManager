@@ -152,9 +152,11 @@
               options,
             }),
           });
+          
 
           const newComponent = await response.json();
           console.log("New component:", newComponent);
+          
 
           // Clear form fields and options list
           document.getElementById("name").value = "";
@@ -246,3 +248,4 @@
     </script>
   </body>
 </html>
+
