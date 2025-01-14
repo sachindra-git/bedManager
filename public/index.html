@@ -1,251 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Design Estimation</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="css/_data-collection-form.css"
-    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <link rel="stylesheet" href="../css/_common.css">
+    <link rel="stylesheet" href="../css/_dashboard.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   </head>
+
   <body>
-    <div class="container">
-      <h1>Web Design Estimation</h1>
-      <!-- Form to create a new component -->
-      <form id="createForm">
-        <h2>Create New Component</h2>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required />
-        <br />
-        <label for="defaultTime">Default Time:</label>
-        <input type="number" id="defaultTime" name="defaultTime" required />
-        <br />
-        <!-- Inside the form for creating/updating a component -->
-        <label for="defaultElements">Default Elements:</label>
-        <input type="text" id="defaultElements" name="defaultElements" />
-        <br />
-        <label for="referenceLink">Reference Link:</label>
-        <input type="text" id="referenceLink" name="referenceLink" />
-        <br />
-        <!-- Options Section -->
-        <h3>Options</h3>
-        <div id="options">
-          <div>
-            <label for="optionName">Option Name:</label>
-            <input type="text" id="optionName" name="optionName" required />
-            <label for="optionTime">Option Time:</label>
-            <input type="number" id="optionTime" name="optionTime" required />
-            <button type="button" onclick="addOption()" class="button">
-              Add Option
-            </button>
+
+
+  <header>
+    <div class="header_wrapper">
+      <div class="left_wrapper">
+        <img class="logo" src="https://cdn.glitch.global/c5cf0084-4d6e-418a-b727-f67bdbfb8b19/logo.png?v=1736835247644" />
+      </div>
+
+      <div class="right_wrapper">
+        <div id="clock" class="clock" onload="showTime()"></div>
+        <div class="date">2024/10/29</div>
+
+        <div class="user_detail">
+          <img src="https://cdn.glitch.global/c5cf0084-4d6e-418a-b727-f67bdbfb8b19/user-image.svg?v=1736835221742" />
+          <span class="user_name">Chathuranga</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+  <div class="container">
+  
+    <div class="dashboard_wrapper">
+
+
+
+      <div class="dashboard_container">
+
+
+        <div class="dashboard_inner_left">
+
+            <div class="dash_inner_wrap detail_list">
+              <div class="detail_list_inner">
+
+                <div class="detail_item hospitals white-font-roboto text-uppercase">
+                  <span class="span detail_title">Total Hospitals</span>
+                  <span class="count">245</span>
+                </div>
+
+                <div class="detail_item icus white-font-roboto text-uppercase">
+                  <span class="span detail_title">Total ICUs</span>
+                  <span class="count">372</span>
+                </div>
+
+                <div class="detail_item total_beds white-font-roboto text-uppercase">
+                  <span class="span detail_title">Total Beds</span>
+                  <span class="count">1245</span>
+                </div>
+
+                <!-- <div class="detail_item available_beds white-font-roboto text-uppercase">
+                  <span class="span detail_title">Total Available Beds</span>
+                  <span class="count">289</span>
+                </div> -->
+
+              </div>
+            </div>
+
+            <div class="dash_inner_wrap available_icu_wrap">
+              <div class="available_icu_table">
+                <div class="h3_title">
+                  Beds Available ICUs
+                </div>
+                <div class="table_inner">
+
+                </div>
+              </div>
+            </div>
+
+        </div>
+
+        <div class="dashboard_inner_right">
+          <div class="dash_inner_wrap available_icu_wrap">
+            <div class="available_icu_table">
+              <h3 class="h3_title">
+                Beds Available ICUs
+              </h3>
+              <div class="available_count"><span class="count">27</span> Beds Available</div>
+              <div class="table_inner">
+
+                <div class="table_head">
+                  <div class="table_col">ICU</div>
+                  <div class="table_col">Beds Count</div>
+                </div>
+
+                <div class="table_body">
+
+                  <div class="table_row">
+                    <div class="table_col">Kalubowila General ICU</div>
+                    <div class="table_col">2</div>
+                  </div>
+
+                  <div class="table_row">
+                    <div class="table_col">Colombo General ICU</div>
+                    <div class="table_col">4</div>
+                  </div>
+
+
+
+
+                </div>
+
+
+              </div>
+            </div>
           </div>
         </div>
-        <br />
-        <button type="button" onclick="createComponent()" class="button">
-          Create Component
-        </button>
-      </form>
 
-      <!-- Display components as a table with options in separate columns -->
-      <div id="componentsList">
-        <h2>Components</h2>
-        <table id="listTable">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Default Time</th>
-              <th>Default Elements</th>
-              <th>Reference Link</th>
-              <th>Options</th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="componentsTable">
-            <!-- Components will be displayed here -->
-          </tbody>
-        </table>
+
       </div>
+
+
+
+
+
+
+
+
     </div>
 
-    <script>
-      // Function to add a new option
-      function addOption() {
-        const optionName = document.getElementById("optionName").value;
-        const optionTime = document.getElementById("optionTime").value;
 
-        // Create option object
-        const option = { name: optionName, defaultTime: optionTime };
+  </div>
 
-        // Append the option to the options list
-        const optionsList = document.getElementById("options");
-        optionsList.innerHTML += `
-      <div>
-        <strong>${optionName}:</strong> ${optionTime} hours
-        <input type="hidden" name="options[]" value='${JSON.stringify(option)}'>
-      </div>
-    `;
-
-        // Debug logging
-        console.log("Options:", JSON.stringify(collectOptions()));
-        console.log("Form Data:", collectFormData());
-
-        // Clear option input fields
-        document.getElementById("optionName").value = "";
-        document.getElementById("optionTime").value = "";
-      }
-
-      // Function to collect options from the form
-      function collectOptions() {
-        const optionInputs = document.getElementsByName("options[]");
-        const options = Array.from(optionInputs).map((input) =>
-          JSON.parse(input.value)
-        );
-        return options;
-      }
-
-      // Function to collect form data for debugging
-      function collectFormData() {
-        const formData = {
-          name: document.getElementById("name").value,
-          defaultTime: document.getElementById("defaultTime").value,
-          defaultElements: document.getElementById("defaultElements").value,
-          referenceLink: document.getElementById("referenceLink").value,
-          options: collectOptions(),
-        };
-        return formData;
-      }
-
-      // Function to create a new component
-      async function createComponent() {
-        // Debug logging
-        console.log("Options:", JSON.stringify(collectOptions()));
-        console.log("Form Data:", collectFormData());
-
-        const name = document.getElementById("name").value;
-        const defaultTime = document.getElementById("defaultTime").value;
-        const defaultElements =
-          document.getElementById("defaultElements").value;
-        const referenceLink = document.getElementById("referenceLink").value;
-
-        // Collect options from the form
-        const options = collectOptions();
-
-        try {
-          const response = await fetch("/components", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name,
-              defaultTime: defaultTime,
-              defaultElements,
-              referenceLink,
-              options,
-            }),
-          });
-          
-
-          const newComponent = await response.json();
-          console.log("New component:", newComponent);
-          
-
-          // Clear form fields and options list
-          document.getElementById("name").value = "";
-          document.getElementById("defaultTime").value = "";
-          document.getElementById("defaultElements").value = "";
-          document.getElementById("referenceLink").value = "";
-          document.getElementById("options").innerHTML = "";
-
-          // Refresh components list
-          getComponents();
-          location.reload();
-        } catch (error) {
-          console.error("Error creating component:", error);
-        }
-      }
-
-      // Function to get and display all components as a table
-      async function getComponents() {
-        try {
-          const response = await fetch("/components");
-          const components = await response.json();
-          
-          console.log("test"+response)
-
-          // Display components in the table
-          const componentsTable = document.getElementById("componentsTable");
-          componentsTable.innerHTML = components
-            .map(
-              (component) =>
-                `<tr>
-          <td>${component.name}</td>
-          <td>${component.defaultTime}</td>
-          <td>${component.defaultElements}</td>
-          <td>${component.referenceLink}</td>
-          ${formatOptionsColumns(component.options)}
-        </tr>`
-            )
-            .join("");
-
-          // Fixed number of cells for each row
-          var fixedCells = 14;
-          var tbodyRows = document
-            .getElementById("listTable")
-            .getElementsByTagName("tbody")[0]
-            .getElementsByTagName("tr");
-
-          // Add or remove cells in each row to ensure a fixed number
-          for (var i = 0; i < tbodyRows.length; i++) {
-            var cells = tbodyRows[i].getElementsByTagName("td").length;
-
-            if (cells < fixedCells) {
-              // Add empty cells to reach the fixed number
-              for (var j = cells; j < fixedCells; j++) {
-                var emptyCell = document.createElement("td");
-                emptyCell.innerHTML = "&nbsp;"; // Add non-breaking space to maintain cell height
-                tbodyRows[i].appendChild(emptyCell);
-              }
-            } else if (cells > fixedCells) {
-              // Remove excess cells beyond the fixed number
-              for (var j = fixedCells; j < cells; j++) {
-                tbodyRows[i].removeChild(tbodyRows[i].lastElementChild);
-              }
-            }
-            // If cells === fixedCells, do nothing as the row already has the correct number of cells
-          }
-        } catch (error) {
-          console.error("Error fetching components:", error);
-        }
-      }
-
-      // Function to format options for display in separate columns
-      function formatOptionsColumns(options) {
-        const checkboxColumns = options
-          .map(
-            (option) =>
-              `<td>
-        <label>
-          ${option.name} : ${option.defaultTime}hrs
-        </label>
-      </td>`
-          )
-          .join("");
-
-        return checkboxColumns;
-      }
-
-      // Initial load of components
-      getComponents();
-    </script>
   </body>
 </html>
-
