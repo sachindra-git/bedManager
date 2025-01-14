@@ -62,7 +62,7 @@ $( document ).ready(function() {
           availableBedsEl.innerHTML = totalAvailableBedsCount;
           
           //Chart
-          let chartEl = document.getElementById("pieChart").getContext('3d');
+          let chartEl = document.getElementById("pieChart").getContext('2d');
 
           let myChart = new Chart(chartEl, {
               type: 'pie',
@@ -79,14 +79,15 @@ $( document ).ready(function() {
                 responsive: true,
                 maintainAspectRatio: false, 
 								legend: {
-													display: true,
-													position: "right",
-													labels: {
-																			boxWidth: 30,
-																			fontColor: "#999",
-																			fontFamily: "Montserrat",
-																			fullWidth: true
-													} 
+                    display: true,
+                    position: "right",
+                    labels: {
+                      boxWidth: 30,
+                      fontColor: "#000",
+                      fontFamily: "Roboto",
+                      fullWidth: true,
+                      fontSize: 16,
+                    } 
 									},
               }
           });

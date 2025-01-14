@@ -63,6 +63,13 @@
 .dashboard_inner_left {
   width: 65%;
 }
+.pie_chart_wrap {
+  background-color: #fff;
+  padding: 30px 40px;
+  margin-top: 20px;
+}
+
+
 .dashboard_inner_right {
   width: 35%;
   height: calc(100vh - 110px);

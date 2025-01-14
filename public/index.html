@@ -3,7 +3,6 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-3d"></script>
     <script src="../js/main.js"></script>
     <script src="../js/dashboard.js"></script>
     <link rel="stylesheet" href="../css/_common.css">
@@ -48,7 +47,7 @@
 
         <div class="dashboard_inner_left">
 
-            <div class="dash_inner_wrap detail_list">
+            <div class="dash_inner_wrap detail_list top_layer">
               <div class="detail_list_inner">
 
                 <div class="detail_item total-hospitals white-font-roboto text-uppercase">
@@ -74,9 +73,14 @@
               </div>
             </div>
 
-          
-            <div class="pie_chart_wrap">
-              <canvas width="500" id="pieChart"></canvas>
+            <div class="bottom_layer">
+              <div class="left_container">
+              </div>
+              <div class="right_container">
+                <div class="pie_chart_wrap">
+                  <canvas width="450" id="pieChart"></canvas>
+                </div>
+              </div>
             </div>
 
         </div>
