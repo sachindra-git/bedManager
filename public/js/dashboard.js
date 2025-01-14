@@ -8,24 +8,25 @@ $( document ).ready(function() {
           const availableBedsEl = document.querySelector('.available_count .count');
           let totalBeds = 0;
           let totalAvailableBeds = 0;
+          let totalAvailableBedsCount = '';
           
           console.log(components.length, 'ssssssssssss')
           totalICUEl.innerHTML= components.length;
           
           components.forEach(data => {
             totalBeds += data.totalBeds;
-            //totalAvailableBeds += data.availableBeds;
-            
-            if(totalAvailableBeds < 1) {
-              totalAvailableBeds = 'No';
-            } else {
-              totalAvailableBeds += data.availableBeds;
-            }
+            totalAvailableBeds += data.availableBeds;
             
           });
           
+            if(totalAvailableBeds < 1) {
+              totalAvailableBedsCount = 'No';
+            } else {
+              totalAvailableBedsCount += totalAvailableBeds;
+            }
+          
           totalBedEl.innerHTML= totalBeds;
-          availableBedsEl.innerHTML= totalAvailableBeds;
+          availableBedsEl.innerHTML= totalAvailableBedsCount;
       
         } catch (error) {
           console.error("Error fetching components:", error);
