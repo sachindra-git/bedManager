@@ -8,6 +8,7 @@ const Component = require("../models/componentModel");
   next();
 });*/
 
+console.log("components" + Component.find());
 // Welcome message for the /components route
 router.get("/", async (req, res) => {
   try {

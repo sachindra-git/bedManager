@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-const optionSchema = new mongoose.Schema({
-  name: String,
-  defaultTime: Number,
-});
+// const optionSchema = new mongoose.Schema({
+//   name: String,
+//   defaultTime: Number,
+// });
 
 const componentSchema = new mongoose.Schema({
   name: String,
