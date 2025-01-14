@@ -5,26 +5,26 @@ const mongoose = require('mongoose');
 //   defaultTime: Number,
 // });
 
-// const componentSchema = new mongoose.Schema({
-//   name: String,
-//   totalBeds: Number,
-//   occupiedBeds: Number,
-//   reserveBeds: Number,
-//   availableBeds: Number,
-// });
-
-const optionSchema = new mongoose.Schema({
-  name: String,
-  defaultTime: Number,
-});
-
 const componentSchema = new mongoose.Schema({
   name: String,
-  defaultTime: Number,
-  defaultElements: String,
-  referenceLink: String,
-  options: [optionSchema], // Array of options
+  totalBeds: Number,
+  occupiedBeds: Number,
+  reserveBeds: Number,
+  availableBeds: Number,
 });
+
+// const optionSchema = new mongoose.Schema({
+//   name: String,
+//   defaultTime: Number,
+// });
+
+// const componentSchema = new mongoose.Schema({
+//   name: String,
+//   defaultTime: Number,
+//   defaultElements: String,
+//   referenceLink: String,
+//   options: [optionSchema], // Array of options
+// });
 
 //console.log(componentSchema);
 
