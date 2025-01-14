@@ -10,6 +10,7 @@ $( document ).ready(function() {
           let totalBeds = 0;
           let totalAvailableBeds = 0;
           let totalAvailableBedsCount = '';
+          let wrapperDiv;
           
           console.log(components.length, 'ssssssssssss')
           totalICUEl.innerHTML= components.length;
@@ -19,12 +20,25 @@ $( document ).ready(function() {
             totalAvailableBeds += data.availableBeds;
           
             if( data.availableBeds > 0 ) {
-              const newDiv = document.createElement('div');
-              newDiv.classList.add('table_row');
+                    wrapperDiv = document.createElement('DIV');
+              const newDiv2 = document.createElement('DIV');
+              const newDiv3 = document.createElement('DIV');
+              wrapperDiv.classList.add('table_row');
+              newDiv2.classList.add('name');
+              newDiv3.classList.add('bed-count');
+              
+              newDiv2.innerHTML= 'data.name';
+              newDiv3.innerHTML= data.availableBeds;
+              
+              wrapperDiv.innerHTML= newDiv2;
+              
+              availableBedsTableWrap.innerHTML= newDiv2;
+              
             }
             
             
           });
+            
           
             if(totalAvailableBeds < 1) {
               totalAvailableBedsCount = 'No';
