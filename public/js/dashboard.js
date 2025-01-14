@@ -19,7 +19,7 @@ $( document ).ready(function() {
             totalBeds += data.totalBeds;
             totalAvailableBeds += data.availableBeds;
           
-            if( data.availableBeds > 0 && index < 6 ) {
+            if( data.availableBeds > 0 && index < 9 ) {
               console.log(index,'indexindexindexindexindexindex');
                     wrapperDiv = document.createElement('DIV');
               const newDiv2 = document.createElement('DIV');
