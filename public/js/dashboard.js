@@ -9,6 +9,8 @@ $( document ).ready(function() {
           const availableBedsTableWrap = document.querySelector('.available_icu_table .table_body');
           let totalBeds = 0;
           let totalAvailableBeds = 0;
+          let totalReserveBeds = 0;
+          let totalOccupiedBeds = 0;
           let totalAvailableBedsCount = '';
           let wrapperDiv;
           
@@ -18,6 +20,8 @@ $( document ).ready(function() {
           components.forEach((data, index) => {
             totalBeds += data.totalBeds;
             totalAvailableBeds += data.availableBeds;
+            totalReserveBeds += data.reserveBeds;
+            totalOccupiedBeds += data.occupiedBeds;
           
             if( data.availableBeds > 0 && index < 9 ) {
               console.log(index,'indexindexindexindexindexindex');
@@ -43,8 +47,6 @@ $( document ).ready(function() {
           });
           
           
-            
-          
             if(totalAvailableBeds < 1) {
               totalAvailableBedsCount = 'No';
             } else {
@@ -53,10 +55,33 @@ $( document ).ready(function() {
           
           totalBedEl.innerHTML = totalBeds;
           availableBedsEl.innerHTML = totalAvailableBedsCount;
+          
+          //Chart
+          let chartEl = document.getElementById("myChart").getContext('2d');
+
+          let myChart = new Chart(ctx, {
+              type: 'pie',
+              data: {
+                  labels: ["Tokyo",	"Mumbai",	"Mexico City",	"Shanghai"],
+                  datasets: [{    
+                      data: [500,	50,	2424,	14040], // Specify the data values array
+
+                      borderColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color border 
+                      backgroundColor: ['#2196f38c', '#f443368c', '#3f51b570', '#00968896'], // Add custom color background (Points and Fill)
+                      borderWidth: 1 // Specify bar border width
+                  }]},         
+              options: {
+                responsive: true, // Instruct chart js to respond nicely.
+                maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
+              }
+          });
       
         } catch (error) {
           console.error("Error fetching components:", error);
         }
    }
   getICUdata();
+  
+  
+  
 });
