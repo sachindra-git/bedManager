@@ -20,6 +20,7 @@ $( document ).ready(function() {
             totalAvailableBeds += data.availableBeds;
           
             if( data.availableBeds > 0 ) {
+              console.log(data.name,'data.namedata.namedata.name');
                     wrapperDiv = document.createElement('DIV');
               const newDiv2 = document.createElement('DIV');
               const newDiv3 = document.createElement('DIV');
@@ -35,13 +36,13 @@ $( document ).ready(function() {
               
 
               console.log(wrapperDiv, 'wrapperDivwrapperDiv');
-              
+              availableBedsTableWrap.appendChild(wrapperDiv);
               
             }
             
           });
           
-          availableBedsTableWrap.appendChild(wrapperDiv);
+          
             
           
             if(totalAvailableBeds < 1) {
