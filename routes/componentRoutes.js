@@ -12,7 +12,7 @@ const Component = require("../models/componentModel");
 router.get("/", async (req, res) => {
   try {
     const components = await Component.find();
-    console.log("components" + components)
+    console.log("sssssssssssss" + components)
     res.json(components);
   } catch (error) {
     res.status(500).json({ message: error.message });

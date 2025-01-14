@@ -166,6 +166,7 @@ async function updateSelectedComponents() {
       }
       const components = await response.json();
 
+      
       const updates = components
         .filter((component) => componentIds.includes(component._id))
         .map((component) => {
