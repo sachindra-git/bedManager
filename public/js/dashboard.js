@@ -33,8 +33,6 @@ $( document ).ready(function() {
               wrapperDiv.appendChild(newDiv2);
               wrapperDiv.appendChild(newDiv3);
               
-             // wrapperDiv.innerHTML= newDiv2;
-              
 
               console.log(wrapperDiv, 'wrapperDivwrapperDiv');
               
@@ -52,8 +50,8 @@ $( document ).ready(function() {
               totalAvailableBedsCount = totalAvailableBeds;
             }
           
-          totalBedEl.innerHTML= totalBeds;
-          availableBedsEl.innerHTML= totalAvailableBedsCount;
+          totalBedEl.innerHTML = totalBeds;
+          availableBedsEl.innerHTML = totalAvailableBedsCount;
       
         } catch (error) {
           console.error("Error fetching components:", error);
