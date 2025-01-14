@@ -66,14 +66,19 @@
 .dashboard_inner_right {
   width: 35%;
   height: calc(100vh - 110px);
-  background-color: #FFFFFF;
   border-radius: 7px;
 }
-/* .dashboard_inner {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 75px;
-} */
+
+available_icu_tableh3.h3_title {
+    background-color: #fff;
+    padding: 19px 15px;
+    margin-top: 0;
+    border-radius: 10px;
+}
+
+
+
+
 .detail_list {
   width: 100%;
 }
@@ -93,13 +98,13 @@
   position: relative;
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 }
-.hospitals {
+.total-hospitals {
   border-bottom: 4px solid #d13a55;
 }
-.icus {
+.total-icus {
   border-bottom: 4px solid #08bf68;
 }
-.total_beds {
+.total-beds {
   border-bottom: 4px solid #1a60f6;
 }
 .available_beds {
