@@ -14,7 +14,7 @@ const componentSchema = new mongoose.Schema({
 });
 
 
-const Component = mongoose.model('testDB', componentSchema);
+const Component = mongoose.model('components', componentSchema);
 
 console.log("ComponentComponent" + Component) 
 
