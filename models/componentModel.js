@@ -16,6 +16,8 @@ const componentSchema = new mongoose.Schema({
 
 const Component = mongoose.model('Component', componentSchema);
 
+console.log("tests"+Component) 
+
 module.exports = Component;
 
-console.log("tests"+Component) 
+

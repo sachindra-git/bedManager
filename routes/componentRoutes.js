@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Component = require("../models/componentModel");
+const app = express();
 
 // Middleware for logging incoming requests
 /*router.use((req, res, next) => {
@@ -12,15 +13,16 @@ console.log(Component, 'fffffffffffffffffffffffffffffffffff');
 
 // Welcome message for the /components route
 router.get("/", async (req, res) => {
+  console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
   try {
     const components = await Component.find();
-    
     res.json(components);
-    console.log("componentscomponentscomponentscomponentscomponents" + components)
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
+
+app.use("/", router);
 
 // Get a single component
 router.get("/:id", getComponent, (req, res) => {
