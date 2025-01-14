@@ -12,10 +12,10 @@ const componentSchema = new mongoose.Schema({
   reserveBeds: Number,
   availableBeds: Number,
 });
-console.log(componentSchema)
+//console.log(componentSchema);
 
 const Component = mongoose.model('Component', componentSchema);
 
 module.exports = Component;
 
-console.log("tests"+Component) 
+console.log("tests"+Component)
