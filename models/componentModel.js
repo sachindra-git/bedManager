@@ -7,17 +7,15 @@ const optionSchema = new mongoose.Schema({
 
 const componentSchema = new mongoose.Schema({
   name: String,
-  totalBeds: Number,
-  occupiedBeds: Number,
-  reserveBeds: Number,
-  availableBeds: Number, // Array of options
+  defaultTime: Number,
+  defaultElements: String,
+  referenceLink: String,
+  options: [optionSchema], // Array of options
 });
+//console.log(componentSchema)
 
-
-const Component = mongoose.model('icuList', componentSchema);
-
-console.log("ComponentComponent" + Component) 
+const Component = mongoose.model('Component', componentSchema);
 
 module.exports = Component;
 
-
+console.log("aaaa"+Component) 

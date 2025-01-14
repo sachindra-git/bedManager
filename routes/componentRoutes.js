@@ -12,7 +12,7 @@ const Component = require("../models/componentModel");
 router.get("/", async (req, res) => {
   try {
     const components = await Component.find();
-    console.log("sssssssssssss" + components)
+    console.log("components" + components)
     res.json(components);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
 
 // Get a single component
 router.get("/:id", getComponent, (req, res) => {
-  res.json(res.component); 
+  res.json(res.component);
 });
 
 // Create a component
