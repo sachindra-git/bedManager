@@ -28,7 +28,7 @@ const componentSchema = new mongoose.Schema({
 
 //console.log(componentSchema);
 
-const Component = mongoose.model('Component', componentSchema);
+const Component = mongoose.model('iculist', componentSchema);
 
 module.exports = Component;
 
