@@ -13,6 +13,11 @@ const componentSchema = new mongoose.Schema({
   availableBeds: Number,
 });
 
+const hospitalSchema = new mongoose.Schema({
+  name: String,
+  totalIcus: Number,
+});
+
 // const optionSchema = new mongoose.Schema({
 //   name: String,
 //   defaultTime: Number,
@@ -29,6 +34,7 @@ const componentSchema = new mongoose.Schema({
 //console.log(componentSchema);
 
 const Component = mongoose.model('iculist', componentSchema);
+const Hospital = mongoose.model('iculist', hospitalSchema);
 
 module.exports = Component;
 
