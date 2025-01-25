@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Component = require("../models/componentModel");
+const { Component, Hospital } = require("../models/componentModel");
 
 // Middleware for logging incoming requests
 /*router.use((req, res, next) => {

@@ -34,8 +34,13 @@ const hospitalSchema = new mongoose.Schema({
 //console.log(componentSchema);
 
 const Component = mongoose.model('iculist', componentSchema);
-const Hospital = mongoose.model('iculist', hospitalSchema);
+const Hospital = mongoose.model('hospital', hospitalSchema);
 
-module.exports = Component;
+//module.exports = Component;
+
+module.exports = {
+  Component,
+  Hospital,
+};
 
 console.log("tests"+Component)
