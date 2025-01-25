@@ -68,16 +68,17 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
-  column-gap: 20px;
+  column-gap: 30px;
 }
 .bottom_layer .left_container {
-  width: calc(45% - 10px);
+  width: calc(45% - 15px);
   height: calc(100dvh - 231px);
   padding-bottom: 20px;
   background-color: #f2f2f2;
+  font-size: 15px;
 }
 .bottom_layer .right_container {
-  width: calc(55% - 10px);
+  width: calc(55% - 15px);
 }
 
 /*
@@ -112,7 +113,8 @@
 .hospital_table .table_row {
   margin: 0;
   padding: 10px 10px;
-  background-color: #ebebeb;
+  background-color: #e0e8ef;
+  font-size: 14px;
 }
 .hospital_table .table_row:nth-child(2n) {
   background-color: #ffffff;
@@ -130,6 +132,7 @@
   width: 35%;
   height: calc(100vh - 110px);
   border-radius: 7px;
+  font-size: 15px;
 }
 
 .available_icu_table .h3_title {
