@@ -100,7 +100,22 @@
   padding: 38px 0 20px;
 }
 .hospital_table .table_body {
-  height: 100%;s
+  height: 100%;
+}
+.hospital_table .name {
+  width: 75%;
+}
+.hospital_table .hospital-count {
+  width: 25%;
+  text-align: center;
+}
+.hospital_table .table_row {
+  margin: 0;
+  padding: 10px 10px;
+  background-color: #ebebeb;
+}
+.hospital_table .table_row:nth-child(2n) {
+  background-color: #ffffff;
 }
 
 .pie_chart_wrap {

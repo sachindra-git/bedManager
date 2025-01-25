@@ -119,7 +119,7 @@ $( document ).ready(function() {
               newDiv3.classList.add('hospital-count');
               
               newDiv2.innerHTML += data.name;
-              newDiv3.innerHTML += data.availableBeds;
+              newDiv3.innerHTML += data.totalIcus;
               
               HoswrapperDiv.appendChild(newDiv2);
               HoswrapperDiv.appendChild(newDiv3);
