@@ -102,6 +102,12 @@ $( document ).ready(function() {
           console.error("Error fetching components:", error);
         }
    }
+  
+  
+  
+  
+  
+  
   getICUdata();
   
   
