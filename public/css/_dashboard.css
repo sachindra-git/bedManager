@@ -58,7 +58,7 @@
   padding: 30px 50px;
   display: flex;
   align-items: flex-start;
-  gap: 75px;
+  gap: 50px;
 }
 .dashboard_inner_left {
   width: 65%;
@@ -71,10 +71,22 @@
   column-gap: 20px;
 }
 .bottom_layer .left_container {
-    width: calc(45% - 10px);
+  width: calc(45% - 10px);
+  height: calc(100dvh - 201px);
 }
 .bottom_layer .right_container {
-    width: calc(55% - 10px);
+  width: calc(55% - 10px);
+}
+
+.hospital_wrap .h3_title {
+  background-color: #fff;
+  margin: 0;
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.hospital_table .table_head {
+  border-bottom: 2px solid #3B7A99;
 }
 
 .pie_chart_wrap {
