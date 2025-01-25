@@ -104,14 +104,15 @@ $( document ).ready(function() {
         try {
           const response = await fetch("/hospitals");
           const hospitals = await response.json();
+          const totalHospitalsEl = document.querySelector('.total-hospitals .count');
           const hospitalTableWrap = document.querySelector('.hospital_table .table_body');
           let HoswrapperDiv;
-          
+          let totalHospitals = hospitals.length;
           console.log(hospitals.length, 'hhhhhhhhhhhhhhhhhhhhhh')
  
           hospitals.forEach((data, index) => {
             if( index < 9 ) {
-                    HoswrapperDiv = document.createElement('DIV');
+              HoswrapperDiv = document.createElement('DIV');
               const newDiv2 = document.createElement('DIV');
               const newDiv3 = document.createElement('DIV');
               HoswrapperDiv.classList.add('table_row');
@@ -129,6 +130,8 @@ $( document ).ready(function() {
             }
             
           });
+          
+          totalHospitalsEl.innerHTML = totalHospitals;
           
         } catch (error) {
           console.error("Error fetching hospitals:", error);
