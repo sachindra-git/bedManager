@@ -1,35 +1,32 @@
 const express = require("express");
 const router = express.Router();
-const { Component, Hospital } = require("../models/componentModel");
+const {Component} = require("../models/componentModel");
 
+// Middleware for logging incoming requests
+/*router.use((req, res, next) => {
+  console.log(`Incoming ${req.method} request to ${req.path}`);
+  next();
+});*/
 
-console.log("hospitals" + Hospital.find());
+console.log("components" + Component.find());
 // Welcome message for the /components route
 router.get("/", async (req, res) => {
   try {
     const components = await Component.find();
-    //console.log("components" + components)
+    console.log("components" + components)
     res.json(components);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-router.get("/", async (req, res) => {
-  try {
-    const hospitals = await Hospital.find();
-    console.log("aaaaaaaaaaaaaaaaaa" + hospitals)
-    res.json(hospitals);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
 
 
-// Get a single component
-router.get("/:id", getComponent, (req, res) => {
-  res.json(res.component);
-});
+
+// // Get a single component
+// router.get("/:id", getComponent, (req, res) => {
+//   res.json(res.component);
+// });
 
 // // Create a component
 // router.post("/", async (req, res) => {

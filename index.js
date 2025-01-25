@@ -26,6 +26,7 @@ app.use("/components", componentRoutes);
 
 
 
+
 // MongoDB connection
 mongoose.connect(
   "mongodb+srv://chathurangawijayarathneeb:AzSMaBPouG5uLxEY@cluster01.nzv8k.mongodb.net/bedManager?retryWrites=true&w=majority&appName=bedManager",
