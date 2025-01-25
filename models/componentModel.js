@@ -15,7 +15,9 @@ const hospitalSchema = new mongoose.Schema({
 const bedreqSchema = new mongoose.Schema({
   date: Date,
   patientName: String,
+  patientAge: Number,
   hospitalName: String,
+  wardNumber: Number,
   patientStatus: String,
   bedRequestStatus: String
 });

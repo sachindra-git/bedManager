@@ -108,7 +108,6 @@ $( document ).ready(function() {
           const hospitalTableWrap = document.querySelector('.hospital_table .table_body');
           let HoswrapperDiv;
           let totalHospitals = hospitals.length;
-          console.log(hospitals.length, 'hhhhhhhhhhhhhhhhhhhhhh')
  
           hospitals.forEach((data, index) => {
             if( index < 9 ) {
@@ -176,6 +175,27 @@ $( document ).ready(function() {
           
           
           
+          
+        } catch (error) {
+          console.error("Error fetching hospitals:", error);
+        }
+   }
+  
+  
+  
+  
+  
+   async function getBedRequestData() {
+        try {
+          const response = await fetch("/bedreq");
+          const bedrequests = await response.json();
+          
+          console.log(hospitals.length, 'hhhhhhhhhhhhhhhhhhhhhh')
+ 
+          hospitals.forEach((data, index) => {
+           
+            
+          });
           
         } catch (error) {
           console.error("Error fetching hospitals:", error);

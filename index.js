@@ -27,6 +27,9 @@ app.use("/components", componentRoutes);
 const hospitalRoutes = require("./routes/hospitalRoutes");
 app.use("/hospitals", hospitalRoutes);
 
+const bedRequestRoutes = require("./routes/bedRequestRoutes");
+app.use("/bedreq", bedRequestRoutes);
+
 
 // MongoDB connection
 mongoose.connect(
