@@ -72,22 +72,34 @@
 }
 .bottom_layer .left_container {
   width: calc(45% - 10px);
-  height: calc(100dvh - 201px);
+  height: calc(100dvh - 231px);
+  padding-bottom: 20px;
+  background-color: #f2f2f2;
 }
 .bottom_layer .right_container {
   width: calc(55% - 10px);
 }
 
+/*
+********** Hospital Table
+*/
 .hospital_wrap .h3_title {
   background-color: #fff;
   margin: 0;
-  padding: 10px 15px;
+  padding: 14px 15px;
   text-align: center;
 }
 
 .hospital_table .table_head {
   border-bottom: 2px solid #3B7A99;
 }
+.hospital_table .table_inner {
+  padding:0;
+}
+.hospital_table .table_footer {
+  padding: 38px 0 20px;
+}
+
 
 .pie_chart_wrap {
   background-color: #fff;
