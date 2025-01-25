@@ -146,8 +146,15 @@ $( document ).ready(function() {
         const response = await fetch("/bedreq");
         const bedrequests = await response.json();
         
-        const succeededRequests = bedrequests.filter((data) => data.bedRequestStatus === "succeed");
-        const failedRequests = bedrequests.filter((data) => data.bedRequestStatus === "succeed");
+        const succeededRequests = bedrequests.filter((data) => data.bedRequestStatus === "Succeed");
+        const failedRequests = bedrequests.filter((data) => data.bedRequestStatus === "Failed");
+        const noResponseRequests = bedrequests.filter((data) => data.bedRequestStatus === "No Feedback");
+        
+        const totalReq = bedrequests.length;
+        
+        const succeedPercentage = succeededRequests.length/totalReq * 100;
+        const faliedPercentage = failedRequests.length/totalReq * 100;
+        const noResponsePercentage = noResponseRequests.length/totalReq * 100;
 
         bedrequests.forEach((data, index) => {
           const requestStatus = data.bedRequestStatus;
@@ -161,35 +168,35 @@ $( document ).ready(function() {
         new Chart(ctx, {
           type: 'doughnut',
           data: {
-            labels: ['Succeed', 'Fail to Find a Bed', 'No Feedback'],
+            labels: ['Succeed [' + parseFloat(succeedPercentage.toFixed(2)) +'%]', 'Fail to Find a Bed [' + parseFloat(faliedPercentage.toFixed(2)) +'%]', 'No Feedback [' + parseFloat(noResponsePercentage.toFixed(2)) +'%]'],
             datasets: [{
               label: 'Dataset 1',
-              data: [300, 50, 100],
+              data: [succeededRequests.length, failedRequests.length, noResponseRequests.length],
               backgroundColor: ['#8CCB8C', '#A52A2A', '#3A9AD9'],
               hoverOffset: 4
             }]
           },
-                  options: {
-                    responsive: true,
-                    maintainAspectRatio: false, 
-                    legend: {
-                      display: true,
-                      position: "right",
-                      labels: {
-                        boxWidth: 10,
-                        fontColor: "#000",
-                        fontFamily: "Roboto",
-                        fullWidth: true,
-                      } 
-                    },
-                    title: {
-                      display: true,
-                      text: 'Bed Request - Outcome',
-                      fontColor: "#4d4d4d",
-                      fontFamily: "Roboto",
-                      fontSize: 16
-                    }
-                  }
+          options: {
+            responsive: true,
+            maintainAspectRatio: false, 
+            legend: {
+              display: true,
+              position: "right",
+              labels: {
+                boxWidth: 10,
+                fontColor: "#000",
+                fontFamily: "Roboto",
+                fullWidth: true,
+              } 
+            },
+            title: {
+              display: true,
+              text: 'Bed Request - Outcome',
+              fontColor: "#4d4d4d",
+              fontFamily: "Roboto",
+              fontSize: 16
+            }
+          }
         });
 
       } catch (error) {
