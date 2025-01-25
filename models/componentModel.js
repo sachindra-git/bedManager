@@ -1,10 +1,5 @@
 const mongoose = require('mongoose');
 
-// const optionSchema = new mongoose.Schema({
-//   name: String,
-//   defaultTime: Number,
-// });
-
 const componentSchema = new mongoose.Schema({
   name: String,
   totalBeds: Number,
@@ -17,30 +12,23 @@ const hospitalSchema = new mongoose.Schema({
   name: String,
   totalIcus: Number,
 });
+const bedreqSchema = new mongoose.Schema({
+  date: Date,
+  patientName: String,
+  hospitalName: String,
+  patientStatus: String,
+  bedRequestStatus: String
+});
 
-// const optionSchema = new mongoose.Schema({
-//   name: String,
-//   defaultTime: Number,
-// });
-
-// const componentSchema = new mongoose.Schema({
-//   name: String,
-//   defaultTime: Number,
-//   defaultElements: String,
-//   referenceLink: String,
-//   options: [optionSchema], // Array of options
-// });
-
-//console.log(componentSchema);
 
 const Component = mongoose.model('iculist', componentSchema);
 const Hospital = mongoose.model('hospital', hospitalSchema);
+const Bedreq = mongoose.model('bedreq', bedreqSchema);
 
 //module.exports = Component;
 
 module.exports = {
   Component,
   Hospital,
+  Bedreq
 };
-
-console.log("tests"+Component)
