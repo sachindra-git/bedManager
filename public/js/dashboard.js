@@ -104,11 +104,29 @@ $( document ).ready(function() {
         try {
           const response = await fetch("/hospitals");
           const hospitals = await response.json();
+          const hospitalTableWrap = document.querySelector('.hospital_table .table_body');
+          let HoswrapperDiv;
           
           console.log(hospitals.length, 'hhhhhhhhhhhhhhhhhhhhhh')
  
           hospitals.forEach((data, index) => {
-           console.log(data, 'datadatas')
+            if( index < 9 ) {
+                    HoswrapperDiv = document.createElement('DIV');
+              const newDiv2 = document.createElement('DIV');
+              const newDiv3 = document.createElement('DIV');
+              HoswrapperDiv.classList.add('table_row');
+              newDiv2.classList.add('name');
+              newDiv3.classList.add('hospital-count');
+              
+              newDiv2.innerHTML += data.name;
+              newDiv3.innerHTML += data.availableBeds;
+              
+              HoswrapperDiv.appendChild(newDiv2);
+              HoswrapperDiv.appendChild(newDiv3);
+              
+              hospitalTableWrap.appendChild(HoswrapperDiv);
+              
+            }
             
           });
           

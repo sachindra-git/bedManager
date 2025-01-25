@@ -99,7 +99,9 @@
 .hospital_table .table_footer {
   padding: 38px 0 20px;
 }
-
+.hospital_table .table_body {
+  height: 100%;s
+}
 
 .pie_chart_wrap {
   background-color: #fff;
