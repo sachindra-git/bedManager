@@ -26,6 +26,22 @@ $( document ).ready(function() {
       setTimeout(showTime, 1000);
       
   }
+  
+  function showDate(){
+    const currentDate = new Date();
+    const currentDateEl = document.querySelector('.current-date');
+    
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const year = currentDate.getFullYear();
+    
+    const formattedDate = `${day}/${month}/${year}`;
+    
+    console.log(formattedDate, 'formattedDateformattedDateformattedDate');
+    
+    currentDateEl.innerHTML += formattedDate;
+  }
 
   showTime();
+  showDate();
 });
