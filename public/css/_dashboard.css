@@ -79,6 +79,9 @@
 }
 .bottom_layer .right_container {
   width: calc(55% - 15px);
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
 }
 
 /*
@@ -126,7 +129,12 @@
   height: calc(calc(100dvh - 233px)/2);
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 }
-
+.donut_chart_wrap {
+  background-color: #fff;
+  padding: 15px 25px;
+  height: calc(calc(100dvh - 253px) / 2);
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+}
 
 .dashboard_inner_right {
   width: 35%;

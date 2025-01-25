@@ -140,11 +140,11 @@ $( document ).ready(function() {
     new Chart(ctx, {
       type: 'doughnut',
       data: {
-        labels: ['Category A', 'Category B', 'Category C'],
+        labels: ['Succeed', 'Fail to Find a Bed', 'No Feedback'],
         datasets: [{
           label: 'Dataset 1',
           data: [300, 50, 100],
-          backgroundColor: ['#ff6384', '#36a2eb', '#ffce56'],
+          backgroundColor: ['#8CCB8C', '#A52A2A', '#3A9AD9'],
           hoverOffset: 4
         }]
       },
@@ -163,7 +163,7 @@ $( document ).ready(function() {
 								},
                 title: {
                   display: true,
-                  text: 'Bed Availability Chart',
+                  text: 'Bed Request - Outcome',
                   fontColor: "#4d4d4d",
                   fontFamily: "Roboto",
                   fontSize: 16
