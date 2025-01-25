@@ -72,8 +72,8 @@
 }
 .bottom_layer .left_container {
   width: calc(45% - 15px);
-  height: calc(100dvh - 231px);
-  padding-bottom: 20px;
+  height: calc(100dvh - 238);
+  padding-bottom: 0;
   background-color: #f2f2f2;
   font-size: 15px;
 }
@@ -101,7 +101,7 @@
   padding:0;
 }
 .hospital_table .table_footer {
-  padding: 38px 0 20px;
+  padding: 28px 0 20px;
 }
 .hospital_table .table_body {
   height: 100%;
@@ -132,7 +132,7 @@
 .donut_chart_wrap {
   background-color: #fff;
   padding: 15px 25px;
-  height: calc(calc(100dvh - 253px) / 2);
+  height: calc(calc(100dvh - 283px) / 2);
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 }
 
