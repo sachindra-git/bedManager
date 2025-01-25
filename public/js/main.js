@@ -37,8 +37,6 @@ $( document ).ready(function() {
     
     const formattedDate = `${day}/${month}/${year}`;
     
-    console.log(formattedDate, 'formattedDateformattedDateformattedDate');
-    
     currentDateEl.innerHTML += formattedDate;
   }
 

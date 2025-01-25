@@ -57,7 +57,7 @@ $( document ).ready(function() {
           totalBedEl.innerHTML = totalBeds;
           availableBedsEl.innerHTML = totalAvailableBedsCount;
           
-          //Chart
+          //Bed Availability Chart
           let chartEl = document.getElementById("pieChart").getContext('2d');
 
           let myChart = new Chart(chartEl, {
@@ -131,51 +131,7 @@ $( document ).ready(function() {
           });
           
           totalHospitalsEl.innerHTML = totalHospitals;
-          
-          
-          
-          
-    const ctx = document.getElementById('donutChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Succeed', 'Fail to Find a Bed', 'No Feedback'],
-        datasets: [{
-          label: 'Dataset 1',
-          data: [300, 50, 100],
-          backgroundColor: ['#8CCB8C', '#A52A2A', '#3A9AD9'],
-          hoverOffset: 4
-        }]
-      },
-              options: {
-                responsive: true,
-                maintainAspectRatio: false, 
-								legend: {
-                  display: true,
-                  position: "right",
-                  labels: {
-                    boxWidth: 10,
-                    fontColor: "#000",
-                    fontFamily: "Roboto",
-                    fullWidth: true,
-                  } 
-								},
-                title: {
-                  display: true,
-                  text: 'Bed Request - Outcome',
-                  fontColor: "#4d4d4d",
-                  fontFamily: "Roboto",
-                  fontSize: 16
-                }
-              }
-    });
-          
-          
-          
-          
-          
-          
-          
+            
         } catch (error) {
           console.error("Error fetching hospitals:", error);
         }
@@ -186,26 +142,66 @@ $( document ).ready(function() {
   
   
    async function getBedRequestData() {
-        try {
-          const response = await fetch("/bedreq");
-          const bedrequests = await response.json();
-          
-          console.log(hospitals.length, 'hhhhhhhhhhhhhhhhhhhhhh')
- 
-          hospitals.forEach((data, index) => {
-           
-            
-          });
-          
-        } catch (error) {
-          console.error("Error fetching hospitals:", error);
-        }
+      try {
+        const response = await fetch("/bedreq");
+        const bedrequests = await response.json();
+        
+        const succeededRequests = bedrequests.filter((data) => data.bedRequestStatus === "succeed");
+        const failedRequests = bedrequests.filter((data) => data.bedRequestStatus === "succeed");
+
+        bedrequests.forEach((data, index) => {
+          const requestStatus = data.bedRequestStatus;
+          console.log(data, 'datadatadatadatadata')
+
+        });
+        
+        
+        //Bed Request Chart
+        const ctx = document.getElementById('donutChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Succeed', 'Fail to Find a Bed', 'No Feedback'],
+            datasets: [{
+              label: 'Dataset 1',
+              data: [300, 50, 100],
+              backgroundColor: ['#8CCB8C', '#A52A2A', '#3A9AD9'],
+              hoverOffset: 4
+            }]
+          },
+                  options: {
+                    responsive: true,
+                    maintainAspectRatio: false, 
+                    legend: {
+                      display: true,
+                      position: "right",
+                      labels: {
+                        boxWidth: 10,
+                        fontColor: "#000",
+                        fontFamily: "Roboto",
+                        fullWidth: true,
+                      } 
+                    },
+                    title: {
+                      display: true,
+                      text: 'Bed Request - Outcome',
+                      fontColor: "#4d4d4d",
+                      fontFamily: "Roboto",
+                      fontSize: 16
+                    }
+                  }
+        });
+
+      } catch (error) {
+        console.error("Error fetching hospitals:", error);
+      }
    }
   
   
   
   getICUdata();
   getHospitalData();
+  getBedRequestData();
   
   
   
