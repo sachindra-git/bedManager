@@ -133,6 +133,50 @@ $( document ).ready(function() {
           
           totalHospitalsEl.innerHTML = totalHospitals;
           
+          
+          
+          
+    const ctx = document.getElementById('donutChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Category A', 'Category B', 'Category C'],
+        datasets: [{
+          label: 'Dataset 1',
+          data: [300, 50, 100],
+          backgroundColor: ['#ff6384', '#36a2eb', '#ffce56'],
+          hoverOffset: 4
+        }]
+      },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false, 
+								legend: {
+                  display: true,
+                  position: "right",
+                  labels: {
+                    boxWidth: 10,
+                    fontColor: "#000",
+                    fontFamily: "Roboto",
+                    fullWidth: true,
+                  } 
+								},
+                title: {
+                  display: true,
+                  text: 'Bed Availability Chart',
+                  fontColor: "#4d4d4d",
+                  fontFamily: "Roboto",
+                  fontSize: 16
+                }
+              }
+    });
+          
+          
+          
+          
+          
+          
+          
         } catch (error) {
           console.error("Error fetching hospitals:", error);
         }
