@@ -17,7 +17,6 @@ $( document ).ready(function() {
           let totalAvailableBedsCount = '';
           let wrapperDiv;
           
-          console.log(components.length, 'ssssssssssss')
           totalICUEl.innerHTML= components.length;
           
           components.forEach((data, index) => {
@@ -30,7 +29,6 @@ $( document ).ready(function() {
             totalOccupiedBedsPerc = totalOccupiedBeds/totalBeds * 100;
           
             if( data.availableBeds > 0 && index < 9 ) {
-              console.log(index,'indexindexindexindexindexindex');
                     wrapperDiv = document.createElement('DIV');
               const newDiv2 = document.createElement('DIV');
               const newDiv3 = document.createElement('DIV');
@@ -44,8 +42,6 @@ $( document ).ready(function() {
               wrapperDiv.appendChild(newDiv2);
               wrapperDiv.appendChild(newDiv3);
               
-
-              console.log(wrapperDiv, 'wrapperDivwrapperDiv');
               availableBedsTableWrap.appendChild(wrapperDiv);
               
             }
@@ -104,11 +100,27 @@ $( document ).ready(function() {
    }
   
   
-  
+   async function getHospitalData() {
+        try {
+          const response = await fetch("/hospitals");
+          const hospitals = await response.json();
+          
+          console.log(hospitals.length, 'hhhhhhhhhhhhhhhhhhhhhh')
+ 
+          hospitals.forEach((data, index) => {
+           console.log(data, 'datadatas')
+            
+          });
+          
+        } catch (error) {
+          console.error("Error fetching hospitals:", error);
+        }
+   }
   
   
   
   getICUdata();
+  getHospitalData();
   
   
   
