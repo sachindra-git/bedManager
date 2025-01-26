@@ -1,12 +1,12 @@
 * {
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
 }
 body {
   padding: 0;
   margin: 0;
   background-color: #ededed;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 .container {
   width: 100%;
@@ -17,6 +17,7 @@ body {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
+  padding-top: 60px;
 }
 ul {
   padding: 0;
@@ -190,15 +191,19 @@ a.link:hover {
   flex-wrap: wrap;
   align-items: center;
   font-family: "Open Sans", serif;
+  background-color: #6FA3D8;
+  color: #ffffff;
+  padding: 8px 15px;
 }
 .table_header .table_col {
   width: 18%;
 }
 .table_header .table_col.col-name {
-    width: 35%;
+  width: 35%;
 }
 .table_header .table_col.col-count {
-    width: 13%;
+  width: 13%;
+  text-align: center;
 }
 .table_header .table_col.col-contact {
     width: 16%;
