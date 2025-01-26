@@ -3,25 +3,25 @@ $( document ).ready(function() {
 async function getICUdata() {
   try {
     const response = await fetch("/components");
-    const hospitals = await response.json();
-    const hospitalTableWrap = document.querySelector('.icu-table .table_body');
-    const totalHospitalsEl = document.querySelector('.total-content .icu-hospitals');
+    const icus = await response.json();
+    const icuTableWrap = document.querySelector('.icu-table .table_body');
+    const totalicusEl = document.querySelector('.total-content .total-icus');
     const paginationControls = document.querySelector('.pagination-controls'); // Add this container in your HTML
     
-    let totalHospitals = hospitals.length;
+    let totalIcus = icus.length;
     let currentPage = 1;
-    const itemsPerPage = 2;
+    const itemsPerPage = 5;
 
-    function displayHospitals(hospitalsPage) {
-      hospitalTableWrap.innerHTML = "";
+    function displayICUs(icuPage) {
+      icuTableWrap.innerHTML = "";
 
-      if (hospitalsPage.length === 0) {
-        hospitalTableWrap.innerHTML = "<div class='no-result'>No results found</div>";
+      if (icuPage.length === 0) {
+        icuTableWrap.innerHTML = "<div class='no-result'>No results found</div>";
         return;
       }
 
-      hospitalsPage.forEach((data) => {
-        const HoswrapperDiv = document.createElement('DIV');
+      icuPage.forEach((data) => {
+        const icuWrapperDiv = document.createElement('DIV');
         const newDiv2 = document.createElement('DIV');
         const newDiv3 = document.createElement('DIV');
         const newDiv4 = document.createElement('DIV');
@@ -30,7 +30,7 @@ async function getICUdata() {
         const newDiv7 = document.createElement('DIV');
         const anchor = document.createElement('a');
 
-        HoswrapperDiv.classList.add('table_row');
+        icuWrapperDiv.classList.add('table_row');
         newDiv2.classList.add('name');
         newDiv3.classList.add('total-beds');
         newDiv4.classList.add('occupied-beds');
@@ -42,22 +42,22 @@ async function getICUdata() {
 
         // Fill content
         newDiv2.innerHTML = data.name;
-        newDiv3.innerHTML = data.district;
-        newDiv4.innerHTML = data.province;
-        newDiv5.innerHTML = data.totalIcus;
-        newDiv5.innerHTML = data.totalIcus;
+        newDiv3.innerHTML = data.totalBeds;
+        newDiv4.innerHTML = data.occupiedBeds;
+        newDiv5.innerHTML = data.reserveBeds;
+        newDiv6.innerHTML = data.availableBeds;
         //anchor.innerHTML = data.contact;
 
         // Build row
-        newDiv6.appendChild(anchor);
-        HoswrapperDiv.appendChild(newDiv2);
-        HoswrapperDiv.appendChild(newDiv3);
-        HoswrapperDiv.appendChild(newDiv4);
-        HoswrapperDiv.appendChild(newDiv5);
-        HoswrapperDiv.appendChild(newDiv6);
+        //newDiv6.appendChild(anchor);
+        icuWrapperDiv.appendChild(newDiv2);
+        icuWrapperDiv.appendChild(newDiv3);
+        icuWrapperDiv.appendChild(newDiv4);
+        icuWrapperDiv.appendChild(newDiv5);
+        icuWrapperDiv.appendChild(newDiv6);
 
         // Append to table
-        hospitalTableWrap.appendChild(HoswrapperDiv);
+        icuTableWrap.appendChild(icuWrapperDiv);
       });
     }
 
@@ -102,41 +102,41 @@ async function getICUdata() {
       paginationControls.appendChild(nextButton);
     }
 
-    function updatePagination(filteredHospitals = hospitals) {
+    function updatePagination(filteredicus = icus) {
       // Calculate the items to display on the current page
       const startIndex = (currentPage - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
-      const hospitalsPage = filteredHospitals.slice(startIndex, endIndex);
+      const icuPage = filteredicus.slice(startIndex, endIndex);
 
       // Display the current page data
-      displayHospitals(hospitalsPage);
+      displayICUs(icuPage);
 
       // Update pagination controls
-      createPaginationControls(filteredHospitals.length);
+      createPaginationControls(filteredicus.length);
     }
 
     // Add search functionality
-    const searchBar = document.querySelector("#hospital-search");
+    const searchBar = document.querySelector("#icu-search");
     searchBar.addEventListener("input", (e) => {
       const searchTerm = e.target.value.toLowerCase();
 
-      // Filter hospitals based on the search term
-      const filteredHospitals = hospitals.filter((hospital) =>
-        hospital.name.toLowerCase().includes(searchTerm)
+      // Filter icus based on the search term
+      const filteredicus = icus.filter((icu) =>
+        icu.name.toLowerCase().includes(searchTerm)
       );
 
       currentPage = 1; // Reset to the first page when searching
-      updatePagination(filteredHospitals);
+      updatePagination(filteredicus);
     });
 
     // Initial display
     updatePagination();
 
-    // Update total hospitals
-    totalHospitalsEl.innerHTML = totalHospitals;
+    // Update total icus
+    totalicusEl.innerHTML = totalIcus;
 
   } catch (error) {
-    console.error("Error fetching hospitals:", error);
+    console.error("Error fetching icus:", error);
   }
 }
 
