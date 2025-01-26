@@ -47,6 +47,9 @@ li {
 }
 .left_wrapper {
   width: 25%;
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
 }
 .right_wrapper {
   width: 75%;
@@ -124,6 +127,11 @@ a.link:hover {
 /*
 ********** More Menu
 */
+.hamburger-menu {
+  background-color: transparent;
+  border: none;
+  margin-top: 5px;
+}
 .more-menu-wrap {
   width: 250px;
   height: 100%;
@@ -134,7 +142,11 @@ a.link:hover {
   z-index: 999;
   padding: 70px 25px 35px;
   font-family: "Open Sans", serif;
+  transition: all 0.3s ease-in-out;
   transform: translateX(-100%);
+}
+.more-menu-wrap.active {
+  transform: translateX(0);
 }
 .more-menu {
     display: flex;

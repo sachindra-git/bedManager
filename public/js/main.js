@@ -39,7 +39,18 @@ $( document ).ready(function() {
     
     currentDateEl.innerHTML += formattedDate;
   }
+  
+  function menuToggle(){
+    const menuToggle = document.querySelector('.js-menu-toggle');
+    const menu = document.querySelector('.more-menu-wrap');
+
+    menuToggle?.addEventListener('click', () => {
+      menu.classList.add('active');
+      menuToggle.classList.add('active');
+    });
+  }
 
   showTime();
   showDate();
+  menuToggle();
 });
