@@ -10,10 +10,26 @@ $( document ).ready(function() {
           let totalICU = 0;
           let HoswrapperDiv;
           
+          const searchBar = document.querySelector("#hospital-search");
+          
+  searchBar.addEventListener("input", (e) => {
+    const searchTerm = e.target.value.toLowerCase(); // Convert to lowercase for case-insensitive matching
+
+    // Filter the hospitals based on the search term
+    const hospitals = hospitals.filter((hospital) =>
+      hospital.name.toLowerCase().includes(searchTerm)
+    );
+    
+    console.log(hospitals, 'filterrrrrrrrrrrr')
+
+    // Process the filtered data
+    // filteredHospitals.forEach((data, index) => {
+    //   console.log(`Hospital ${index + 1}:`, data.name); // Example output
+    // });
+  });
         
  
           hospitals.forEach((data, index) => {
-            console.log(data, 'aaaaaaaaaaaaa');
               HoswrapperDiv = document.createElement('DIV');
               const newDiv2 = document.createElement('DIV');
               const newDiv3 = document.createElement('DIV');
