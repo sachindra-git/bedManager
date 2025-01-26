@@ -5,7 +5,13 @@ $( document ).ready(function() {
           const response = await fetch("/hospitals");
           const hospitals = await response.json();
           const hospitalTableWrap = document.querySelector('.hospital-table .table_body');
+          const totalHospitalsEl = document.querySelector('.total-content .total-hospitals');
+          const totalICUEl = document.querySelector('.total-content .total-icus');
+          let totalHospitals = hospitals.length;
+          let totalICU = 0;
           let HoswrapperDiv;
+          
+        
  
           hospitals.forEach((data, index) => {
             console.log(data, 'aaaaaaaaaaaaa');
@@ -16,6 +22,13 @@ $( document ).ready(function() {
               const newDiv5 = document.createElement('DIV');
               const newDiv6 = document.createElement('DIV');
               const anchor = document.createElement('a');
+            
+            
+            
+              totalICU += data.totalIcus;
+            
+              console.log(totalICU, 'gggggggggggggggggg');
+            
               HoswrapperDiv.classList.add('table_row');
               newDiv2.classList.add('name');
               newDiv3.classList.add('district');
@@ -41,6 +54,9 @@ $( document ).ready(function() {
               
               hospitalTableWrap.appendChild(HoswrapperDiv);    
           });
+          
+          totalHospitalsEl.innerHTML = totalHospitals;
+          totalICUEl.innerHTML = totalICU;
           
             
         } catch (error) {
