@@ -132,7 +132,15 @@ a.link:hover {
   border: none;
   margin-top: 5px;
 }
+.menu-close {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 17px;
+  top: 17px;
+}
 .more-menu-wrap {
+  position: relative;
   width: 250px;
   height: 100%;
   background-color: #6c848d; /* 5a6b72 */
@@ -140,7 +148,7 @@ a.link:hover {
   left: 0;
   top: 0;
   z-index: 999;
-  padding: 70px 25px 35px;
+  padding: 70px 20px 35px 30px;
   font-family: "Open Sans", serif;
   transition: all 0.3s ease-in-out;
   transform: translateX(-100%);
@@ -161,7 +169,7 @@ a.link:hover {
 .menu-item .menu-link {
   font-family: "Open Sans", serif;
   text-decoration: none;
-  color: #ffffff;
+  color: #E8ECEF;
 }
 .copyright {
   color: #E8ECEF;

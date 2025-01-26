@@ -42,12 +42,19 @@ $( document ).ready(function() {
   
   function menuToggle(){
     const menuToggle = document.querySelector('.js-menu-toggle');
+    const menuClose = document.querySelector('.js-menu-close');
     const menu = document.querySelector('.more-menu-wrap');
 
     menuToggle?.addEventListener('click', () => {
       menu.classList.add('active');
       menuToggle.classList.add('active');
     });
+    
+    menuClose?.addEventListener('click', () => {
+      menu.classList.remove('active');
+      menuToggle.classList.remove('active');
+    });
+    
   }
 
   showTime();
