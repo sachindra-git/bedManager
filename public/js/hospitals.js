@@ -10,10 +10,10 @@ async function getHospitalData() {
     
     let totalHospitals = hospitals.length;
     let currentPage = 1;
-    const itemsPerPage = 2; // Adjust this to set how many items per page
+    const itemsPerPage = 2;
 
     function displayHospitals(hospitalsPage) {
-      hospitalTableWrap.innerHTML = ""; // Clear previous content
+      hospitalTableWrap.innerHTML = "";
 
       if (hospitalsPage.length === 0) {
         hospitalTableWrap.innerHTML = "<div class='no-result'>No results found</div>";
@@ -64,7 +64,7 @@ async function getHospitalData() {
 
       // Previous button
       const prevButton = document.createElement("button");
-      prevButton.textContent = "Previous";
+      prevButton.textContent = "<< Previous";
       prevButton.disabled = currentPage === 1;
       prevButton.addEventListener("click", () => {
         if (currentPage > 1) {
@@ -88,7 +88,7 @@ async function getHospitalData() {
 
       // Next button
       const nextButton = document.createElement("button");
-      nextButton.textContent = "Next";
+      nextButton.textContent = "Next >>";
       nextButton.disabled = currentPage === totalPages;
       nextButton.addEventListener("click", () => {
         if (currentPage < totalPages) {

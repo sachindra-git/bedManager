@@ -221,3 +221,17 @@ a.link:hover {
   color: #ffffff;
   padding: 11px 15px;
 }
+
+/*
+************ Pagination
+*/
+.pagination-controls {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 25px;
+}
+.pagination-controls button {
+  background-color: transparent;
+  border: none;
+  font-family: "Open Sans", serif;
+}
