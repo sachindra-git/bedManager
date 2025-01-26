@@ -6,7 +6,6 @@ $( document ).ready(function() {
           const hospitals = await response.json();
           const hospitalTableWrap = document.querySelector('.hospital-table .table_body');
           const totalHospitalsEl = document.querySelector('.total-content .total-hospitals');
-          const totalICUEl = document.querySelector('.total-content .total-icus');
           let totalHospitals = hospitals.length;
           let totalICU = 0;
           let HoswrapperDiv;
@@ -23,11 +22,6 @@ $( document ).ready(function() {
               const newDiv6 = document.createElement('DIV');
               const anchor = document.createElement('a');
             
-            
-            
-              totalICU += data.totalIcus;
-            
-              console.log(totalICU, 'gggggggggggggggggg');
             
               HoswrapperDiv.classList.add('table_row');
               newDiv2.classList.add('name');
@@ -56,7 +50,6 @@ $( document ).ready(function() {
           });
           
           totalHospitalsEl.innerHTML = totalHospitals;
-          totalICUEl.innerHTML = totalICU;
           
             
         } catch (error) {
