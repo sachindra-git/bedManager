@@ -132,4 +132,15 @@ a.link:hover {
   left: 0;
   top: 0;
   z-index: 999;
+  padding: 65px 25px 35px;
+  font-family: "Open Sans", serif;
+}
+.menu-list .menu-item {
+  margin-bottom: 15px;
+}
+.menu-item .menu-link {
+  font-family: "Open Sans", serif;
+  text-decoration: none;
+  text-trasform: uppercase;
+  color: #ffffff;
 }
