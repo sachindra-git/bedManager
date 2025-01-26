@@ -18,13 +18,14 @@
   align-items: center;
   background-color: #e8e8e8;
   padding: 9px 15px;
-  font-size: 15px;
+  font-size: 14px;
 }
 .table_row:nth-child(2n) {
   background-color: #FFFFFF;
 }
 .table_row div {
   width: 18%;
+  font-family: "Open Sans", serif;
 }
 .table_row .name {
   width: 35%;
@@ -40,4 +41,15 @@
 .contact .contact-link {
   text-decoration: none;
   color: #3B7A99;
+}
+.inner-wrapper .top-wrapper {
+  padding-bottom: 10px
+}
+.top-wrapper .total-content {
+  font-weight: bold;
+  font-family: "Open Sans", serif;
+}
+.total-content .total-icus, .total-content .total-hospitals {
+  font-size: 20px;
+  padding: 0 6px;
 }
