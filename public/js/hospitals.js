@@ -17,7 +17,7 @@ $( document ).ready(function() {
           hospitalTableWrap.innerHTML = "";
           
           if (filteredHospitals.length === 0) {
-            hospitalTableWrap.innerHTML = "<div class='no-result'>No results found.</div>";
+            hospitalTableWrap.innerHTML = "<div class='no-result'>No results found</div>";
             return;
           }
           
