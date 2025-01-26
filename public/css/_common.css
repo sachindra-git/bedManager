@@ -31,6 +31,21 @@ input:focus,
 textarea:focus {
   outline: none;
 }
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-bottom: 2px solid #3B7A99;
+}
+.search-bar .icon {
+  padding: 0 8px;
+}
+input.search {
+  padding: 7px 8px;
+  width: 300px;
+  border: none;
+  font-size: 15px;
+}
 .white-font-roboto {
   color: #FFFFFF;
   font-family: "Roboto", sans-serif;
