@@ -11,6 +11,9 @@ const componentSchema = new mongoose.Schema({
 const hospitalSchema = new mongoose.Schema({
   name: String,
   totalIcus: Number,
+  contact: String,
+  district: String,
+  province: String
 });
 const bedreqSchema = new mongoose.Schema({
   date: Date,
