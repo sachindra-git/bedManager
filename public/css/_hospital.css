@@ -47,10 +47,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-inline-end: 10px;
 }
 .top-wrapper .total-content {
   font-weight: bold;
   font-family: "Open Sans", serif;
+}
+.top-wrapper .right-wrapper {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
 }
 .total-content .total-hospitals {
   font-size: 20px;
