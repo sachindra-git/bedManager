@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/hospitals.js"></script>
+    <link rel="stylesheet" href="../css/_common.css">
+    <link rel="stylesheet" href="../css/_icus.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+
+
+  <header>
+    <div class="header_wrapper">
+      <div class="left_wrapper">
+        <button class="hamburger-menu js-menu-toggle" aria-label="Open Menu" tabindex="0">
+          <svg fill="#E8ECEF" width="23px" height="23px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" id="Glyph" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M29,16c0,1.104-0.896,2-2,2H11c-1.104,0-2-0.896-2-2s0.896-2,2-2h16C28.104,14,29,14.896,29,16z" id="XMLID_352_"/>
+            <path d="M29,6c0,1.104-0.896,2-2,2H11C9.896,8,9,7.104,9,6s0.896-2,2-2h16C28.104,4,29,4.896,29,6z" id="XMLID_354_"/>
+            <path d="M29,26c0,1.104-0.896,2-2,2H11c-1.104,0-2-0.896-2-2s0.896-2,2-2h16C28.104,24,29,24.896,29,26z" id="XMLID_356_"/>
+            <path d="M3,6c0,1.103,0.897,2,2,2s2-0.897,2-2S6.103,4,5,4S3,4.897,3,6z" id="XMLID_358_"/>
+            <path d="M3,16c0,1.103,0.897,2,2,2s2-0.897,2-2s-0.897-2-2-2S3,14.897,3,16z" id="XMLID_360_"/>
+            <path d="M3,26c0,1.103,0.897,2,2,2s2-0.897,2-2s-0.897-2-2-2S3,24.897,3,26z" id="XMLID_362_"/>
+          </svg>
+        </button>
+        <a href="/index.html" tabindex="0"><img class="logo" src="https://cdn.glitch.global/cbd89b22-5132-4b02-b101-07acb1ac431a/logo.png?v=1736836367798" /></a>
+      </div>
+
+      <div class="right_wrapper">
+        <div id="clock" class="clock" onload="showTime()"></div>
+        <div class="current-date"></div>
+
+        <div class="user_detail">
+          <img src="https://cdn.glitch.global/cbd89b22-5132-4b02-b101-07acb1ac431a/user-image.svg?v=1736836359804" />
+          <span class="user_name">Chathuranga</span>
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="more-menu-wrap">
+      <button class="menu-close js-menu-close" aria-label="Open Close" tabindex="0">
+        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_429_11083)">
+          <path d="M7 7.00006L17 17.0001M7 17.0001L17 7.00006" stroke="#38454b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_429_11083">
+          <rect width="24" height="24" fill="white"/>
+          </clipPath>
+          </defs>
+        </svg>
+      </button>
+      <div class="more-menu">
+        <ul class="menu-list">
+          <li class="menu-item">
+            <a class="menu-link" href="/index.html" tabindex="0" aria-label="Dashboard">Dashboard</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/hospitals.html" tabindex="0" aria-label="Hospitals">Hospitals</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/icus.html" tabindex="0" aria-label="ICUs">ICUs</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/bed-availability.html" tabindex="0" aria-label="Bed Availability">Bed Availability</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/edit-icu.html" tabindex="0" aria-label="Edit ICU">Edit ICU</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/bed-request.html" tabindex="0" aria-label="Bed Requests">Bed Requests</a>
+          </li>
+        </ul>
+        <div class="copyright">
+          © 2025 Chathuranga Wijayarathne. All rights reserved.
+        </div>
+      </div>     
+    </div>
+    
+  </header>
+    
+  <div class="sub-container">
+  
+
+    <div class="inner-wrapper">
+      <div class="top-wrapper">
+        <div class="total-content">
+          <span class="total-icus"></span>  ICUs available
+        </div>
+        
+        <div class="right-wrapper">
+          <div class="search-bar">
+            <span class="icon">
+              <svg fill="#aaa7a7" width="18px" height="18px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.027 9.92L16 13.95 14 16l-4.075-3.976A6.465 6.465 0 0 1 6.5 13C2.91 13 0 10.083 0 6.5 0 2.91 2.917 0 6.5 0 10.09 0 13 2.917 13 6.5a6.463 6.463 0 0 1-.973 3.42zM1.997 6.452c0 2.48 2.014 4.5 4.5 4.5 2.48 0 4.5-2.015 4.5-4.5 0-2.48-2.015-4.5-4.5-4.5-2.48 0-4.5 2.014-4.5 4.5z" fill-rule="evenodd"/>
+              </svg>
+            </span>
+            <input id="icu-search" class="search" type="text" placeholder="Search Hospitals" />
+          </div>
+
+          <a href="#" onclick="window.print(); return false;">
+            <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M17 7H7V6h10v1zm0 12H7v-6h10v6zm2-12V3H5v4H1v8.996C1 17.103 1.897 18 3.004 18H5v3h14v-3h1.996A2.004 2.004 0 0 0 23 15.996V7h-4z" fill="#9e9d9d"/>
+            </svg>
+          </a> 
+        </div>
+      </div>
+      
+      <div class="icu-table-wrapper">
+        <div class="icu-table general-table">
+            <div class="table_header">
+              <div class="table_col col-name">ICU Name</div>
+              <div class="table_col col-dist">Total Beds</div>
+              <div class="table_col col-pro">Occupied Beds</div>
+              <div class="table_col col-count">Reserve Beds</div>
+              <div class="table_col col-contact">Available Beds</div>
+            </div>
+
+            <div class="table_body">
+
+            </div>
+        </div>
+        <div class="pagination-controls"></div>
+      </div>
+      
+      
+    </div>
+
+  </div>
+
+  </body>
+</html>
