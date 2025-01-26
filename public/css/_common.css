@@ -13,6 +13,13 @@ body {
   max-width: 1440px;
   margin: auto;
 }
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style-type: none;
+}
 .white-font-roboto {
   color: #FFFFFF;
   font-family: "Roboto", sans-serif;
@@ -111,4 +118,14 @@ a.link {
 
 a.link:hover {
   color: #0080ff;
+}
+
+
+/*
+********** More Menu
+*/
+.more-menu-wrap {
+  position: fixed;
+  left: 0;
+  top: 0;
 }
