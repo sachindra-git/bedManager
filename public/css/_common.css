@@ -193,17 +193,5 @@ a.link:hover {
   font-family: "Open Sans", serif;
   background-color: #6FA3D8;
   color: #ffffff;
-  padding: 8px 15px;
-}
-.table_header .table_col {
-  width: 18%;
-}
-.table_header .table_col.col-name {
-  width: 35%;
-}
-.table_header .table_col.col-count {
-  width: 13%;
-}
-.table_header .table_col.col-contact {
-    width: 16%;
+  padding: 11px 15px;
 }

@@ -1,0 +1,19 @@
+.table_header .table_col {
+  width: 18%;
+}
+.table_header .table_col.col-name {
+  width: 35%;
+}
+.table_header .table_col.col-count {
+  width: 13%;
+}
+.table_header .table_col.col-contact {
+    width: 16%;
+}
+.table_row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #e8e8e8;
+  padding: 8px 15px;
+}
