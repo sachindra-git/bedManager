@@ -180,3 +180,16 @@ a.link:hover {
   color: #E8ECEF;
   font-size: 12px;
 }
+
+/*
+*********** General Tables 
+*/
+
+.general-table .table-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.table_header table {
+  
+}
