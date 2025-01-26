@@ -134,6 +134,14 @@ a.link:hover {
   z-index: 999;
   padding: 70px 25px 35px;
   font-family: "Open Sans", serif;
+  transform: translateX(-100%);
+}
+.more-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    row-gap: 20px;
 }
 .menu-list .menu-item {
   margin-bottom: 17px;
@@ -142,4 +150,8 @@ a.link:hover {
   font-family: "Open Sans", serif;
   text-decoration: none;
   color: #ffffff;
+}
+.copyright {
+  color: #E8ECEF;
+  font-size: 12px;
 }
