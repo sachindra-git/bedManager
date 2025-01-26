@@ -12,6 +12,9 @@ $( document ).ready(function() {
         let HoswrapperDiv;
 
         const searchBar = document.querySelector("#hospital-search");
+        
+        const itemsPerPage = 2;
+        let currentPage = 1;
 
         function displayHospitals(filteredHospitals) {
           hospitalTableWrap.innerHTML = "";
@@ -57,14 +60,11 @@ $( document ).ready(function() {
         }
 
         searchBar.addEventListener("input", (e) => {
-          const searchTerm = e.target.value.toLowerCase(); // Convert to lowercase for case-insensitive matching
+          const searchTerm = e.target.value.toLowerCase();
 
-          // Filter the hospitals based on the search term
           const filteredHospitals = hospitals.filter((hospital) =>
             hospital.name.toLowerCase().includes(searchTerm)
           );
-
-          console.log(filteredHospitals, 'filterrrrrrrrrrrr')
 
           displayHospitals(filteredHospitals);
 
