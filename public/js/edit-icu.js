@@ -78,15 +78,20 @@ async function getICUdata() {
       })
       .then(response => response.text())
       .then(data => {
+        document.body.classList.add('data-saving');
         
-        document.getElementById('icuForm').reset();
-        document.getElementById('icuName').selectedIndex = 0;
-        $('#icuName').select2();
-        document.getElementById('message').style.opacity = '1';
-        document.getElementById('message').innerHTML = `<div class="success-message">${data}</div>`;
+        setTimeout(() => {
+          document.getElementById('icuForm').reset();
+          document.getElementById('icuName').selectedIndex = 0;
+          $('#icuName').select2();
+          document.getElementById('message').style.opacity = '1';
+          document.getElementById('message').innerHTML = `<div class="success-message">${data}</div>`;
+          document.body.classList.remove('data-saving');
+        }, 3000);
+        
         setTimeout(() => {
           document.getElementById('message').style.opacity = '0';
-        }, 3000);
+        }, 5000);
       })
       .catch(error => {
         // Handle errors
