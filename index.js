@@ -50,7 +50,7 @@ app.post('/update', async (req, res) => {
       { new: true, upsert: true } // Return the updated document or insert if not found
     );
 
-    res.send(`ICU updated successfully: ${updatedICU}`);
+    res.send(`${updatedICU.name} updated successfully`);
   } catch (err) {
     console.error('Error updating ICU:', err);
     res.status(500).send('Error updating ICU');

@@ -305,11 +305,11 @@ background-color: #239d3f;
 }
 .select2-results__option {
   font-size: 15px;
-  font-family: "Open Sans", serif
+  font-family: "Open Sans", serif;
 }
 .select2-search__field {
   font-size: 14px;
-  font-family: "Open Sans", serif
+  font-family: "Open Sans", serif;
 }
 
 .select2-selection__arrow {
@@ -335,4 +335,41 @@ background-color: #239d3f;
 }
 .select2-container--open .select2-selection__arrow:before {
   transform: rotate(45deg);
+}
+.success-message {
+  font-size: 15px;
+  font-family: "Open Sans", serif;
+  color: #3B8A3B;
+  margin-bottom: 25px;
+  background-color: #fff;
+  padding: 11px 15px 11px 50px;
+  border-radius: 10px;
+  font-weight: bold;
+  position: relative;
+}
+.success-message:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border: 1px solid;
+  border-radius: 100%;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.success-message:after {
+  content: '';
+  display: block;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  border: 1px solid;
+  border-radius: 100%;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
