@@ -235,3 +235,32 @@ a.link:hover {
   border: none;
   font-family: "Open Sans", serif;
 }
+
+
+/*
+*********** General Form Styles
+*/
+.form-wrapper {
+  width: auto;
+  max-width: 45%;
+  margin: 0 auto;
+}
+
+.form-wrapper input {
+  padding: 7px 8px;
+  width: 55%;
+  border: none;
+  font-size: 15px;
+  font-family: "Open Sans", serif;
+  border: 1px solid #dce1e4;
+}
+.field-wrapper {
+  display: flex;
+  margin-bottom: 20px;
+}
+.field-wrapper label {
+  font-family: "Open Sans", serif;
+  font-size: 15px;
+  text-transform: capitalize;
+  width: 45%;
+}
