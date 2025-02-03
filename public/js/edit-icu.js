@@ -81,8 +81,12 @@ async function getICUdata() {
       })
       .then(response => response.text())
       .then(data => {
-        
-        
+        //const occupiedBedsVal = document.getElementById('occupiedBeds').value;
+        // const occupiedBedsVal = document.getElementById('occupiedBeds').value;
+        // const reserveBedsVal = document.getElementById('reserveBeds').value;
+        // const availableBedsVal = document.getElementById('availableBeds').value;
+
+        console.log(formDataObject.occupiedBeds + , 'totalBedstotalBedstotalBedstotalBeds');
         
         
         
