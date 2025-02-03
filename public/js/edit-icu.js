@@ -79,7 +79,15 @@ async function getICUdata() {
       .then(response => response.text())
       .then(data => {
         
+        const formInput = document.querySelector('#icuForm input');
+        const formSelect = document.querySelector('#icuForm select');
+        formInput.vaue = '';
+        
+        document.getElementById('message').style.display = 'block';
         document.getElementById('message').innerHTML = `<div class="success-message">${data}</div>`;
+        setTimeout(() => {
+          document.getElementById('message').style.display = 'none';
+        }, 2000);
       })
       .catch(error => {
         // Handle errors

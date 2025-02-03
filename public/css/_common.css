@@ -350,12 +350,12 @@ background-color: #239d3f;
 .success-message:before {
   content: '';
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
   position: absolute;
-  border: 1px solid;
+  border: 3px solid;
   border-radius: 100%;
-  left: 12px;
+  left: 15px;
   top: 0;
   bottom: 0;
   margin: auto;
@@ -363,13 +363,13 @@ background-color: #239d3f;
 .success-message:after {
   content: '';
   display: block;
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   position: absolute;
   border: 1px solid;
   border-radius: 100%;
-  left: 12px;
-  top: 0;
+  left: 19px;
+  top: 0px;
   bottom: 0;
   margin: auto;
 }
