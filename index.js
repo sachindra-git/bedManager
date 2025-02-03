@@ -34,28 +34,28 @@ app.use("/bedreq", bedRequestRoutes);
 // const icuUpdate = require("./routes/updateIcuRoutes");
 // app.use("/update", icuUpdate);
 
-app.post('/update', async (req, res) => {
-  const { name, totalBeds, occupiedBeds, reserveBeds, availableBeds } = req.body;
+// app.post('/update', async (req, res) => {
+//   const { name, totalBeds, occupiedBeds, reserveBeds, availableBeds } = req.body;
 
-  try {
-    // Use async/await to update ICU info
-    const updatedICU = await Icu.findOneAndUpdate(
-      { name: name }, // Search by ICU name
-      {
-        totalBeds,
-        occupiedBeds,
-        reserveBeds,
-        availableBeds
-      },
-      { new: true, upsert: true } // Return the updated document or insert if not found
-    );
+//   try {
+//     // Use async/await to update ICU info
+//     const updatedICU = await Icu.findOneAndUpdate(
+//       { name: name }, // Search by ICU name
+//       {
+//         totalBeds,
+//         occupiedBeds,
+//         reserveBeds,
+//         availableBeds
+//       },
+//       { new: true, upsert: true } // Return the updated document or insert if not found
+//     );
 
-    res.send(`ICU updated successfully: ${updatedICU}`);
-  } catch (err) {
-    console.error('Error updating ICU:', err);
-    res.status(500).send('Error updating ICU');
-  }
-});
+//     res.send(`ICU updated successfully: ${updatedICU}`);
+//   } catch (err) {
+//     console.error('Error updating ICU:', err);
+//     res.status(500).send('Error updating ICU');
+//   }
+// });
 
 
 // MongoDB connection
