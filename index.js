@@ -35,13 +35,14 @@ const icuUpdate = require("./routes/updateIcuRoutes");
 app.use("/update", icuUpdate);
 
 app.post('/update', async (req, res) => {
-  const { name, totalBeds, occupiedBeds, reserveBeds, availableBeds } = req.body;
+  const { name, contact, totalBeds, occupiedBeds, reserveBeds, availableBeds } = req.body;
 
   try {
     // Use async/await to update ICU info
     const updatedICU = await Icu.findOneAndUpdate(
       { name: name }, // Search by ICU name
       {
+        contact,
         totalBeds,
         occupiedBeds,
         reserveBeds,

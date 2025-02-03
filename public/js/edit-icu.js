@@ -12,6 +12,7 @@ async function getICUdata() {
         let selectedValue = document.getElementById("icuName").value;
         if( icuData.name == selectedValue ) {
           const totalInput = document.querySelector('#totalBeds');
+          const contact = document.querySelector('#contactNumber');
           const occupiedInput = document.querySelector('#occupiedBeds');
           const reserveInput = document.querySelector('#reserveBeds');
           const availableInput = document.querySelector('#availableBeds');
@@ -24,6 +25,7 @@ async function getICUdata() {
           occupiedInput.value = occupiedBeds
           reserveInput.value = reserveBeds
           availableInput.value = availableBeds
+          contact.value = contact
         }
       });
     }

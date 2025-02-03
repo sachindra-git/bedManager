@@ -30,6 +30,9 @@ ul {
 li {
   list-style-type: none;
 }
+button {
+  cursor: pointer;
+}
 button:focus,
 input:focus,
 textarea:focus {
@@ -167,6 +170,7 @@ a.link:hover {
   background-color: transparent;
   border: none;
   margin-top: 5px;
+  cursor: pointer;
 }
 .menu-close {
   background-color: transparent;
@@ -220,8 +224,8 @@ a.link:hover {
   bottom: 0;
   transform: scaleX(0);
 }
-.menu-item .menu-link:hover :after {
-  
+.menu-item .menu-link:hover::after {
+  transform: scaleX(1);
 }
 .copyright {
   color: #E8ECEF;
