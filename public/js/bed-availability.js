@@ -6,9 +6,11 @@ async function getICUdata() {
     const icus = await response.json();
     const icuTableWrap = document.querySelector('.icu-table .table_body');
     const totalicusEl = document.querySelector('.total-content .total-icus');
+    const totalBedsEl = document.querySelector('.total-content .total-beds');
     const paginationControls = document.querySelector('.pagination-controls'); // Add this container in your HTML
     
     let totalAvailableIcus = 0;
+    let totalAvailableBeds = 0;
     let currentPage = 1;
     const itemsPerPage = 5;
 
@@ -29,6 +31,8 @@ async function getICUdata() {
         const newDiv6 = document.createElement('DIV');
         const newDiv7 = document.createElement('DIV');
         const anchor = document.createElement('a');
+        
+        totalAvailableBeds += data.availableBeds;
 
         icuWrapperDiv.classList.add('table_row');
         newDiv2.classList.add('name');
@@ -36,6 +40,7 @@ async function getICUdata() {
         //newDiv7.classList.add('contact');
         //anchor.classList.add('contact-link');
         //anchor.href = 'tel:' + data.contact;
+        
 
         // Fill content
         newDiv2.innerHTML = data.name;
@@ -134,7 +139,7 @@ async function getICUdata() {
 
     // Update total icus
     totalicusEl.innerHTML = totalAvailableIcus;
-
+    totalicusEl.innerHTML = totalAvailableBeds;
   } catch (error) {
     console.error("Error fetching icus:", error);
   }
