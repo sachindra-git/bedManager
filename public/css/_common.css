@@ -315,17 +315,21 @@ input[readonly] {
   display: flex;
   align-items: center;
   justify-content: center;
+  column-gap: 10px;
 }
 
 .button-loader {
+  display: none;
   border: 6px double #FFFFFF;
   border-radius: 50%;
-  border-top: 6px double #E2B0E2;
+  border-top: 6px double #8CCB8C;
   width: 18px;
   height: 18px;
   animation: spin 1s ease-in-out infinite;
 }
-
+.data-saving .button-loader {
+  display: block;
+}
 @keyframes spin {
   0% {
     transform: rotate(0deg);

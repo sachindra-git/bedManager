@@ -81,8 +81,10 @@ async function getICUdata() {
       })
       .then(response => response.text())
       .then(data => {
-
-        if( parseInt(formDataObject.occupiedBeds) + parseInt(formDataObject.availableBeds) + parseInt(formDataObject.reserveBeds) != parseInt(formDataObject.totalBeds) ) {
+        console.log(document.getElementById('icuName').value, 'aaaaaaaaa');
+        if( document.getElementById('icuName').value == '' ) {
+          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please Select an ICU</div>`;
+        } else if( parseInt(formDataObject.occupiedBeds) + parseInt(formDataObject.availableBeds) + parseInt(formDataObject.reserveBeds) != parseInt(formDataObject.totalBeds) ) {
           document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please check the entered bed Counts. Total Bed Count did not match</div>`;
         } else {
           document.getElementById('error-message-wrap').innerHTML = '';
@@ -91,13 +93,13 @@ async function getICUdata() {
             document.getElementById('icuForm').reset();
             document.getElementById('icuName').selectedIndex = 0;
             $('#icuName').select2();
-            document.getElementById('message').style.opacity = '1';
+            document.getElementById('message').style.display = 'block';
             document.getElementById('message').innerHTML = `<div class="success-message">${data}</div>`;
             document.body.classList.remove('data-saving');
           }, 3000);
 
           setTimeout(() => {
-            document.getElementById('message').style.opacity = '0';
+            document.getElementById('message').style.display = 'none';
           }, 6000);
         }
         
@@ -105,7 +107,7 @@ async function getICUdata() {
       .catch(error => {
         // Handle errors
         console.error('Error:', error);
-        document.getElementById('message').innerHTML = `<div class="error-message">Error updating ICU. Please try again later.</div>`;
+        document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Error updating ICU. Please try again later.</div>`;
       });
     });
   }
