@@ -302,7 +302,8 @@ input[readonly] {
   margin-top: 30px;
 }
 .submit-wrapper button {
-background-color: #239d3f;
+  position: relative;
+  background-color: #239d3f;
   color: #FFFFFF;
   font-family: "Open Sans", serif;
   text-transform: uppercase;
@@ -311,6 +312,28 @@ background-color: #239d3f;
   padding: 8px 18px;
   font-size: 15px;
   border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-loader {
+  border: 6px double #FFFFFF;
+  border-radius: 50%;
+  border-top: 6px double #E2B0E2;
+  width: 18px;
+  height: 18px;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Select 2 Forms */
@@ -485,3 +508,5 @@ background-color: #239d3f;
 .data-saving .loader-line {
   display: block;
 }
+
+
