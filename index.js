@@ -20,15 +20,18 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html")); // Serve index.html as the default page
 });
 
-// Component Routes
+// ICU Routes
 const componentRoutes = require("./routes/componentRoutes");
-app.use("/components", componentRoutes);
+app.use("/icus", componentRoutes);
 
 const hospitalRoutes = require("./routes/hospitalRoutes");
 app.use("/hospitals", hospitalRoutes);
 
 const bedRequestRoutes = require("./routes/bedRequestRoutes");
 app.use("/bedreq", bedRequestRoutes);
+
+const icuUpdate = require("./routes/updateIcuRoutes");
+app.use("/update", icuUpdate);
 
 
 // MongoDB connection

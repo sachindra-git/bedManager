@@ -1,8 +1,8 @@
 $( document ).ready(function() {
    async function getICUdata() {
         try {
-          const response = await fetch("/components");
-          const components = await response.json();
+          const response = await fetch("/icus");
+          const icus = await response.json();
           const totalICUEl = document.querySelector('.total-icus .count');
           const totalBedEl = document.querySelector('.total-beds .count');
           const availableBedsEl = document.querySelector('.available_count .count');
@@ -17,9 +17,9 @@ $( document ).ready(function() {
           let totalAvailableBedsCount = '';
           let wrapperDiv;
           
-          totalICUEl.innerHTML= components.length;
+          totalICUEl.innerHTML= icus.length;
           
-          components.forEach((data, index) => {
+          icus.forEach((data, index) => {
             totalBeds += data.totalBeds;
             totalAvailableBeds += data.availableBeds;
             totalReserveBeds += data.reserveBeds;
@@ -95,7 +95,7 @@ $( document ).ready(function() {
           });
       
         } catch (error) {
-          console.error("Error fetching components:", error);
+          console.error("Error fetching icus:", error);
         }
    }
   

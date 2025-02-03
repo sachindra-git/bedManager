@@ -2,7 +2,7 @@ $( document ).ready(function() {
   
 async function getICUdata() {
   try {
-    const response = await fetch("/components");
+    const response = await fetch("/icus");
     const icus = await response.json();
     $('#icuName').select2();
     

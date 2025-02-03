@@ -2,7 +2,7 @@ $( document ).ready(function() {
   
 async function getICUdata() {
   try {
-    const response = await fetch("/components");
+    const response = await fetch("/icus");
     const icus = await response.json();
     const icuTableWrap = document.querySelector('.icu-table .table_body');
     const totalicusEl = document.querySelector('.total-content .total-icus');
