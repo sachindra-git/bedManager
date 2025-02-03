@@ -125,17 +125,19 @@ document.addEventListener("DOMContentLoaded", function () {
     if (icuValue) {
       //const icuSelect = document.querySelectorAll("#icuName option");
       
-      const icuSelect = document.querySelector("#icuName");
+      const icuSelect = document.querySelectorAll("select option");
+      
+      console.log(icuSelect, 'ggggggggggg44444444444444');
 
       // Check if the value exists in the dropdown options
       //let optionExists = Array.from(icuSelect.options).some(option => console.log(option, 'bbbbbbbbbbbbbbbbbbb'));
       
-let optionExists = Array.from(icuSelect.options).some(option => {
-  
-  return option.value === icuValue; // This condition should return true if a match is found
-});
+// let optionExists = Array.from(icuSelect.options).some(option => {
+//   console.log(optionExists, 'vvvvvvvvvvvvvvvvvvvvvvvvv');
+//   //return option.value === icuValue; // This condition should return true if a match is found
+// });
       
-      console.log(optionExists, 'vvvvvvvvvvvvvvvvvvvvvvvvv'); // Optional, for debugging
+      //console.log(optionExists, 'vvvvvvvvvvvvvvvvvvvvvvvvv'); // Optional, for debugging
       
       //const options = Array.from(icuSelect.options).map(opt => opt.value);
       
