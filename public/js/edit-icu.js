@@ -109,17 +109,28 @@ async function getICUdata() {
     });
   }
 
+  getICUdata();
+  formSubmit();
+  
+});
+
+document.addEventListener("DOMContentLoaded", function () {
   function updateSelectWithUrlParam() {
     // Get the ICU parameter from the URL
     const urlParams = new URLSearchParams(window.location.search);
     const icuValue = urlParams.get("icu");
 
+    console.log(icuValue, 'icuValueicuValueicuValue')
     // If ICU value exists in the URL, set the selected value in the dropdown
     if (icuValue) {
       const icuSelect = document.getElementById("icuName");
 
       // Check if the value exists in the dropdown options
-      let optionExists = Array.from(icuSelect.options).some(option => option.value === icuValue);
+      let optionExists = Array.from(icuSelect.options).some(option => String(option.value) === icuValue);
+      
+      //const options = Array.from(icuSelect.options).map(opt => opt.value);
+      
+      console.log(optionExists, 'optionExistsoptionExistsoptionExistsoptionExists');
 
       if (optionExists) {
         icuSelect.value = icuValue;
@@ -132,9 +143,5 @@ async function getICUdata() {
     }
   }
   
-  
-  getICUdata();
-  formSubmit();
- 
-  
+  updateSelectWithUrlParam();
 });
