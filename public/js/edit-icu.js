@@ -10,7 +10,7 @@ async function getICUdata() {
     function displayICUdataOnForm(selectedValue) {
       icus.forEach((icuData) => {
         let selectedValue = document.getElementById("icuName").value;
-        if( icuData.name == selectedValue ) {
+        if( icuData._id == selectedValue ) {
           const totalInput = document.querySelector('#totalBeds');
           const contact = document.querySelector('#contactNumber');
           const occupiedInput = document.querySelector('#occupiedBeds');
@@ -42,7 +42,7 @@ async function getICUdata() {
       const select = document.querySelector('#icuName');
       const option = document.createElement('OPTION');
       option.innerHTML = icuData.name;
-      option.value = icuData.name;
+      option.value = icuData._id;
       
       select.appendChild(option);
       
@@ -65,7 +65,7 @@ async function getICUdata() {
       event.preventDefault();
 
       const formDataObject = {
-        name: document.getElementById('icuName').value,
+        _id: document.getElementById('icuName').value,
         totalBeds: document.getElementById('totalBeds').value,
         occupiedBeds: document.getElementById('occupiedBeds').value,
         reserveBeds: document.getElementById('reserveBeds').value,
@@ -81,10 +81,7 @@ async function getICUdata() {
       })
       .then(response => response.text())
       .then(data => {
-        console.log(document.getElementById('icuName').value, 'aaaaaaaaa');
-        if( document.getElementById('icuName').value == '' ) {
-          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please Select an ICU</div>`;
-        } else if( parseInt(formDataObject.occupiedBeds) + parseInt(formDataObject.availableBeds) + parseInt(formDataObject.reserveBeds) != parseInt(formDataObject.totalBeds) ) {
+        if( parseInt(formDataObject.occupiedBeds) + parseInt(formDataObject.availableBeds) + parseInt(formDataObject.reserveBeds) != parseInt(formDataObject.totalBeds) ) {
           document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please check the entered bed Counts. Total Bed Count did not match</div>`;
         } else {
           document.getElementById('error-message-wrap').innerHTML = '';
