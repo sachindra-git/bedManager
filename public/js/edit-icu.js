@@ -79,15 +79,14 @@ async function getICUdata() {
       .then(response => response.text())
       .then(data => {
         
-        const formInput = document.querySelector('#icuForm input');
-        const formSelect = document.querySelector('#icuForm select');
-        formInput.vaue = '';
-        
-        document.getElementById('message').style.display = 'block';
+        document.getElementById('icuForm').reset();
+        document.getElementById('icuName').selectedIndex = 0;
+        $('#icuName').select2();
+        document.getElementById('message').style.opacity = '1';
         document.getElementById('message').innerHTML = `<div class="success-message">${data}</div>`;
         setTimeout(() => {
-          document.getElementById('message').style.display = 'none';
-        }, 2000);
+          document.getElementById('message').style.opacity = '0';
+        }, 3000);
       })
       .catch(error => {
         // Handle errors

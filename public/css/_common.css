@@ -340,12 +340,15 @@ background-color: #239d3f;
   font-size: 15px;
   font-family: "Open Sans", serif;
   color: #3B8A3B;
+  margin-top: 25px;
   margin-bottom: 25px;
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 11px 15px 11px 50px;
   border-radius: 10px;
   font-weight: bold;
   position: relative;
+  transition: all 0.4s ease-in-out;
+  opacity: 1;
 }
 .success-message:before {
   content: '';
