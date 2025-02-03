@@ -255,6 +255,9 @@ a.link:hover {
   border: 1px solid #dce1e4;
   font-size: 15px;
 }
+input[readonly] {
+  background-color: #e4eeff;
+}
 .field-wrapper {
   display: flex;
   margin-bottom: 20px;

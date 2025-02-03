@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const componentSchema = new mongoose.Schema({
+const icuSchema = new mongoose.Schema({
   name: String,
   totalBeds: Number,
   occupiedBeds: Number,
@@ -26,14 +26,14 @@ const bedreqSchema = new mongoose.Schema({
 });
 
 
-const Component = mongoose.model('iculist', componentSchema);
+const Icu = mongoose.model('iculist', icuSchema);
 const Hospital = mongoose.model('hospital', hospitalSchema);
 const Bedreq = mongoose.model('bedreq', bedreqSchema);
 
 //module.exports = Component;
 
 module.exports = {
-  Component,
+  Icu,
   Hospital,
   Bedreq
 };
