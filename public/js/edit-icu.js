@@ -55,10 +55,34 @@ async function getICUdata() {
     console.error("Error fetching icus:", error);
   }
 }
+  
+  
+  function formSubmit() {
+    document.getElementById('icuForm').addEventListener('submit', function(event) {
+      event.preventDefault();  
+
+      const formData = new FormData(this);
+
+      fetch('/update', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('message').innerHTML = `<div class="success-message">${data}</div>`;
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('Error:', error);
+        document.getElementById('message').innerHTML = `<div class="error-message">Error updating ICU. Please try again later.</div>`;
+      });
+    });
+  }
 
   
   
   getICUdata();
+  formSubmit();
  
   
 });

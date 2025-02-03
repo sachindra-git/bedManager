@@ -22,8 +22,8 @@ app.get("/", (req, res) => {
 });
 
 // ICU Routes
-const componentRoutes = require("./routes/componentRoutes");
-app.use("/icus", componentRoutes);
+const icuRoutes = require("./routes/icuRoutes");
+app.use("/icus", icuRoutes);
 
 const hospitalRoutes = require("./routes/hospitalRoutes");
 app.use("/hospitals", hospitalRoutes);

@@ -8,6 +8,10 @@ body {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+*:focus,*:active {
+  outline: none;
+  background-color: none;
+}
 .container {
   width: 100%;
   max-width: 1440px;
