@@ -182,7 +182,7 @@ a.link:hover {
   z-index: 999;
   padding: 70px 20px 35px 30px;
   font-family: "Open Sans", serif;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s ease-in-out;
   transform: translateX(-100%);
 }
 .more-menu-wrap.active {

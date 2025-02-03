@@ -97,6 +97,46 @@
       </div>
       
       <div class="form-wrapper">
+        
+        
+        
+        <form id="icuForm" action="#" method="post">
+
+          <div class="field-wrapper">
+            <label for="icuName">ICU Name:</label>
+            <select id="icuName" name="icuName" required>
+              <option value="">Select ICU</option>
+            </select>
+          </div>
+
+          <div class="field-wrapper">
+            <label for="contactNumber">Contact Number:</label>
+            <input type="tel" id="contactNumber" name="contactNumber" readonly>
+          </div>
+          <div class="field-wrapper">
+            <label for="totalBeds">Total Beds:</label>
+            <input type="number" id="totalBeds" name="totalBeds" readonly>
+          </div>
+            
+          <div class="field-wrapper">
+            <label for="occupiedBeds">Occupied Beds:</label>
+            <input type="number" id="occupiedBeds" name="occupiedBeds" required>
+          </div>
+          
+          <div class="field-wrapper">
+            <label for="reserveBeds">Reserve Beds:</label>
+            <input type="number" id="reserveBeds" name="reserveBeds" required>
+          </div>
+          
+          <div class="field-wrapper">
+            <label for="availableBeds">Available Beds:</label>
+            <input type="number" id="availableBeds" name="availableBeds" readonly>
+          </div>
+          
+          <button type="submit">Submit</button>
+        </form>
+        
+        
 
       </div>
       
