@@ -285,11 +285,35 @@ background-color: #239d3f;
 /* Select 2 Forms */
 #icuName {
   display: none;
+  width: 250px;
 }
-.select2-container {
-  width: 100%;
+.select2-container--default .selection .select2-selection--single {
+  border: 1px solid #dce1e4;
+  height: 100%;
 }
 .select2-selection__rendered {
   font-size: 15px;
+  font-family: "Open Sans", serif;
+  padding: 4px 8px;
+}
+.select2-results__option {
+  font-size: 15px;
   font-family: "Open Sans", serif
+}
+.select2-search__field {
+  font-size: 14px;
+  font-family: "Open Sans", serif
+}
+
+.select2-selection__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.select2-selection__arrow:before {
+    content: "\f067";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
 }
