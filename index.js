@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors"); // Import the cors middleware
 const path = require("path"); // Import the path module
-const {Icu} = require("../models/componentModel");
+const {Icu} = require("./models/componentModel");
 
 const app = express();
 const port = process.env.PORT || 5000; 
@@ -34,29 +34,29 @@ app.use("/bedreq", bedRequestRoutes);
 // const icuUpdate = require("./routes/updateIcuRoutes");
 // app.use("/update", icuUpdate);
 
-// app.post('/update', (req, res) => {
-//   const { icuName, contactNumber, totalBeds, occupiedBeds, reserveBeds, availableBeds } = req.body;
+app.post('/update', async (req, res) => {
+  const { icuName, contactNumber, totalBeds, occupiedBeds, reserveBeds, availableBeds } = req.body;
 
-//   // Update the ICU information in the database (this example assumes you're updating by ICU name)
-//   Icu.findOneAndUpdate(
-//     { icuName: icuName }, // Search by ICU name
-//     {
-//       contactNumber,
-//       totalBeds,
-//       occupiedBeds,
-//       reserveBeds,
-//       availableBeds
-//     }, 
-//     { new: true, upsert: true }, // Return the updated document or insert if not found
-//     (err, updatedICU) => {
-//       if (err) {
-//         console.log('Error updating ICU:', err);
-//         return res.status(500).send('Error updating ICU');
-//       }
-//       res.send(`ICU updated successfully: ${updatedICU}`);
-//     }
-//   );
-// });
+  try {
+    // Use async/await to update ICU info
+    const updatedICU = await Icu.findOneAndUpdate(
+      { icuName: icuName }, // Search by ICU name
+      {
+        contactNumber,
+        totalBeds,
+        occupiedBeds,
+        reserveBeds,
+        availableBeds
+      },
+      { new: true, upsert: true } // Return the updated document or insert if not found
+    );
+
+    res.send(`ICU updated successfully: ${updatedICU}`);
+  } catch (err) {
+    console.error('Error updating ICU:', err);
+    res.status(500).send('Error updating ICU');
+  }
+});
 
 
 // MongoDB connection
