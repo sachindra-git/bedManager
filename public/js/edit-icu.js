@@ -123,23 +123,39 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(icuValue, 'icuValueicuValueicuValue')
     // If ICU value exists in the URL, set the selected value in the dropdown
     if (icuValue) {
-      const icuSelect = document.getElementById("icuName");
+      //const icuSelect = document.querySelectorAll("#icuName option");
+      
+      const icuSelect = document.querySelector("#icuName");
 
       // Check if the value exists in the dropdown options
-      let optionExists = Array.from(icuSelect.options).some(option => String(option.value) === icuValue);
+      //let optionExists = Array.from(icuSelect.options).some(option => console.log(option, 'bbbbbbbbbbbbbbbbbbb'));
+      
+let optionExists = Array.from(icuSelect.options).some(option => {
+  
+  return option.value === icuValue; // This condition should return true if a match is found
+});
+      
+      console.log(optionExists, 'vvvvvvvvvvvvvvvvvvvvvvvvv'); // Optional, for debugging
       
       //const options = Array.from(icuSelect.options).map(opt => opt.value);
       
-      console.log(optionExists, 'optionExistsoptionExistsoptionExistsoptionExists');
+      //console.log(icuSelect.options, 'icuSelecticuSelecticuSelecticuSelecticuSelect');
+      
+      
+      // icuSelect.forEach((option) => {
+      //   console.log(option.value, 'valuevaluevaluevalue')
+      // });
+      
+      
 
-      if (optionExists) {
-        icuSelect.value = icuValue;
-      }
+      // if (optionExists) {
+      //   icuSelect.value = icuValue;
+      // }
 
       // If using Select2, trigger update
-      if ($(icuSelect).hasClass("select2-hidden-accessible")) {
-        $(icuSelect).val(icuValue).trigger("change");
-      }
+      // if ($(icuSelect).hasClass("select2-hidden-accessible")) {
+      //   $(icuSelect).val(icuValue).trigger("change");
+      // }
     }
   }
   
