@@ -36,9 +36,9 @@ async function getICUdata() {
         newDiv4.classList.add('occupied-beds');
         newDiv5.classList.add('reserve-beds');
         newDiv6.classList.add('available-beds');
-        //newDiv7.classList.add('contact');
-        //anchor.classList.add('contact-link');
-        //anchor.href = 'tel:' + data.contact;
+        newDiv7.classList.add('contact');
+        anchor.classList.add('contact-link');
+        anchor.href = 'tel:' + data.contact;
 
         // Fill content
         newDiv2.innerHTML = data.name;
@@ -46,15 +46,16 @@ async function getICUdata() {
         newDiv4.innerHTML = data.occupiedBeds;
         newDiv5.innerHTML = data.reserveBeds;
         newDiv6.innerHTML = data.availableBeds;
-        //anchor.innerHTML = data.contact;
+        anchor.innerHTML = data.contact;
+        newDiv7.appendChild(anchor);
 
         // Build row
-        //newDiv6.appendChild(anchor);
         icuWrapperDiv.appendChild(newDiv2);
         icuWrapperDiv.appendChild(newDiv3);
         icuWrapperDiv.appendChild(newDiv4);
         icuWrapperDiv.appendChild(newDiv5);
         icuWrapperDiv.appendChild(newDiv6);
+        icuWrapperDiv.appendChild(newDiv7);
 
         // Append to table
         icuTableWrap.appendChild(icuWrapperDiv);

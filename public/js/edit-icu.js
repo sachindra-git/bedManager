@@ -20,12 +20,13 @@ async function getICUdata() {
           const occupiedBeds = icuData.occupiedBeds;
           const reserveBeds = icuData.reserveBeds;
           const availableBeds = icuData.availableBeds;
+          const contactNumber = icuData.contact;
           
           totalInput.value = totalBeds
           occupiedInput.value = occupiedBeds
           reserveInput.value = reserveBeds
           availableInput.value = availableBeds
-          contact.value = contact
+          contact.value = contactNumber;
         }
       });
     }
@@ -80,6 +81,11 @@ async function getICUdata() {
       })
       .then(response => response.text())
       .then(data => {
+        
+        
+        
+        
+        
         document.body.classList.add('data-saving');
         
         setTimeout(() => {
