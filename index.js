@@ -35,14 +35,13 @@ app.use("/bedreq", bedRequestRoutes);
 // app.use("/update", icuUpdate);
 
 app.post('/update', async (req, res) => {
-  const { icuName, contactNumber, totalBeds, occupiedBeds, reserveBeds, availableBeds } = req.body;
+  const { name, totalBeds, occupiedBeds, reserveBeds, availableBeds } = req.body;
 
   try {
     // Use async/await to update ICU info
     const updatedICU = await Icu.findOneAndUpdate(
-      { icuName: icuName }, // Search by ICU name
+      { name: name }, // Search by ICU name
       {
-        contactNumber,
         totalBeds,
         occupiedBeds,
         reserveBeds,

@@ -8,10 +8,9 @@ async function getICUdata() {
     
 
     function displayICUdataOnForm(selectedValue) {
-      console.log('sssssssssss');
       icus.forEach((icuData) => {
         let selectedValue = document.getElementById("icuName").value;
-        if( icuData._id == selectedValue ) {
+        if( icuData.name == selectedValue ) {
           const totalInput = document.querySelector('#totalBeds');
           const occupiedInput = document.querySelector('#occupiedBeds');
           const reserveInput = document.querySelector('#reserveBeds');
@@ -40,7 +39,7 @@ async function getICUdata() {
       const select = document.querySelector('#icuName');
       const option = document.createElement('OPTION');
       option.innerHTML = icuData.name;
-      option.value = icuData._id;
+      option.value = icuData.name;
       
       select.appendChild(option);
       
