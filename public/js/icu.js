@@ -29,6 +29,7 @@ async function getICUdata() {
         const newDiv6 = document.createElement('DIV');
         const newDiv7 = document.createElement('DIV');
         const anchor = document.createElement('a');
+        const editAnchor = document.createElement('a');
 
         icuWrapperDiv.classList.add('table_row');
         newDiv2.classList.add('name');
@@ -39,6 +40,9 @@ async function getICUdata() {
         newDiv7.classList.add('contact');
         anchor.classList.add('contact-link');
         anchor.href = 'tel:' + data.contact;
+        
+        editAnchor.classList.add('edit-link');
+        editAnchor.href = '/edit-icu.html?icu=' + data._id;
 
         // Fill content
         newDiv2.innerHTML = data.name;

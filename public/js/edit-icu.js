@@ -65,7 +65,7 @@ async function getICUdata() {
       event.preventDefault();
 
       const formDataObject = {
-        _id: document.getElementById('icuName').value,
+        id: document.getElementById('icuName').value,
         totalBeds: document.getElementById('totalBeds').value,
         occupiedBeds: document.getElementById('occupiedBeds').value,
         reserveBeds: document.getElementById('reserveBeds').value,
