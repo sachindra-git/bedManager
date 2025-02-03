@@ -8,7 +8,7 @@ async function getICUdata() {
     const totalicusEl = document.querySelector('.total-content .total-icus');
     const paginationControls = document.querySelector('.pagination-controls'); // Add this container in your HTML
     
-    let totalIcus = icus.length;
+    let totalAvailableIcus = 0;
     let currentPage = 1;
     const itemsPerPage = 5;
 
@@ -19,7 +19,7 @@ async function getICUdata() {
         icuTableWrap.innerHTML = "<div class='no-result'>No results found</div>";
         return;
       }
-      console.log(icuPage, 'icuPageicuPageicuPageicuPages')
+
       icuPage.forEach((data) => {
         const icuWrapperDiv = document.createElement('DIV');
         const newDiv2 = document.createElement('DIV');
@@ -102,6 +102,8 @@ async function getICUdata() {
         icu.availableBeds > 0
       );
       
+      totalAvailableIcus = availableICUs.length;
+      
       const icuPage = availableICUs.slice(startIndex, endIndex);
       
 
@@ -120,7 +122,7 @@ async function getICUdata() {
 
       // Filter icus based on the search term
       const filteredicus = icus.filter((icu) =>
-        icu.name.toLowerCase().includes(searchTerm) && icu.availableBeds > 0
+        icu.availableBeds > 0 & icu.name.toLowerCase().includes(searchTerm)
       );
 
       currentPage = 1; // Reset to the first page when searching
@@ -131,7 +133,7 @@ async function getICUdata() {
     updatePagination();
 
     // Update total icus
-    totalicusEl.innerHTML = totalIcus;
+    totalicusEl.innerHTML = totalAvailableIcus;
 
   } catch (error) {
     console.error("Error fetching icus:", error);

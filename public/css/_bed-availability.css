@@ -1,0 +1,68 @@
+.available-table {
+  width: 70%;
+  margin: 0 auto;
+}
+.table_header .table_col {
+  width: 20%;
+  text-align: center;
+}
+.icu-table .table_header {
+  background-color: #1F4E79;
+}
+.table_header .table_col.icu-name {
+  width: 50%;
+  text-align: left;
+}
+.table_header .table_col.contact {
+  width: 30%;
+}
+.icu-table.general-table {
+  
+}
+.table_row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #e8e8e8;
+  padding: 9px 15px;
+  font-size: 14px;
+}
+.table_row:nth-child(2n) {
+  background-color: #FFFFFF;
+}
+.table_row div {
+  width: 20%;
+  font-family: "Open Sans", serif;
+  text-align: center;
+}
+.table_row .name {
+  width: 50%;
+  text-align: left;
+}
+.table_row .contact {
+  width: 30%;
+}
+.contact .contact-link {
+  text-decoration: none;
+  color: #3B7A99;
+}
+.inner-wrapper .top-wrapper {
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline-end: 10px;
+}
+.top-wrapper .total-content {
+  font-weight: bold;
+  font-family: "Open Sans", serif;
+}
+.top-wrapper .right-wrapper {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}
+.total-content .total-hospitals {
+  font-size: 20px;
+  padding: 0 6px;
+}
