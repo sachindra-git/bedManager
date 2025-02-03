@@ -6,8 +6,24 @@ async function getICUdata() {
     const icus = await response.json();
     
 
-    function displayFormData() {
-      
+    function onSelectICU(selectedValue) {
+      icus.forEach((icuData) => {
+        if( icuData._id == selectedValue ) {
+          const totalInput = document.querySelector('#totalBeds');
+          const occupiedInput = document.querySelector('#occupiedBeds');
+          const reserveInput = document.querySelector('#reserveBeds');
+          const availableInput = document.querySelector('#availableBeds');
+          const totalBeds = icuData.totalBeds;
+          const occupiedBeds = icuData.occupiedBeds;
+          const reserveBeds = icuData.reserveBeds;
+          const availableBeds = icuData.availableBeds;
+          
+          totalInput.value = totalBeds
+          occupiedInput.value = occupiedBeds
+          reserveInput.value = reserveBeds
+          availableInput.value = availableBeds
+        }
+      });
     }
     
     
@@ -15,7 +31,7 @@ async function getICUdata() {
       const select = document.querySelector('#icuName');
       const option = document.createElement('OPTION');
       option.innerHTML = icuData.name;
-      option.value = icuData.id;
+      option.value = icuData._id;
       
       select.appendChild(option);
       
