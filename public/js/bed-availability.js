@@ -19,7 +19,7 @@ async function getICUdata() {
         icuTableWrap.innerHTML = "<div class='no-result'>No results found</div>";
         return;
       }
-
+      console.log(icuPage, 'icuPageicuPageicuPageicuPages')
       icuPage.forEach((data) => {
         const icuWrapperDiv = document.createElement('DIV');
         const newDiv2 = document.createElement('DIV');
@@ -97,13 +97,20 @@ async function getICUdata() {
       // Calculate the items to display on the current page
       const startIndex = (currentPage - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
-      const icuPage = filteredicus.slice(startIndex, endIndex);
+      
+      const availableICUs = filteredicus.filter((icu) =>
+        icu.availableBeds > 0
+      );
+      
+      const icuPage = availableICUs.slice(startIndex, endIndex);
+      
+
 
       // Display the current page data
       displayICUs(icuPage);
 
       // Update pagination controls
-      createPaginationControls(filteredicus.length);
+      createPaginationControls(availableICUs.length);
     }
 
     // Add search functionality
