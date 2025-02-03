@@ -69,6 +69,7 @@ async function getICUdata() {
       })
       .then(response => response.text())
       .then(data => {
+        console.log(data, 'formData');
         document.getElementById('message').innerHTML = `<div class="success-message">${data}</div>`;
       })
       .catch(error => {
