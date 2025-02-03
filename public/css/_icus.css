@@ -32,6 +32,10 @@
   width: 35%;
   text-align: left;
 }
+a.edit-link {
+  display: inline-block;
+  margin-inline-start: 8px;
+}
 .table_row .contact {
   width: 17%;
 }

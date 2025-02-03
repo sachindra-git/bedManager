@@ -109,6 +109,28 @@ async function getICUdata() {
     });
   }
 
+  function updateSelectWithUrlParam() {
+    // Get the ICU parameter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const icuValue = urlParams.get("icu");
+
+    // If ICU value exists in the URL, set the selected value in the dropdown
+    if (icuValue) {
+      const icuSelect = document.getElementById("icuName");
+
+      // Check if the value exists in the dropdown options
+      let optionExists = Array.from(icuSelect.options).some(option => option.value === icuValue);
+
+      if (optionExists) {
+        icuSelect.value = icuValue;
+      }
+
+      // If using Select2, trigger update
+      if ($(icuSelect).hasClass("select2-hidden-accessible")) {
+        $(icuSelect).val(icuValue).trigger("change");
+      }
+    }
+  }
   
   
   getICUdata();
