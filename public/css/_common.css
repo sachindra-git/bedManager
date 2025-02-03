@@ -206,6 +206,22 @@ a.link:hover {
   font-family: "Open Sans", serif;
   text-decoration: none;
   color: #E8ECEF;
+  position: relative;
+  padding-bottom: 3px;
+}
+.menu-item .menu-link:after {
+  content: '';
+  display: block;
+  width: 100%;
+  border-bottom: 2px solid #ffffff;
+  transition: all 0.4s ease-in-out;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: scaleX(0);
+}
+.menu-item .menu-link:hover :after {
+  
 }
 .copyright {
   color: #E8ECEF;
@@ -378,24 +394,24 @@ background-color: #239d3f;
 }
 
 .loader-line {
+  display: none;
   width: 100%;
-  height: 4px;
+  height: 5px;
   position: relative;
   overflow: hidden;
-  background-color: #ddd;
+  background-color: #ccd9ff;
   margin: 0;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
 }
-
 .loader-line:before {
   content: "";
   position: absolute;
   left: -50%;
-  height: 4px;
+  height: 5px;
   width: 40%;
-  background-color: #3B7A99;
+  background-color: #668cff;
   -webkit-animation: lineAnim 1s linear infinite;
   -moz-animation: lineAnim 1s linear infinite;
   animation: lineAnim 1s linear infinite;
@@ -416,4 +432,7 @@ background-color: #239d3f;
       left: 100%;
       width: 100%;
   }
+}
+.data-saving .loader-line {
+  display: block;
 }

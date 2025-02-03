@@ -91,7 +91,7 @@ async function getICUdata() {
         
         setTimeout(() => {
           document.getElementById('message').style.opacity = '0';
-        }, 5000);
+        }, 6000);
       })
       .catch(error => {
         // Handle errors
