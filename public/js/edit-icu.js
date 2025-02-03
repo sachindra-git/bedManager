@@ -59,13 +59,24 @@ async function getICUdata() {
   
   function formSubmit() {
     document.getElementById('icuForm').addEventListener('submit', function(event) {
-      event.preventDefault();  
+      event.preventDefault();  // Prevent form from submitting normally
 
-      const formData = new FormData(this);
+      // Create an object to hold form data
+      const formDataObject = {
+        name: document.getElementById('icuName').value,
+        totalBeds: document.getElementById('totalBeds').value,
+        occupiedBeds: document.getElementById('occupiedBeds').value,
+        reserveBeds: document.getElementById('reserveBeds').value,
+        availableBeds: document.getElementById('availableBeds').value
+      };
 
+      // Send data as JSON via fetch
       fetch('/update', {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json'  // Set the content type to JSON
+        },
+        body: JSON.stringify(formDataObject)  // Convert the form data object to a JSON string
       })
       .then(response => response.text())
       .then(data => {
