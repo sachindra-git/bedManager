@@ -1,7 +1,7 @@
 {
-  "name": "time-guesstimate-web",
+  "name": "bed-manager",
   "version": "1.0.0",
-  "description": "",
+  "description": "ICU Bed Management System",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

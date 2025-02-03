@@ -81,17 +81,11 @@ async function getICUdata() {
       })
       .then(response => response.text())
       .then(data => {
-        //const occupiedBedsVal = document.getElementById('occupiedBeds').value;
-        // const occupiedBedsVal = document.getElementById('occupiedBeds').value;
-        // const reserveBedsVal = document.getElementById('reserveBeds').value;
-        // const availableBedsVal = document.getElementById('availableBeds').value;
 
-        console.log(parseInt(formDataObject.occupiedBeds) + parseInt(formDataObject.availableBeds) + parseInt(formDataObject.reserveBeds) , 'totalBedstotalBedstotalBedstotalBeds');
-        
         if( parseInt(formDataObject.occupiedBeds) + parseInt(formDataObject.availableBeds) + parseInt(formDataObject.reserveBeds) != parseInt(formDataObject.totalBeds) ) {
           document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please check the entered bed Counts. Total Bed Count did not match</div>`;
         } else {
-          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please check the entered bed Counts. Total Bed Count did not match</div>`;
+          document.getElementById('error-message-wrap').innerHTML = '';
           document.body.classList.add('data-saving');
           setTimeout(() => {
             document.getElementById('icuForm').reset();
