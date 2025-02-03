@@ -4,10 +4,13 @@ async function getICUdata() {
   try {
     const response = await fetch("/components");
     const icus = await response.json();
+    $('#icuName').select2();
     
 
-    function onSelectICU(selectedValue) {
+    function displayICUdataOnForm(selectedValue) {
+      console.log('sssssssssss');
       icus.forEach((icuData) => {
+        let selectedValue = document.getElementById("icuName").value;
         if( icuData._id == selectedValue ) {
           const totalInput = document.querySelector('#totalBeds');
           const occupiedInput = document.querySelector('#occupiedBeds');
@@ -25,6 +28,12 @@ async function getICUdata() {
         }
       });
     }
+    
+    $('#icuName').on('select2:select', function (e) {
+      let selectedValue = $(this).val();
+      displayICUdataOnForm(selectedValue);
+        
+    });
     
     
     function displayIcuDropdown(icuData) {

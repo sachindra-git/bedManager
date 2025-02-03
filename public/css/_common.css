@@ -281,3 +281,15 @@ background-color: #239d3f;
   font-size: 15px;
   border-radius: 7px;
 }
+
+/* Select 2 Forms */
+#icuName {
+  display: none;
+}
+.select2-container {
+  width: 100%;
+}
+.select2-selection__rendered {
+  font-size: 15px;
+  font-family: "Open Sans", serif
+}
