@@ -2,7 +2,7 @@ $( document ).ready(function() {
   
 async function getICUdata() {
   try {
-    const response = await fetch("/components");
+    const response = await fetch("/icus");
     const icus = await response.json();
     const icuTableWrap = document.querySelector('.icu-table .table_body');
     const totalicusEl = document.querySelector('.total-content .total-icus');
@@ -27,28 +27,26 @@ async function getICUdata() {
         const newDiv2 = document.createElement('DIV');
         const newDiv3 = document.createElement('DIV');
         const newDiv4 = document.createElement('DIV');
-        const newDiv5 = document.createElement('DIV');
-        const newDiv6 = document.createElement('DIV');
-        const newDiv7 = document.createElement('DIV');
         const anchor = document.createElement('a');
 
         icuWrapperDiv.classList.add('table_row');
         newDiv2.classList.add('name');
         newDiv3.classList.add('available-beds');
-        //newDiv7.classList.add('contact');
-        //anchor.classList.add('contact-link');
-        //anchor.href = 'tel:' + data.contact;
+        newDiv4.classList.add('contact');
+        anchor.classList.add('contact-link');
+        anchor.href = 'tel:' + data.contact;
         
 
         // Fill content
         newDiv2.innerHTML = data.name;
         newDiv3.innerHTML = data.availableBeds;
-        //anchor.innerHTML = data.contact;
+        anchor.innerHTML = data.contact;
+        newDiv4.appendChild(anchor);
 
         // Build row
-        //newDiv6.appendChild(anchor);
         icuWrapperDiv.appendChild(newDiv2);
         icuWrapperDiv.appendChild(newDiv3);
+        icuWrapperDiv.appendChild(newDiv4);
 
         // Append to table
         icuTableWrap.appendChild(icuWrapperDiv);
