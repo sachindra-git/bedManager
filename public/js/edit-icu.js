@@ -86,24 +86,27 @@ async function getICUdata() {
         // const reserveBedsVal = document.getElementById('reserveBeds').value;
         // const availableBedsVal = document.getElementById('availableBeds').value;
 
-        console.log(formDataObject.occupiedBeds + , 'totalBedstotalBedstotalBedstotalBeds');
+        console.log(parseInt(formDataObject.occupiedBeds) + parseInt(formDataObject.availableBeds) + parseInt(formDataObject.reserveBeds) , 'totalBedstotalBedstotalBedstotalBeds');
         
+        if( parseInt(formDataObject.occupiedBeds) + parseInt(formDataObject.availableBeds) + parseInt(formDataObject.reserveBeds) != parseInt(formDataObject.totalBeds) ) {
+          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please check the entered bed Counts. Total Bed Count did not match</div>`;
+        } else {
+          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please check the entered bed Counts. Total Bed Count did not match</div>`;
+          document.body.classList.add('data-saving');
+          setTimeout(() => {
+            document.getElementById('icuForm').reset();
+            document.getElementById('icuName').selectedIndex = 0;
+            $('#icuName').select2();
+            document.getElementById('message').style.opacity = '1';
+            document.getElementById('message').innerHTML = `<div class="success-message">${data}</div>`;
+            document.body.classList.remove('data-saving');
+          }, 3000);
+
+          setTimeout(() => {
+            document.getElementById('message').style.opacity = '0';
+          }, 6000);
+        }
         
-        
-        document.body.classList.add('data-saving');
-        
-        setTimeout(() => {
-          document.getElementById('icuForm').reset();
-          document.getElementById('icuName').selectedIndex = 0;
-          $('#icuName').select2();
-          document.getElementById('message').style.opacity = '1';
-          document.getElementById('message').innerHTML = `<div class="success-message">${data}</div>`;
-          document.body.classList.remove('data-saving');
-        }, 3000);
-        
-        setTimeout(() => {
-          document.getElementById('message').style.opacity = '0';
-        }, 6000);
       })
       .catch(error => {
         // Handle errors

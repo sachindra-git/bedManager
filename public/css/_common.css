@@ -357,7 +357,7 @@ background-color: #239d3f;
   transform: rotate(45deg);
 }
 .success-message {
-  font-size: 15px;
+  font-size: 13px;
   font-family: "Open Sans", serif;
   color: #3B8A3B;
   margin-top: 25px;
@@ -384,6 +384,47 @@ background-color: #239d3f;
   margin: auto;
 }
 .success-message:after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border: 1px solid;
+  border-radius: 100%;
+  left: 19px;
+  top: 0px;
+  bottom: 0;
+  margin: auto;
+}
+
+.error-message {
+  font-size: 13px;
+  font-family: "Open Sans", serif;
+  color: #cc2121;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color: #ffffff;
+  padding: 11px 15px 11px 50px;
+  border-radius: 10px;
+  font-weight: bold;
+  position: relative;
+  transition: all 0.4s ease-in-out;
+  opacity: 1;
+}
+.error-message:before {
+  content: '';
+  display: block;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  border: 3px solid;
+  border-radius: 100%;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.error-message:after {
   content: '';
   display: block;
   width: 10px;
