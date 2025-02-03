@@ -210,6 +210,4 @@ $( document ).ready(function() {
   getHospitalData();
   getBedRequestData();
   
-  
-  
 });
