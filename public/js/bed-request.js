@@ -10,7 +10,17 @@ async function getReqdata() {
     
     let totalReqs = bedreqs.length;
     let currentPage = 1;
-    const itemsPerPage = 2;
+    const itemsPerPage = 5;
+    
+    //bedreqs.sort((a, b) => new Date(a.date) - new Date(b.date));
+    //bedreqs.sort((a, b) => new Date(b.reqDate) - new Date(a.reqDate));
+    //bedreqs.sort((a, b) => new Date(a.reqDate) - new Date(b.reqDate));
+bedreqs.sort((a, b) => {
+    const dateA = new Date(a.reqDate.replace(/-/g, '/'));
+    const dateB = new Date(b.reqDate.replace(/-/g, '/'));
+  console.log(dateA, 'dateAdateAdateA');
+    return dateA - dateB;
+});
 
     function displayReq(reqPage) {
       reqTableWrap.innerHTML = "";

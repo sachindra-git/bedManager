@@ -17,6 +17,8 @@ $( document ).ready(function() {
           let totalAvailableBedsCount = '';
           let wrapperDiv;
           
+          icus.sort((a, b) => a.name.localeCompare(b.name));
+          
           totalICUEl.innerHTML= icus.length;
           
           icus.forEach((data, index) => {
@@ -108,7 +110,7 @@ $( document ).ready(function() {
           const hospitalTableWrap = document.querySelector('.hospital_table .table_body');
           let HoswrapperDiv;
           let totalHospitals = hospitals.length;
- 
+          hospitals.sort((a, b) => a.name.localeCompare(b.name));
           hospitals.forEach((data, index) => {
             if( index < 9 ) {
               HoswrapperDiv = document.createElement('DIV');
