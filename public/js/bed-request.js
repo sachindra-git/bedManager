@@ -1,17 +1,27 @@
 $( document ).ready(function() {
   
-        const picker = new Pikaday({
-            field: document.getElementById('req-search'),
-            format: 'DD/MM/YYYY', // Forces DD/MM/YYYY format
-            firstDay: 1, // Monday as the first day of the week
-            toString(date) {
-                const day = String(date.getDate()).padStart(2, '0');
-                const month = String(date.getMonth() + 1).padStart(2, '0');
-                const year = date.getFullYear();
-                return `${day}/${month}/${year}`; // Custom date format
-            }
-        });
-  
+const pickerFrom = new Pikaday({
+    field: document.getElementById('req-search-from'),
+    format: 'DD/MM/YYYY', // Forces DD/MM/YYYY format
+    firstDay: 1, // Monday as the first day of the week
+    toString(date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`; // Custom date format
+    }
+});
+const pickerTo = new Pikaday({
+    field: document.getElementById('req-search-to'),
+    format: 'DD/MM/YYYY', // Forces DD/MM/YYYY format
+    firstDay: 1, // Monday as the first day of the week
+    toString(date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`; // Custom date format
+    }
+});
 async function getReqdata() {
   try {
     const response = await fetch("/bedreq");

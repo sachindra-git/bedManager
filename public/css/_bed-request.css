@@ -54,12 +54,36 @@ a.edit-link {
   padding: 0 6px;
 }
 .search-bar {
-  bacground-color: transparent;
+  background-color: transparent;
+  border: none;
 }
 .filter-wrapper {
   display: flex;
   column-gap: 25px;
 }
+.filter-date {
+  position: relative;
+}
+.filter-date label {
+  margin-inline-end: 5px;
+  font-size: 14px;
+  font-family: "Open Sans", serif;
+  text-transform: uppercase;
+}
+.filter-date input {
+  font-size: 14px;
+  border-bottom: 2px solid #3B7A99;
+}
 .filter-wrapper .search {
-  width: 150px;
+  width: 175px;
+  padding-inline-end: 30px;
+}
+.filter-date .icon {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    bottom: 0;
+    margin: auto;
+    height: fit-content;
+    pointer-events: none;
 }
