@@ -82,6 +82,7 @@ async function getICUdata() {
       .then(data => {
         if( parseInt(formDataObject.occupiedBeds) + parseInt(formDataObject.availableBeds) + parseInt(formDataObject.reserveBeds) != parseInt(formDataObject.totalBeds) ) {
           document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please check the entered bed Counts. Total Bed Count did not match</div>`;
+          return false;
         } else {
           document.getElementById('error-message-wrap').innerHTML = '';
           document.body.classList.add('data-saving');
