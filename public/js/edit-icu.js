@@ -125,9 +125,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (icuValue) {
       //const icuSelect = document.querySelectorAll("#icuName option");
       
-      const icuSelect = document.querySelectorAll("select option");
+      //const icuSelect = document.querySelectorAll("select option");
       
-      console.log(icuSelect, 'ggggggggggg44444444444444');
+      
+      let selectedOption = $('#icuName').select2('data');
+      console.log("Selected Option:", selectedOption);
+      
+      
+      
+      //console.log(icuSelect, 'ggggggggggg44444444444444');
 
       // Check if the value exists in the dropdown options
       //let optionExists = Array.from(icuSelect.options).some(option => console.log(option, 'bbbbbbbbbbbbbbbbbbb'));
