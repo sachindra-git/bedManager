@@ -149,7 +149,28 @@ async function getReqdata() {
     console.error("Error fetching reqs:", error);
   }
 }
+  
 
+//   function formatDate(input) {
+//       if (!input.value) return; // If empty, do nothing
+
+//       let date = new Date(input.value); // Convert to Date object
+//       if (isNaN(date)) return; // Invalid date check
+
+//       let day = String(date.getDate()).padStart(2, '0'); // Ensure 2 digits
+//       let month = String(date.getMonth() + 1).padStart(2, '0'); // JS months are 0-based
+//       let year = date.getFullYear();
+
+//       input.type = "date"; // Change back to text type
+//       input.value = `${day}/${month}/${year}`; // Format as DD/MM/YYYY
+//   }
+  
+//   const input = document.querySelector('#req-search');
+  
+//   input.addEventListener("input", (e) => {
+//     formatDate(input);
+//   });
+  
   
   
   getReqdata();
