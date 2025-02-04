@@ -56,8 +56,22 @@ $( document ).ready(function() {
     });
     
   }
+  
+  function menuActive(){
+    const meuItems = document.querySelectorAll('.menu-link');
+    let currentPathname = window.location.pathname;
+    meuItems.forEach(menuItem => {
+      const menuLink = menuItem.href;
+      const menuUrl = new URL(menuLink);
+      
+      if( currentPathname ===  menuUrl.pathname ) {
+        menuItem.classList.add('active');
+      }
+    })
+  }
 
   showTime();
   showDate();
   menuToggle();
+  menuActive();
 });

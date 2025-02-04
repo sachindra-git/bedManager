@@ -227,6 +227,12 @@ a.link:hover {
 .menu-item .menu-link:hover::after {
   transform: scaleX(1);
 }
+.menu-link.active {
+  pointer-events: none;
+}
+.menu-link.active:after {
+  transform: scaleX(1);
+}
 .copyright {
   color: #E8ECEF;
   font-size: 12px;
