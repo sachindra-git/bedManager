@@ -53,3 +53,13 @@ a.edit-link {
   font-size: 20px;
   padding: 0 6px;
 }
+.search-bar {
+  bacground-color: transparent;
+}
+.filter-wrapper {
+  display: flex;
+  column-gap: 25px;
+}
+.filter-wrapper .search {
+  width: 150px;
+}
