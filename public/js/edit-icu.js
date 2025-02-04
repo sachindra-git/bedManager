@@ -33,8 +33,7 @@ async function getICUdata() {
     
     $('#icuName').on('select2:select', function (e) {
       let selectedValue = $(this).val();
-      displayICUdataOnForm(selectedValue);
-        
+      displayICUdataOnForm(selectedValue);   
     });
     
     

@@ -10,7 +10,7 @@ async function getReqdata() {
     
     let totalReqs = bedreqs.length;
     let currentPage = 1;
-    const itemsPerPage = 5;
+    const itemsPerPage = 2;
 
     function displayReq(reqPage) {
       reqTableWrap.innerHTML = "";

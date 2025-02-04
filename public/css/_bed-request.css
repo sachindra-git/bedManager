@@ -19,7 +19,7 @@
   width: 14.28%;
   font-family: "Open Sans", serif;
 }
-.patient-age {
+.patient-age,.ward-number,.patient-status,.req-status,.p-age,.ward-no,.p-status,.req-status {
   text-align: center;
 }
 a.edit-link {
