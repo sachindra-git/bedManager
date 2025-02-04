@@ -123,13 +123,22 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(icuValue, 'icuValueicuValueicuValue')
     // If ICU value exists in the URL, set the selected value in the dropdown
     if (icuValue) {
+      
+      let icuSelect = document.querySelectorAll("option");
+      console.log(icuSelect);
+      
+//     if (icuValue) {
+//         // Set the selected option in Select2
+//         let newOption = new Option(icuValue, icuValue, true, true);
+//         $('#icuName').append(newOption).trigger('change');
+//     }
+      
+      
+      
+      
       //const icuSelect = document.querySelectorAll("#icuName option");
       
       //const icuSelect = document.querySelectorAll("select option");
-      
-      
-      let selectedOption = $('#icuName').select2('data');
-      console.log("Selected Option:", selectedOption);
       
       
       
