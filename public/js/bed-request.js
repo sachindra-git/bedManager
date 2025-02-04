@@ -12,15 +12,12 @@ async function getReqdata() {
     let currentPage = 1;
     const itemsPerPage = 5;
     
-    //bedreqs.sort((a, b) => new Date(a.date) - new Date(b.date));
-    //bedreqs.sort((a, b) => new Date(b.reqDate) - new Date(a.reqDate));
-    //bedreqs.sort((a, b) => new Date(a.reqDate) - new Date(b.reqDate));
-bedreqs.sort((a, b) => {
-    const dateA = new Date(a.reqDate.replace(/-/g, '/'));
-    const dateB = new Date(b.reqDate.replace(/-/g, '/'));
-  console.log(dateA, 'dateAdateAdateA');
-    return dateA - dateB;
-});
+    function parseDDMMYYYY(dateStr) {
+      const parts = dateStr.split('/');
+      return new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+    }
+    
+    bedreqs.sort((a, b) => parseDDMMYYYY(b.reqDate) - parseDDMMYYYY(a.reqDate));
 
     function displayReq(reqPage) {
       reqTableWrap.innerHTML = "";
