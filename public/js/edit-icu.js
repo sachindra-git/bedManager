@@ -124,8 +124,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // If ICU value exists in the URL, set the selected value in the dropdown
     if (icuValue) {
       
-      let icuSelect = $('#icuName.select2-hidden-accessible');
-      console.log(icuSelect, 'icuSelecticuSelecticuSelecticuSelect');
       
 //     if (icuValue) {
 //         // Set the selected option in Select2
