@@ -170,7 +170,7 @@ $( document ).ready(function() {
         new Chart(ctx, {
           type: 'doughnut',
           data: {
-            labels: ['Succeed [' + parseFloat(succeedPercentage.toFixed(2)) +'%]', 'Fail to Find a Bed [' + parseFloat(faliedPercentage.toFixed(2)) +'%]', 'No Feedback [' + parseFloat(noResponsePercentage.toFixed(2)) +'%]'],
+            labels: ['Succeed [' + parseFloat(succeedPercentage.toFixed(2)) +'%]', 'Failed [' + parseFloat(faliedPercentage.toFixed(2)) +'%]', 'No Feedback [' + parseFloat(noResponsePercentage.toFixed(2)) +'%]'],
             datasets: [{
               label: 'Dataset 1',
               data: [succeededRequests.length, failedRequests.length, noResponseRequests.length],
