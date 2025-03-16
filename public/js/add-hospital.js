@@ -35,9 +35,7 @@ $( document ).ready(function() {
       };
       
       
-      if( parseInt(formDataObject.occupiedBeds) + parseInt(formDataObject.availableBeds) + parseInt(formDataObject.reserveBeds) != parseInt(formDataObject.totalBeds) ) {
-        document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please check the entered bed Counts. Total Bed Count did not match</div>`;
-      } else if (hospitalNameList.includes(formDataObject.name)) {
+      if (hospitalNameList.includes(formDataObject.name)) {
         document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">The Hospital already exists.</div>`;
       } else {
         
