@@ -6,6 +6,14 @@ const icuSchema = new mongoose.Schema({
   occupiedBeds: Number,
   reserveBeds: Number,
   availableBeds: Number,
+});
+
+const addicuSchema = new mongoose.Schema({
+  name: String,
+  totalBeds: Number,
+  occupiedBeds: Number,
+  reserveBeds: Number,
+  availableBeds: Number,
   contact: String
 });
 
@@ -28,6 +36,7 @@ const bedreqSchema = new mongoose.Schema({
 
 
 const Icu = mongoose.model('iculist', icuSchema);
+const Addicu = mongoose.model('iculist', addicuSchema);
 const Hospital = mongoose.model('hospital', hospitalSchema);
 const Bedreq = mongoose.model('bedreq', bedreqSchema);
 

@@ -71,7 +71,7 @@ $( document ).ready(function() {
         availableBeds: document.getElementById('availableBeds').value
       };
 
-      fetch('/update', {
+      fetch('/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
