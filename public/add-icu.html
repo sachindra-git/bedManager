@@ -3,21 +3,23 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICUs</title>
+    <title>Add ICU</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/icu.js"></script>
+    <script src="../js/edit-icu.js"></script>
     <link rel="icon" type="image/x-icon" href="https://cdn.glitch.global/cbd89b22-5132-4b02-b101-07acb1ac431a/favicon.ico?v=1742098792967">
     <link rel="stylesheet" href="../css/_common.css">
-    <link rel="stylesheet" href="../css/_icus.css">
-
+    <link rel="stylesheet" href="../css/_edit-icu.css">
+  
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -91,53 +93,61 @@
     </div>
     
   </header>
-    
+  <div class="loader-line"></div>  
   <div class="sub-container">
   
 
     <div class="inner-wrapper">
+      
       <div class="top-wrapper">
-        <div class="total-content">
-          <span class="total-icus"></span>  ICUs available
-        </div>
-        
-        <div class="right-wrapper">
-          <div class="add-btn-wrap">
-            <a class="add-new" href="/add-icu.html">Add New ICU</a>
-          </div>
-          <div class="search-bar">
-            <span class="icon">
-              <svg fill="#aaa7a7" width="18px" height="18px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12.027 9.92L16 13.95 14 16l-4.075-3.976A6.465 6.465 0 0 1 6.5 13C2.91 13 0 10.083 0 6.5 0 2.91 2.917 0 6.5 0 10.09 0 13 2.917 13 6.5a6.463 6.463 0 0 1-.973 3.42zM1.997 6.452c0 2.48 2.014 4.5 4.5 4.5 2.48 0 4.5-2.015 4.5-4.5 0-2.48-2.015-4.5-4.5-4.5-2.48 0-4.5 2.014-4.5 4.5z" fill-rule="evenodd"/>
-              </svg>
-            </span>
-            <input id="icu-search" class="search" type="text" placeholder="Search ICUs" />
-          </div>
-
-          <a href="#" onclick="window.print(); return false;">
-            <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M17 7H7V6h10v1zm0 12H7v-6h10v6zm2-12V3H5v4H1v8.996C1 17.103 1.897 18 3.004 18H5v3h14v-3h1.996A2.004 2.004 0 0 0 23 15.996V7h-4z" fill="#9e9d9d"/>
-            </svg>
-          </a> 
-        </div>
+        <h2>Bed Management Form</h2>
       </div>
       
-      <div class="icu-table-wrapper">
-        <div class="icu-table general-table">
-            <div class="table_header">
-              <div class="table_col icu-name">ICU Name</div>
-              <div class="table_col total-beds">Total Beds</div>
-              <div class="table_col occupied-beds">Occupied Beds</div>
-              <div class="table_col reserve-beds">Reserve Beds</div>
-              <div class="table_col available-beds">Available Beds</div>
-              <div class="table_col contact">Contact Number</div>
-            </div>
+      <div class="form-wrapper">
+        <div id="error-message-wrap"></div>
+        <form id="icuForm" action="/update" method="post">
 
-            <div class="table_body">
+          <div class="field-wrapper">
+            <label for="icuName">ICU Name:</label>
+            <select id="icuName" name="name" required tabindex="0">
+              <option value="">Select ICU</option>
+            </select>
+          </div>
 
-            </div>
-        </div>
-        <div class="pagination-controls"></div>
+          <div class="field-wrapper">
+            <label for="contactNumber">Contact Number:</label>
+            <input type="tel" id="contactNumber" name="contact" readonly tabindex="0">
+          </div>
+          <div class="field-wrapper">
+            <label for="totalBeds">Total Beds:</label>
+            <input type="number" id="totalBeds" name="totalBeds" readonly tabindex="0">
+          </div>
+            
+          <div class="field-wrapper">
+            <label for="occupiedBeds">Occupied Beds:</label>
+            <input type="number" id="occupiedBeds" name="occupiedBeds" required tabindex="0">
+          </div>
+          
+          <div class="field-wrapper">
+            <label for="reserveBeds">Reserve Beds:</label>
+            <input type="number" id="reserveBeds" name="reserveBeds" required tabindex="0">
+          </div>
+          
+          <div class="field-wrapper">
+            <label for="availableBeds">Available Beds:</label>
+            <input type="number" id="availableBeds" name="availableBeds" tabindex="0">
+          </div>
+          
+          <div class="submit-wrapper">
+            <button type="submit">
+              <span id="buttonLoader" class="button-loader"></span>
+              Submit
+            </button>
+          </div>
+        </form>
+        
+        <div id="message"></div>
+
       </div>
       
       

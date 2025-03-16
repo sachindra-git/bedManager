@@ -528,5 +528,26 @@ input[readonly] {
 .data-saving .loader-line {
   display: block;
 }
-
-
+.add-new {
+  position: relative;
+  background-color: #239d3f;
+  color: #FFFFFF;
+  font-family: "Open Sans", serif;
+  text-transform: uppercase;
+  border: none;
+  outline: 0;
+  padding: 8px 18px;
+  font-size: 15px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+  text-decoration: none;
+}
+.add-new:before {
+  content: "\f067";
+  color: #FFFFFF;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
