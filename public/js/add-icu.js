@@ -64,11 +64,12 @@ $( document ).ready(function() {
       event.preventDefault();
 
       const formDataObject = {
-        id: document.getElementById('icu_name').value,
+        name: document.getElementById('icu_name').value,
         totalBeds: document.getElementById('totalBeds').value,
         occupiedBeds: document.getElementById('occupiedBeds').value,
         reserveBeds: document.getElementById('reserveBeds').value,
-        availableBeds: document.getElementById('availableBeds').value
+        availableBeds: document.getElementById('availableBeds').value,
+        contact: document.getElementById('contactNumber').value,
       };
 
       fetch('/add', {
