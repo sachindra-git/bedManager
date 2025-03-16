@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/edit-icu.js"></script>
+    <script src="../js/add-icu.js"></script>
     <link rel="icon" type="image/x-icon" href="https://cdn.glitch.global/cbd89b22-5132-4b02-b101-07acb1ac431a/favicon.ico?v=1742098792967">
     <link rel="stylesheet" href="../css/_common.css">
     <link rel="stylesheet" href="../css/_edit-icu.css">
@@ -114,11 +114,11 @@
 
           <div class="field-wrapper">
             <label for="contactNumber">Contact Number:</label>
-            <input type="tel" id="contactNumber" name="contact" tabindex="0">
+            <input type="tel" id="contactNumber" name="contact" required tabindex="0">
           </div>
           <div class="field-wrapper">
             <label for="totalBeds">Total Beds:</label>
-            <input type="number" id="totalBeds" name="totalBeds" tabindex="0">
+            <input type="number" id="totalBeds" name="totalBeds" required tabindex="0">
           </div>
             
           <div class="field-wrapper">
@@ -133,7 +133,7 @@
           
           <div class="field-wrapper">
             <label for="availableBeds">Available Beds:</label>
-            <input type="number" id="availableBeds" name="availableBeds" tabindex="0">
+            <input type="number" id="availableBeds" name="availableBeds" required tabindex="0">
           </div>
           
           <div class="submit-wrapper">
