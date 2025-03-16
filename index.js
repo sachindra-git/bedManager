@@ -34,33 +34,35 @@ app.use("/bedreq", bedRequestRoutes);
 const icuUpdate = require("./routes/updateIcuRoutes");
 app.use("/update", icuUpdate);
 
-// const addIcu = require("./routes/addIcuRoutes");
-// app.use("/add", addIcu);
+const addIcu = require("./routes/addIcuRoutes");
+app.use("/add", addIcu);
 
 
-// app.post("/add", async (req, res) => {
-//   try {
-//     const { name, contact, totalBeds, occupiedBeds, reserveBeds, availableBeds } = req.body;
+app.post("/add", async (req, res) => {
+  try {
+    const { name, totalBeds, occupiedBeds, reserveBeds, availableBeds, contact } = req.body;
 
-//     // Create a new ICU instance
-//     const newIcu = new Icu({
-//       name,
-//       contact,
-//       totalBeds,
-//       occupiedBeds,
-//       reserveBeds,
-//       availableBeds
-//     });
+    // Create a new ICU instance
+    const newIcu = new Icu({
+      name,
+      totalBeds,
+      occupiedBeds,
+      reserveBeds,
+      availableBeds,
+      contact,
+    });
+    
+    console.log(newIcu, 'newIcunewIcunewIcu');
 
-//     // Save it to the database
-//     const savedIcu = await newIcu.save();
+    // Save it to the database
+    const savedIcu = await newIcu.save();
 
-//     res.status(201).json({ message: `${savedIcu.name} added successfully`, data: savedIcu });
-//   } catch (err) {
-//     console.error("Error adding ICU:", err);
-//     res.status(500).json({ message: "Error adding ICU" });
-//   }
-// });
+    res.status(201).json({ message: `${savedIcu.name} added successfully`, data: savedIcu });
+  } catch (err) {
+    console.error("Error adding ICU:", err);
+    res.status(500).json({ message: "Error adding ICU" });
+  }
+});
 
 
 
