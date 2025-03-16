@@ -6,6 +6,7 @@ const icuSchema = new mongoose.Schema({
   occupiedBeds: Number,
   reserveBeds: Number,
   availableBeds: Number,
+  contact: String
 });
 
 const hospitalSchema = new mongoose.Schema({
