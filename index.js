@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors"); // Import the cors middleware
 const path = require("path"); // Import the path module
-const {Icu} = require("./models/componentModel");
+const {Icu, Hospital} = require("./models/componentModel");
 
 const app = express();
 const port = process.env.PORT || 5000; 
@@ -37,6 +37,8 @@ app.use("/update", icuUpdate);
 const addIcu = require("./routes/addIcuRoutes");
 app.use("/add", addIcu);
 
+const addHospital = require("./routes/addHospitalRoutes");
+app.use("/addHospital", addHospital);
 
 app.post("/add", async (req, res) => {
   try {
@@ -51,8 +53,6 @@ app.post("/add", async (req, res) => {
       availableBeds,
       contact,
     });
-    
-    console.log(newIcu, 'newIcunewIcunewIcu');
 
     // Save it to the database
     const savedIcu = await newIcu.save();
@@ -64,6 +64,29 @@ app.post("/add", async (req, res) => {
   }
 });
 
+
+app.post("/addHospital", async (req, res) => {
+  try {
+    const { name, totalIcus, contact, district, province } = req.body;
+
+    // Create a new Hospital instance
+    const newHospital = new Hospital({
+      name,
+      totalIcus,
+      contact,
+      district,
+      province
+    });
+
+    // Save it to the database
+    const savedHospital = await newHospital.save();
+
+    res.status(201).json({ message: `${savedHospital.name} added successfully`, data: savedHospital });
+  } catch (err) {
+    console.error("Error adding Hospital:", err);
+    res.status(500).json({ message: "Error adding Hospital" });
+  }
+});
 
 
 
