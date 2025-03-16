@@ -91,7 +91,7 @@ async function getICUdata() {
             document.getElementById('icuName').selectedIndex = 0;
             $('#icuName').select2();
             document.getElementById('message').style.display = 'block';
-            document.getElementById('message').innerHTML = `<div class="success-message">${data.name} added </div>`;
+            document.getElementById('message').innerHTML = `<div class="success-message">${data}</div>`;
             document.body.classList.remove('data-saving');
           }, 3000);
 
