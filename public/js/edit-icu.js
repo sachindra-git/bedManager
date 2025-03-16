@@ -70,20 +70,19 @@ async function getICUdata() {
         reserveBeds: document.getElementById('reserveBeds').value,
         availableBeds: document.getElementById('availableBeds').value
       };
-
-      fetch('/update', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formDataObject)
-      })
-      .then(response => response.text())
-      .then(data => {
-        if( parseInt(formDataObject.occupiedBeds) + parseInt(formDataObject.availableBeds) + parseInt(formDataObject.reserveBeds) != parseInt(formDataObject.totalBeds) ) {
-          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please check the entered bed Counts. Total Bed Count did not match</div>`;
-          return false;
-        } else {
+      
+      if( parseInt(formDataObject.occupiedBeds) + parseInt(formDataObject.availableBeds) + parseInt(formDataObject.reserveBeds) != parseInt(formDataObject.totalBeds) ) {
+        document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please check the entered bed Counts. Total Bed Count did not match</div>`;
+      } else {
+        fetch('/update', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formDataObject)
+        })
+        .then(response => response.text())
+        .then(data => {
           document.getElementById('error-message-wrap').innerHTML = '';
           document.body.classList.add('data-saving');
           setTimeout(() => {
@@ -98,14 +97,15 @@ async function getICUdata() {
           setTimeout(() => {
             document.getElementById('message').style.display = 'none';
           }, 6000);
-        }
-        
-      })
-      .catch(error => {
-        // Handle errors
-        console.error('Error:', error);
-        document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Error updating ICU. Please try again later.</div>`;
-      });
+
+        })
+        .catch(error => {
+          // Handle errors
+          console.error('Error:', error);
+          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Error updating ICU. Please try again later.</div>`;
+        });
+      }
+      
     });
   }
 
