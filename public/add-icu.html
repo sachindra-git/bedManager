@@ -100,7 +100,7 @@
     <div class="inner-wrapper">
       
       <div class="top-wrapper">
-        <h2>Bed Management Form</h2>
+        <h2>New ICU Form</h2>
       </div>
       
       <div class="form-wrapper">
@@ -108,19 +108,17 @@
         <form id="icuForm" action="/update" method="post">
 
           <div class="field-wrapper">
-            <label for="icuName">ICU Name:</label>
-            <select id="icuName" name="name" required tabindex="0">
-              <option value="">Select ICU</option>
-            </select>
+            <label for="icu_name">ICU Name:</label>
+            <input type="text" id="icu_name" name="name" required tabindex="0">
           </div>
 
           <div class="field-wrapper">
             <label for="contactNumber">Contact Number:</label>
-            <input type="tel" id="contactNumber" name="contact" readonly tabindex="0">
+            <input type="tel" id="contactNumber" name="contact" tabindex="0">
           </div>
           <div class="field-wrapper">
             <label for="totalBeds">Total Beds:</label>
-            <input type="number" id="totalBeds" name="totalBeds" readonly tabindex="0">
+            <input type="number" id="totalBeds" name="totalBeds" tabindex="0">
           </div>
             
           <div class="field-wrapper">
