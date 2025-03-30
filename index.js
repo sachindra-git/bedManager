@@ -96,16 +96,16 @@ app.post("/addBedReq", async (req, res) => {
     let { reqDate, patientName, patientAge, hospitalName, wardNumber, patientStatus, bedRequestStatus } = req.body;
 
     // Convert "DD/MM/YYYY" to "YYYY-MM-DD"
-    const [day, month, year] = reqDate.split("/");
-    const formattedDate = new Date(`${year}-${month}-${day}`);
+//     const [day, month, year] = reqDate.split("/");
+//     const formattedDate = new Date(`${year}-${month}-${day}`);
 
-    if (isNaN(formattedDate)) {
-      return res.status(400).json({ message: "Invalid date format. Use DD/MM/YYYY." });
-    }
+//     if (isNaN(formattedDate)) {
+//       return res.status(400).json({ message: "Invalid date format. Use DD/MM/YYYY." });
+//     }
 
     // Create a new Bedreq instance
     const newBedreq = new Bedreq({
-      reqDate: formattedDate, // Save as Date object
+      reqDate, // Save as Date object
       patientName,
       patientAge,
       hospitalName,

@@ -17,13 +17,13 @@ const hospitalSchema = new mongoose.Schema({
   province: String
 });
 const bedreqSchema = new mongoose.Schema({
-  reqDate: Date,
   patientName: String,
   patientAge: Number,
   hospitalName: String,
   wardNumber: Number,
   patientStatus: String,
-  bedRequestStatus: String
+  bedRequestStatus: String,
+  reqDate: String
 });
 
 

@@ -65,10 +65,11 @@ $(document).ready(function () {
           reqTableWrap.innerHTML = "<div class='no-result'>No results found</div>";
           return;
         }
-
+        console.log(reqPage, 'reqPagereqPagereqPagereqPage');
         reqPage.forEach((data) => {
           const reqRow = document.createElement("DIV");
           reqRow.classList.add("table_row");
+          
           reqRow.innerHTML = `
             <div class="date">${data.reqDate}</div>
             <div class="p-name">${data.patientName}</div>
