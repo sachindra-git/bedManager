@@ -563,3 +563,30 @@ input[readonly] {
 .button-disabled {
   pointer-events: none;
 }
+.req-btn-wrap {
+  display: flex;
+  justify-content: center;
+}
+.req-all {
+  position: relative;
+  background-color: #959524;
+  color: #FFFFFF;
+  font-family: "Open Sans", serif;
+  text-transform: uppercase;
+  border: none;
+  outline: 0;
+  padding: 8px 18px;
+  font-size: 15px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+  text-decoration: none;
+}
+.add-new:before {
+  content: "\f067";
+  color: #FFFFFF;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
