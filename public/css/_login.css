@@ -35,6 +35,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  row-gap: 15px;
 }
 #loginForm label {
   display: none;
@@ -56,4 +57,22 @@
   background-color: #000000;
   color: #FFFFFF;
   width: 100%;
+}
+h2 span.icon {
+  display: flex;
+  justify-content: center;
+  background: #a9c7d1;
+  width: fit-content;
+  margin: auto;
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+}
+.field-wrapper .icon {
+  color: #626060;
+  height: fit-content;
+}
+.field-wrapper {
+    align-items: center;
+    column-gap: 10px;
 }
