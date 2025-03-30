@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors"); // Import the cors middleware
 const path = require("path"); // Import the path module
-const {Icu, Hospital} = require("./models/componentModel");
+const {Icu, Hospital, Bedreq} = require("./models/componentModel");
 
 const app = express();
 const port = process.env.PORT || 5000; 
@@ -38,6 +38,9 @@ const addIcu = require("./routes/addIcuRoutes");
 app.use("/add", addIcu);
 
 const addHospital = require("./routes/addHospitalRoutes");
+app.use("/addHospital", addHospital);
+
+const addBedReq = require("./routes/addBedReqRoutes");
 app.use("/addHospital", addHospital);
 
 app.post("/add", async (req, res) => {
