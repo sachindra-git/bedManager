@@ -1,23 +1,5 @@
 $( document ).ready(function() {
   
-  //const bedReqNameList = [];
-  
-//   async function getbedReqNames() {
-//     try {
-//       const response = await fetch("/bedreq");
-//       const bedReqs = await response.json();
-
-//       bedReqs.forEach((bedReqData) => {
-//         bedReqNameList.push(bedReqData.name);
-//       });
-     
-
-//     } catch (error) {
-//       console.error("Error fetching Bed Requests:", error);
-//     }
-//   }
-  
-//   getbedReqNames();
   
   const pickerReqDate = new Pikaday({
     field: document.getElementById("date"),

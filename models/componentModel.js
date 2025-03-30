@@ -26,6 +26,16 @@ const bedreqSchema = new mongoose.Schema({
   reqDate: String
 });
 
+const bedreqSchema = new mongoose.Schema({
+  patientName: String,
+  patientAge: Number,
+  hospitalName: String,
+  wardNumber: Number,
+  patientStatus: String,
+  bedRequestStatus: String,
+  reqDate: String
+});
+
 
 const Icu = mongoose.model('iculist', icuSchema);
 const Hospital = mongoose.model('hospital', hospitalSchema);

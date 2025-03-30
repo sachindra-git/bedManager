@@ -158,11 +158,11 @@ $( document ).ready(function() {
         const faliedPercentage = failedRequests.length/totalReq * 100;
         const noResponsePercentage = noResponseRequests.length/totalReq * 100;
 
-        bedrequests.forEach((data, index) => {
-          const requestStatus = data.bedRequestStatus;
-          console.log(data, 'datadatadatadatadata')
+//         bedrequests.forEach((data, index) => {
+//           const requestStatus = data.bedRequestStatus;
 
-        });
+
+//         });
         
         
         //Bed Request Chart

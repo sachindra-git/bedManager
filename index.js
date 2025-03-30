@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const crypto = require('crypto');
+const session = require('express-session');
 const cors = require("cors"); // Import the cors middleware
 const path = require("path"); // Import the path module
 const {Icu, Hospital, Bedreq} = require("./models/componentModel");
@@ -15,6 +17,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "public")));
+
+const secretKey = crypto.randomBytes(64).toString('hex');
+console.log(secretKey); // Use this generated key as your session secret
+
+// Session middleware
+app.use(session({
+  secret: secretKey,
+  resave: false,
+  saveUninitialized: true,
+}));
+
 
 // Routes
 app.get("/", (req, res) => {
