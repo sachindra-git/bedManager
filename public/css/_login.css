@@ -11,3 +11,19 @@
   opacity: 0.5;
   z-index: -1;
 }
+.login-container {
+  display: flex;
+  height: 100vh
+}
+.login-form-wrapper {
+  width: 400px;
+  padding: 50px;
+  background-color: brown;
+  margin: auto;
+  background: linear-gradient(to bottom, #a9c7d1, #FFFFFF);
+  border-radius: 30px;
+}
+.inner-wrapper {
+    width: 100%;
+    display: flex;
+}
