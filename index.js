@@ -41,7 +41,32 @@ const addHospital = require("./routes/addHospitalRoutes");
 app.use("/addHospital", addHospital);
 
 const addBedReq = require("./routes/addBedReqRoutes");
-app.use("/addHospital", addHospital);
+app.use("/addBedReq", addBedReq);
+
+app.post("/addBedReq", async (req, res) => {
+  try {
+    const { date, patientName, patientAge, hospitalName, wardNumber, patientStatus, bedRequestStatus } = req.body;
+
+    // Create a new ICU instance
+    const newBedreq = new Bedreq({
+      date,
+      patientName,
+      patientAge,
+      hospitalName,
+      wardNumber,
+      patientStatus,
+      bedRequestStatus
+    });
+
+    // Save it to the database
+    const savednewBedreq = await newBedreq.save();
+
+    res.status(201).json({ message: `${savednewBedreq.name} added successfully`, data: savednewBedreq });
+  } catch (err) {
+    console.error("Error adding Bed Request:", err);
+    res.status(500).json({ message: "Error adding Bed Request" });
+  }
+});
 
 app.post("/add", async (req, res) => {
   try {
