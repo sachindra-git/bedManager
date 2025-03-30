@@ -47,7 +47,7 @@ app.post("/addBedReq", async (req, res) => {
   try {
     const { date, patientName, patientAge, hospitalName, wardNumber, patientStatus, bedRequestStatus } = req.body;
 
-    // Create a new ICU instance
+    // Create a new Bed Req instance
     const newBedreq = new Bedreq({
       date,
       patientName,
