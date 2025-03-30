@@ -51,13 +51,16 @@ $( document ).ready(function() {
         })
         .then(response => response.text())
         .then(data => {
+          const form = document.querySelector('#icuForm');
           document.getElementById('error-message-wrap').innerHTML = '';
           document.body.classList.add('data-saving');
+          form.querySelector('.submit-wrapper button').classList.add('button-disabled');
           setTimeout(() => {
             document.getElementById('icuForm').reset();
             document.getElementById('message').style.display = 'block';
             document.getElementById('message').innerHTML = `<div class="success-message">ICU added Successfully</div>`;
             document.body.classList.remove('data-saving');
+            form.querySelector('.submit-wrapper button').classList.remove('button-disabled');
           }, 3000);
 
           setTimeout(() => {

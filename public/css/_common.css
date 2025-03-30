@@ -560,3 +560,6 @@ input[readonly] {
   margin: auto 0;
   height: fit-content;
 }
+.button-disabled {
+  pointer-events: none;
+}
