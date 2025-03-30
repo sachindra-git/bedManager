@@ -552,3 +552,11 @@ input[readonly] {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
 }
+.date-wrapper .icon {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  height: fit-content;
+}

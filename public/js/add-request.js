@@ -26,9 +26,6 @@ $( document ).ready(function() {
     toString(date) {
       return formatDate(date);
     },
-    parse(dateString) {
-      return parseDate(dateString);
-    }
   });
 
   function formatDate(date) {
@@ -37,12 +34,6 @@ $( document ).ready(function() {
     const year = date.getFullYear();
     return `${day}/${month}/${year}`; // Display format
   }
-
-  function parseDate(dateString) {
-    const [day, month, year] = dateString.split("/").map(Number);
-    return new Date(year, month - 1, day);
-  }
-
   
   
   function formSubmit() {
