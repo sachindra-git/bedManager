@@ -24,6 +24,9 @@ $(document).ready(function () {
       let filteredReqs = [...bedreqs];
       let currentPage = 1;
       const itemsPerPage = 5;
+      const totalReqsEl = document.querySelector('.total-content .total-req');
+      
+      let totalReqs = bedreqs.length;
 
       function parseDDMMYYYY(dateStr) {
         if (!dateStr) return null;
@@ -127,6 +130,8 @@ $(document).ready(function () {
       document.getElementById("clear-filter").addEventListener("click", clearFilter);
 
       updatePagination();
+      
+      totalReqsEl.innerHTML = totalReqs;
     } catch (error) {
       console.error("Error fetching requests:", error);
     }
