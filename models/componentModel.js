@@ -17,7 +17,7 @@ const hospitalSchema = new mongoose.Schema({
   province: String
 });
 const bedreqSchema = new mongoose.Schema({
-  date: Date,
+  reqDate: Date,
   patientName: String,
   patientAge: Number,
   hospitalName: String,

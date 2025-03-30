@@ -93,10 +93,10 @@ app.post("/addHospital", async (req, res) => {
 
 app.post("/addBedReq", async (req, res) => {
   try {
-    let { date, patientName, patientAge, hospitalName, wardNumber, patientStatus, bedRequestStatus } = req.body;
+    let { reqDate, patientName, patientAge, hospitalName, wardNumber, patientStatus, bedRequestStatus } = req.body;
 
     // Convert "DD/MM/YYYY" to "YYYY-MM-DD"
-    const [day, month, year] = date.split("/");
+    const [day, month, year] = reqDate.split("/");
     const formattedDate = new Date(`${year}-${month}-${day}`);
 
     if (isNaN(formattedDate)) {
@@ -105,7 +105,7 @@ app.post("/addBedReq", async (req, res) => {
 
     // Create a new Bedreq instance
     const newBedreq = new Bedreq({
-      date: formattedDate, // Save as Date object
+      reqDate: formattedDate, // Save as Date object
       patientName,
       patientAge,
       hospitalName,
@@ -122,6 +122,7 @@ app.post("/addBedReq", async (req, res) => {
     res.status(500).json({ message: "Error adding Bed Request", error: err.message });
   }
 });
+
 
 app.post('/update', async (req, res) => {
   const { id, name, contact, totalBeds, occupiedBeds, reserveBeds, availableBeds } = req.body;
