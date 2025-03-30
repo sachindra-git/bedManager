@@ -1,72 +1,70 @@
 $( document ).ready(function() {
   
-  const bedReqNameList = [];
+  //const bedReqNameList = [];
   
-  async function getbedReqNames() {
-    try {
-      const response = await fetch("/bedreq");
-      const bedReqs = await response.json();
+//   async function getbedReqNames() {
+//     try {
+//       const response = await fetch("/bedreq");
+//       const bedReqs = await response.json();
 
-      bedReqs.forEach((bedReqData) => {
-        bedReqNameList.push(bedReqData.name);
-      });
+//       bedReqs.forEach((bedReqData) => {
+//         bedReqNameList.push(bedReqData.name);
+//       });
      
 
-    } catch (error) {
-      console.error("Error fetching Bed Requests:", error);
-    }
-  }
+//     } catch (error) {
+//       console.error("Error fetching Bed Requests:", error);
+//     }
+//   }
   
-  getbedReqNames();
+//   getbedReqNames();
   
   
   
   
   function formSubmit() {
-    document.getElementById('hospitalForm').addEventListener('submit', function(event) {
+    document.getElementById('bedReqForm').addEventListener('submit', function(event) {
       event.preventDefault();
 
       const formDataObject = {
-        name: document.getElementById('hospital_name').value,
-        district: document.getElementById('district').value,
-        province: document.getElementById('province').value,
-        totalIcus: document.getElementById('totalIcus').value,
-        contact: document.getElementById('contactNumber').value,
+        date: document.getElementById('date').value,
+        patientName: document.getElementById('patientName').value,
+        patientAge: document.getElementById('patientAge').value,
+        hospitalName: document.getElementById('hospitalName').value,
+        wardNumber: document.getElementById('wardNumber').value,
+        patientStatus: document.getElementById('patientStatus').value,
+        bedRequestStatus: document.getElementById('bedRequestStatus').value
       };
       
       
-      if (hospitalNameList.includes(formDataObject.name)) {
-        document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">The Hospital already exists.</div>`;
-      } else {
-        
-        fetch('/addHospital', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formDataObject)
-        })
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('error-message-wrap').innerHTML = '';
-          document.body.classList.add('data-saving');
-          setTimeout(() => {
-            document.getElementById('hospitalForm').reset();
-            document.getElementById('message').style.display = 'block';
-            document.getElementById('message').innerHTML = `<div class="success-message">Hospital added Successfully</div>`;
-            document.body.classList.remove('data-saving');
-          }, 3000);
+      fetch('/addBedReq', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formDataObject)
+      })
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('error-message-wrap').innerHTML = '';
+        document.body.classList.add('data-saving');
+        setTimeout(() => {
+          document.getElementById('bedReqForm').reset();
+          document.getElementById('message').style.display = 'block';
+          document.getElementById('message').innerHTML = `<div class="success-message">Bed Request added Successfully</div>`;
+          document.body.classList.remove('data-saving');
+        }, 3000);
 
-          setTimeout(() => {
-            document.getElementById('message').style.display = 'none';
-          }, 6000);
-        })
-        .catch(error => {
-          // Handle errors
-          console.error('Error:', error);
-          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Error updating Hospital. Please try again later.</div>`;
-        }); 
-      }
+        setTimeout(() => {
+          document.getElementById('message').style.display = 'none';
+        }, 6000);
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('Error:', error);
+        document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Error adding Bed Request. Please try again later.</div>`;
+      }); 
+      
     });
   }
 
