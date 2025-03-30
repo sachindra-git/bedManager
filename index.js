@@ -56,6 +56,9 @@ app.use("/addHospital", addHospital);
 const addBedReq = require("./routes/addBedReqRoutes");
 app.use("/addBedReq", addBedReq);
 
+const userRoutes = require("./routes/userRoutes");
+app.use("/user", userRoutes);
+
 app.post("/add", async (req, res) => {
   try {
     const { name, totalBeds, occupiedBeds, reserveBeds, availableBeds, contact } = req.body;
