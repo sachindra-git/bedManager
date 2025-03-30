@@ -19,7 +19,30 @@ $( document ).ready(function() {
   
 //   getbedReqNames();
   
-  
+  const pickerReqDate = new Pikaday({
+    field: document.getElementById("date"),
+    format: "DD/MM/YYYY", // Display format
+    firstDay: 1,
+    toString(date) {
+      return formatDate(date);
+    },
+    parse(dateString) {
+      return parseDate(dateString);
+    }
+  });
+
+  function formatDate(date) {
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`; // Display format
+  }
+
+  function parseDate(dateString) {
+    const [day, month, year] = dateString.split("/").map(Number);
+    return new Date(year, month - 1, day);
+  }
+
   
   
   function formSubmit() {
