@@ -8,7 +8,7 @@
   background-position: center center;
   background-repeat: no-repeat;
   position: absolute;
-  opacity: 0.5;
+  opacity: 0.3;
   z-index: -1;
 }
 .login-container {
@@ -16,8 +16,8 @@
   height: 100vh
 }
 .login-form-wrapper {
-  width: 400px;
-  padding: 50px;
+  width: 350px;
+  padding: 50px 40px;
   background-color: brown;
   margin: auto;
   background: linear-gradient(to bottom, #a9c7d1, #FFFFFF);
@@ -32,8 +32,10 @@
   text-align: center;
   text-transform: uppercase;
   font-family: "Roboto Slab", serif;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
-
 #loginForm label {
   display: none;
 }
@@ -46,4 +48,12 @@
   border: 1px solid #dce1e4;
   background-color: #ececec;
   border-radius: 7px;
+}
+.submit-wrapper {
+  display: block;
+}
+.login-form-wrapper button {
+  background-color: #000000;
+  color: #FFFFFF;
+  width: 100%;
 }
