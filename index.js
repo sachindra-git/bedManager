@@ -43,31 +43,6 @@ app.use("/addHospital", addHospital);
 const addBedReq = require("./routes/addBedReqRoutes");
 app.use("/addBedReq", addBedReq);
 
-app.post("/addBedReq", async (req, res) => {
-  try {
-    const { date, patientName, patientAge, hospitalName, wardNumber, patientStatus, bedRequestStatus } = req.body;
-
-    // Create a new Bed Req instance
-    const newBedreq = new Bedreq({
-      date,
-      patientName,
-      patientAge,
-      hospitalName,
-      wardNumber,
-      patientStatus,
-      bedRequestStatus
-    });
-
-    // Save it to the database
-    const savednewBedreq = await newBedreq.save();
-
-    res.status(201).json({ message: `${savednewBedreq.name} added successfully`, data: savednewBedreq });
-  } catch (err) {
-    console.error("Error adding Bed Request:", err);
-    res.status(500).json({ message: "Error adding Bed Request" });
-  }
-});
-
 app.post("/add", async (req, res) => {
   try {
     const { name, totalBeds, occupiedBeds, reserveBeds, availableBeds, contact } = req.body;
@@ -116,7 +91,37 @@ app.post("/addHospital", async (req, res) => {
   }
 });
 
+app.post("/addBedReq", async (req, res) => {
+  try {
+    let { date, patientName, patientAge, hospitalName, wardNumber, patientStatus, bedRequestStatus } = req.body;
 
+    // Convert "DD/MM/YYYY" to "YYYY-MM-DD"
+    const [day, month, year] = date.split("/");
+    const formattedDate = new Date(`${year}-${month}-${day}`);
+
+    if (isNaN(formattedDate)) {
+      return res.status(400).json({ message: "Invalid date format. Use DD/MM/YYYY." });
+    }
+
+    // Create a new Bedreq instance
+    const newBedreq = new Bedreq({
+      date: formattedDate, // Save as Date object
+      patientName,
+      patientAge,
+      hospitalName,
+      wardNumber,
+      patientStatus,
+      bedRequestStatus
+    });
+
+    // Save to database
+    const savednewBedreq = await newBedreq.save();
+    res.status(201).json({ message: "Bed request added successfully", data: savednewBedreq });
+  } catch (err) {
+    console.error("Error adding Bed Request:", err);
+    res.status(500).json({ message: "Error adding Bed Request", error: err.message });
+  }
+});
 
 app.post('/update', async (req, res) => {
   const { id, name, contact, totalBeds, occupiedBeds, reserveBeds, availableBeds } = req.body;
