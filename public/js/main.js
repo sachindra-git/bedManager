@@ -103,12 +103,18 @@ $( document ).ready(function() {
   }
   
   function userToggle() {
+    const userDropdown = document.querySelector('.user-dropdown');
+    const userDetail = document.querySelector('.user_detail');
     document.querySelectorAll(".loggedin-user").forEach(element => {
-      const userDropdown = document.querySelector('.user-dropdown');
         element.addEventListener("click", function() {
-            userDropdown.classList.toggle("active");
+            userDropdown?.classList.toggle("active");
         });
-    }); 
+    });
+    document.addEventListener("click", function(event) {
+        if (!event.target.closest(".user_detail") && userDetail.contains('active')) {
+          userDropdown?.classList.remove("active");
+        }
+    });
   } 
   
   
