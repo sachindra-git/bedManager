@@ -86,23 +86,43 @@ app.post("/add", async (req, res) => {
   }
 });
 
-app.post("/changePassword", async (req, res) => {
+// app.post("/changePassword", async (req, res) => {
+//   try {
+//     const { userName, password } = req.body;
+
+//     // Create a new Hospital instance
+//     const changePassword = new Users({
+//       userName,
+//       password
+//     });
+
+//     // Save it to the database
+//     const savedChangePassword = await changePassword.save();
+
+//     res.status(201).json({ message: `Password Changed successfully`});
+//   } catch (err) {
+//     console.error("Error Changing Password:", err);
+//     res.status(500).json({ message: "Error Changing Password" });
+//   }
+// });
+
+app.post('/changePassword', async (req, res) => {
+  const { id, userName, password } = req.body;
+
   try {
-    const { userName, password } = req.body;
+    const changePassword = await Users.findOneAndUpdate(
+      { _id: id },
+      {
+        userName,
+        password
+      },
+      { new: true, upsert: true } // Return the updated document or insert if not found
+    );
 
-    // Create a new Hospital instance
-    const changePassword = new Users({
-      userName,
-      password
-    });
-
-    // Save it to the database
-    const savedChangePassword = await changePassword.save();
-
-    res.status(201).json({ message: `Password Changed successfully`});
+    res.send(`Password updated successfully`);
   } catch (err) {
-    console.error("Error Changing Password:", err);
-    res.status(500).json({ message: "Error Changing Password" });
+    console.error('Error Changing Password:', err);
+    res.status(500).send('Error Changing Password');
   }
 });
 

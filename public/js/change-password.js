@@ -29,13 +29,17 @@ $( document ).ready(function() {
         RenewPassword: document.getElementById('RenewPassword').value.trim(),
       };
       
+      const sendingFormDataObject = {
+        password: document.getElementById('newPassword').value.trim(),
+      };
+      
       
       fetch('/changePassword', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formDataObject)
+        body: JSON.stringify(sendingFormDataObject)
       })
       .then(response => response.text())
       .then(data => {
@@ -69,6 +73,10 @@ $( document ).ready(function() {
           } else {
             document.getElementById('error-message-wrap').innerHTML = "";
           }
+        } else if( formDataObject.newPassword != formDataObject.RenewPassword ) {
+          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">New Pasword did not match</div>`;
+        } else {
+          
         }
         
         
