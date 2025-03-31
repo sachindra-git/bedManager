@@ -30,24 +30,26 @@
       <div class="inner-wrapper">
 
         <div class="login-form-wrapper">
-          <div id="error-message-wrap"></div>
-          <div id="message"></div>
           
           <div class="heading-wrapper">
             <h2><span class="icon"><img class="login-logo" src="https://cdn.glitch.global/cbd89b22-5132-4b02-b101-07acb1ac431a/logo.png?v=1736836367798" /></span>Bed Manager</h2>
-          </div>   
+          </div> 
+          
+          <div id="error-message-wrap"></div>
+          <div id="message"></div>
+          
           <form id="loginForm" action="/user" method="post">
 
             <div class="field-wrapper">
               <span class="icon"><i class="fas fa-user"></i></span>
               <label for="userName">User Name:</label>
-              <input type="text" id="userName" placeholder="Username" name="userName" required tabindex="0">
+              <input type="text" id="userName" placeholder="Username" name="userName" tabindex="0">
             </div>
 
             <div class="field-wrapper">
               <span class="icon"><i class="fas fa-lock"></i></span>
               <label for="password">Password:</label>
-              <input type="password" id="password" placeholder="Password" name="password" required tabindex="0">
+              <input type="password" id="password" placeholder="Password" name="password" tabindex="0">
             </div>
 
             <div class="submit-wrapper">
