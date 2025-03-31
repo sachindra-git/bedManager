@@ -42,10 +42,14 @@ $( document ).ready(function() {
         } else {
           document.getElementById('error-message-wrap').innerHTML = "";
           const secretKey = encodeBase64(formDataObject.userName);
+          const loginPage = document.querySelector(".login-page");
           sessionStorage.setItem("loggedInUser", secretKey);
           
-          window.location.href = "index.html";
+          loginPage.classList.add('loading');
           
+          setTimeout(() => {
+            window.location.href = "index.html";
+          }, 4000);
           
         }
 

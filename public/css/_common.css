@@ -529,6 +529,10 @@ input[readonly] {
 .data-saving .loader-line {
   display: block;
 }
+.loading .loader-line {
+  display: block;
+  top: 0;
+}
 .add-new {
   position: relative;
   background-color: #239d3f;
