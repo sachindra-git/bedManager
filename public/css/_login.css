@@ -74,5 +74,5 @@ h2 span.icon {
   height: auto;
 }
 .login-form-wrapper .error-message {
-  backgroud
+  background-color: transparent;
 }

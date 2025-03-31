@@ -23,8 +23,17 @@ $( document ).ready(function() {
 
       try {
 
-        if(formDataObject.userName == '') {
-          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please Enter Username</div>`
+        if( formDataObject.userName == '' ) {
+          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please Enter Your Username</div>`;
+        } else if( formDataObject.password == '' ) {
+          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please Enter Your Password</div>`;
+        } else if( !userNames.includes(formDataObject.userName) ) {
+          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Invalid User Name</div>`;
+        } else if( !passwords.includes(formDataObject.password) ) {
+          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Invalid Password</div>`;
+        } else {
+          document.getElementById('error-message-wrap').innerHTML = "";
+          window.location.href = "index.html";
         }
 
 
