@@ -86,3 +86,9 @@ span#togglePassword {
   filter: grayscale(1);
   cursor: pointer;
 }
+.forgot-password {
+  font-size: 13px;
+  color: #575757;
+  text-align: right;
+  cursor: pointer;
+}
