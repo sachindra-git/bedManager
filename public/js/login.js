@@ -20,7 +20,6 @@ $( document ).ready(function() {
         password: document.getElementById('password').value.trim(),
       };
 
-
       try {
 
         if( formDataObject.userName == '' ) {
@@ -35,14 +34,6 @@ $( document ).ready(function() {
           document.getElementById('error-message-wrap').innerHTML = "";
           window.location.href = "index.html";
         }
-
-
-
-
-
-
-        console.log("Form submitted successfully:", formDataObject);
-        // You can proceed with further actions like sending data to a server
 
       } catch (error) {
         console.error("Error:", error.message);
