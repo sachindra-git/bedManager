@@ -1,31 +1,26 @@
 $( document ).ready(function() {
   
-  
-  function formSubmit() {
+  async function formSubmit() {
+    
+  const response = await fetch("/user");
+  const users = await response.json();
+    
     document.getElementById('loginForm').addEventListener('submit', function(event) {
       event.preventDefault();
 
       const formDataObject = {
-        userName: document.getElementById('date').value,
-        password: document.getElementById('patientName').value,
+        userName: document.getElementById('userName').value.trim(),
+        password: document.getElementById('password').value.trim(),
       };
       
       
       try {
-        const userName = document.getElementById('date').value.trim();
-        const password = document.getElementById('patientName').value.trim();
 
-        if (!userName || !password) {
-          throw new Error("Both fields are required.");
-        }
+      
+        users.forEach((user) => {
+          
+        });
 
-        const formDataObject = {
-          userName: userName,
-          password: password,
-        };
-        
-        
-        
         
 
         console.log("Form submitted successfully:", formDataObject);
