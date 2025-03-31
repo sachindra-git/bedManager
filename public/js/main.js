@@ -76,12 +76,6 @@ $( document ).ready(function() {
       }
     })
   }
-
-  showTime();
-  showDate();
-  menuToggle();
-  menuActive();
-  
   
   if (!sessionStorage.getItem("loggedInUser") && !window.location.pathname.includes("login.html")) {
     window.location.href = "login.html";
@@ -106,12 +100,28 @@ $( document ).ready(function() {
     } else {
       userElement.style.display = 'none'
     }
-    
-    
-    console.log(userName, 'userNameuserNameuserNameuserNameuserName')  
   }
   
+  function userToggle() {
+    document.querySelectorAll(".loggedin-user").forEach(element => {
+      const userDropdown = document.querySelector('.user-dropdown');
+        element.addEventListener("click", function() {
+            userDropdown.classList.toggle("active");
+        });
+    }); 
+  } 
+  
+  
+
+  showTime();
+  showDate();
+  menuToggle();
+  menuActive();
   setUserName();
+  userToggle();
+  
+  
+
 
   
 });
