@@ -111,13 +111,22 @@ $( document ).ready(function() {
         });
     });
     document.addEventListener("click", function(event) {
-        if (!event.target.closest(".user_detail") && userDetail.contains('active')) {
+        if (!event.target.closest(".user_detail") && userDropdown?.classList.contains('active')) {
           userDropdown?.classList.remove("active");
         }
     });
-  } 
+  }
   
-  
+  function signOut() {
+    const signOut = document.querySelector('.sign-out a');
+    signOut.addEventListener("click", function(event) {
+      event.preventDefault();
+      if(sessionStorage.getItem("loggedInUser")) {
+        sessionStorage.removeItem("loggedInUser");
+        window.location.href = "login.html";
+      }
+    });
+  }
 
   showTime();
   showDate();
@@ -125,9 +134,5 @@ $( document ).ready(function() {
   menuActive();
   setUserName();
   userToggle();
-  
-  
-
-
-  
+  signOut();
 });
