@@ -1,5 +1,9 @@
 $( document ).ready(function() {
   
+  function encodeBase64(text) {
+      return btoa(text); // Encode to Base64
+  }
+  
   async function formSubmit() {
     
     const response = await fetch("/user");
@@ -11,6 +15,11 @@ $( document ).ready(function() {
       userNames.push(user.userName);
       passwords.push(user.password);
     });
+    
+    if (sessionStorage.getItem("loggedInUser")) {
+      window.location.href = "index.html";
+      return;
+    }
     
     document.getElementById('loginForm').addEventListener('submit', function(event) {
       event.preventDefault();
@@ -33,6 +42,8 @@ $( document ).ready(function() {
         } else {
           document.getElementById('error-message-wrap').innerHTML = "";
           window.location.href = "index.html";
+          const secretKey = encodeBase64(formDataObject.userName);
+          sessionStorage.setItem("loggedInUser", secretKey);
         }
 
       } catch (error) {
