@@ -20,8 +20,8 @@ $( document ).ready(function() {
       s = (s < 10) ? "0" + s : s;
       
       var time = h + ":" + m + ":" + s + " " + session;
-      document.getElementById("clock").innerText = time;
-      document.getElementById("clock").textContent = time;
+      document.getElementById("clock")?.innerText = time;
+      document.getElementById("clock")?.textContent = time;
       
       setTimeout(showTime, 1000);
       
@@ -30,6 +30,8 @@ $( document ).ready(function() {
   function showDate(){
     const currentDate = new Date();
     const currentDateEl = document.querySelector('.current-date');
+    
+    if(!currentDateEl) return false;
     
     const day = String(currentDate.getDate()).padStart(2, '0');
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
@@ -59,6 +61,7 @@ $( document ).ready(function() {
   
   function menuActive(){
     const meuItems = document.querySelectorAll('.menu-link');
+    if(meuItems.length < 1) return false;
     let currentPathname = window.location.pathname;
     meuItems.forEach(menuItem => {
       const menuLink = menuItem.href;
