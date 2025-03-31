@@ -5,7 +5,7 @@ const crypto = require('crypto');
 const session = require('express-session');
 const cors = require("cors"); // Import the cors middleware
 const path = require("path"); // Import the path module
-const {Icu, Hospital, Bedreq} = require("./models/componentModel");
+const {Icu, Hospital, Bedreq, Users} = require("./models/componentModel");
 
 const app = express();
 const port = process.env.PORT || 5000; 
@@ -59,6 +59,9 @@ app.use("/addBedReq", addBedReq);
 const userRoutes = require("./routes/userRoutes");
 app.use("/user", userRoutes);
 
+const changePasswordRoutes = require("./routes/changePasswordRoutes");
+app.use("/changePassword", changePasswordRoutes);
+
 app.post("/add", async (req, res) => {
   try {
     const { name, totalBeds, occupiedBeds, reserveBeds, availableBeds, contact } = req.body;
@@ -83,6 +86,25 @@ app.post("/add", async (req, res) => {
   }
 });
 
+app.post("/changePassword", async (req, res) => {
+  try {
+    const { userName, password } = req.body;
+
+    // Create a new Hospital instance
+    const changePassword = new Users({
+      userName,
+      password
+    });
+
+    // Save it to the database
+    const savedChangePassword = await changePassword.save();
+
+    res.status(201).json({ message: `${savedChangePassword.name} added successfully`, data: savedChangePassword });
+  } catch (err) {
+    console.error("Error adding Hospital:", err);
+    res.status(500).json({ message: "Error adding Hospital" });
+  }
+});
 
 app.post("/addHospital", async (req, res) => {
   try {
