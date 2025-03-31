@@ -4,7 +4,7 @@ $( document ).ready(function() {
     
     const response = await fetch("/user");
     const users = await response.json();
-    let password;
+    let currentPassword;
     
     function decodeBase64(encodedText) {
         return atob(encodedText); // Decode from Base64
@@ -14,11 +14,12 @@ $( document ).ready(function() {
 
     users.forEach((user) => {
       if( currentUser == user.userName ) {
-        password == user.password;
-        console.log(user, 'passwordpasswordpasswordpassword');
+        currentPassword = user.password; 
       }
     });
     
+    console.log(currentPassword, 'currentPasswordcurrentPasswordcurrentPassword')
+ 
     document.getElementById('changePassword').addEventListener('submit', function(event) {
       event.preventDefault();
 
@@ -46,7 +47,29 @@ $( document ).ready(function() {
           document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please enter new Password</div>`;
         } else if( formDataObject.RenewPassword == '' ) {
           document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please retype new Password</div>`;
-        } 
+        } else if( formDataObject.currentPassword != currentPassword ) {
+          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please enter correct Password</div>`;
+        } else if( formDataObject.newPassword != '' ) {
+          const minLength = 8;
+          const hasUpperCase = /[A-Z]/.test(formDataObject.newPassword);
+          const hasLowerCase = /[a-z]/.test(formDataObject.newPassword);
+          const hasNumber = /[0-9]/.test(formDataObject.newPassword);
+          const hasSpecialChar = /[@$!%*?&#]/.test(formDataObject.newPassword);
+
+          if (formDataObject.newPassword.length < minLength) {
+            document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Password must be at least 8 characters long.</div>`;
+          } else if (!hasUpperCase) {
+            document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Password must contain at least one uppercase letter.</div>`;
+          } else if (!hasLowerCase) {
+            document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Password must contain at least one lowercase letter.</div>`;
+          } else if (!hasNumber) {
+            document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Password must contain at least one number.</div>`;
+          } else if (!hasSpecialChar) {
+            document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Password must contain at least one special character (@, $, !, %, etc.).</div>`;
+          } else {
+            document.getElementById('error-message-wrap').innerHTML = "";
+          }
+        }
         
         
 //         document.getElementById('error-message-wrap').innerHTML = '';
