@@ -3,7 +3,7 @@ $( document ).ready(function() {
   function encodeBase64(text) {
       return btoa(text); // Encode to Base64
   }
-  
+
   async function formSubmit() {
     
     const response = await fetch("/user");

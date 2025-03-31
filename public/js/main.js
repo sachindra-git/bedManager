@@ -81,4 +81,27 @@ $( document ).ready(function() {
   showDate();
   menuToggle();
   menuActive();
+  
+  
+  if (!sessionStorage.getItem("loggedInUser") && !window.location.pathname.includes("login.html")) {
+    window.location.href = "login.html";
+  }
+  
+  if (sessionStorage.getItem("loggedInUser") && window.location.pathname.includes("login.html")) {
+    window.location.href = "index.html";
+  }
+  
+  
+  function decodeBase64(encodedText) {
+      return atob(encodedText); // Decode from Base64
+  }
+  
+  function setUserName {
+    const userName = decodeBase64(formDataObject.userName);
+
+    console.log(sessionStorage.getItem("loggedInUser"), 'loggedInUserloggedInUser')  
+  }
+  
+
+  
 });
