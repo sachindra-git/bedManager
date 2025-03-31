@@ -96,12 +96,22 @@ $( document ).ready(function() {
       return atob(encodedText); // Decode from Base64
   }
   
-  function setUserName {
-    const userName = decodeBase64(formDataObject.userName);
-
-    console.log(sessionStorage.getItem("loggedInUser"), 'loggedInUserloggedInUser')  
+  function setUserName() {
+    const userName = decodeBase64(sessionStorage.getItem("loggedInUser"));
+    const userElement = document.querySelector('.user_detail');
+    if (!userElement) return false;
+    if( userName ) {
+      userElement.style.display = 'flex'
+      userElement.querySelector('.user_name').textContent = userName;
+    } else {
+      userElement.style.display = 'none'
+    }
+    
+    
+    console.log(userName, 'userNameuserNameuserNameuserNameuserName')  
   }
   
+  setUserName();
 
   
 });

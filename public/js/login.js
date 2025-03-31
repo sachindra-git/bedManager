@@ -41,9 +41,12 @@ $( document ).ready(function() {
           document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Invalid Password</div>`;
         } else {
           document.getElementById('error-message-wrap').innerHTML = "";
-          window.location.href = "index.html";
           const secretKey = encodeBase64(formDataObject.userName);
           sessionStorage.setItem("loggedInUser", secretKey);
+          
+          window.location.href = "index.html";
+          
+          
         }
 
       } catch (error) {

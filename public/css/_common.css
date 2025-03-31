@@ -117,6 +117,7 @@ header{
   text-decoration: none;
   line-height: 25px;
   font-family: "Roboto Slab", serif;
+  text-transform: capitalize;
 }
 .clock, .current-date {
   font-family: "Orbitron", sans-serif;
