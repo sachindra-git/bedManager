@@ -80,3 +80,9 @@ h2 span.icon {
 .login-form-wrapper .error-message {
   background-color: transparent;
 }
+span#togglePassword {
+  position: absolute;
+  right: 7px;
+  filter: grayscale(1);
+  cursor: pointer;
+}
