@@ -77,7 +77,7 @@ $( document ).ready(function() {
     })
   }
   
-  if (!sessionStorage.getItem("loggedInUser") && !window.location.pathname.includes("login.html")) {
+  if (!sessionStorage.getItem("loggedInUser") && !window.location.pathname.includes("login.html") ) {
     window.location.href = "login.html";
   }
   
