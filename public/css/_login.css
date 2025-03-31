@@ -17,7 +17,7 @@
 }
 .login-form-wrapper {
   width: 350px;
-  padding: 50px 40px;
+  padding: 20px 40px 40px;
   background-color: brown;
   margin: auto;
   background: linear-gradient(to bottom, #a9c7d1, #FFFFFF);

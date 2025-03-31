@@ -19,9 +19,13 @@ $( document ).ready(function() {
       m = (m < 10) ? "0" + m : m;
       s = (s < 10) ? "0" + s : s;
       
-      var time = h + ":" + m + ":" + s + " " + session;
-      document.getElementById("clock")?.innerText = time;
-      document.getElementById("clock")?.textContent = time;
+      let time = h + ":" + m + ":" + s + " " + session;
+      const clock = document.querySelector("#clock");
+      
+      if(clock) {
+        clock.innerText = time;
+        clock.textContent = time;
+      }
       
       setTimeout(showTime, 1000);
       
