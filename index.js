@@ -99,10 +99,10 @@ app.post("/changePassword", async (req, res) => {
     // Save it to the database
     const savedChangePassword = await changePassword.save();
 
-    res.status(201).json({ message: `${savedChangePassword.name} added successfully`, data: savedChangePassword });
+    res.status(201).json({ message: `Password Changed successfully`});
   } catch (err) {
-    console.error("Error adding Hospital:", err);
-    res.status(500).json({ message: "Error adding Hospital" });
+    console.error("Error Changing Password:", err);
+    res.status(500).json({ message: "Error Changing Password" });
   }
 });
 
