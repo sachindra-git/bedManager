@@ -4,27 +4,33 @@ $( document ).ready(function() {
   
   let selectedValue;
   
+  $('#userType').on('select2:select', function (e) {
+    selectedValue = $(this).val();
+    
+  });
+  
+  
+  
   function formSubmit() {
     document.getElementById('addUser').addEventListener('submit', function(event) {
+      
       event.preventDefault();
       
-      $('#userType').on('select2:select', function (e) {
-        selectedValue = $(this).val();
-      });
 
-      console.log(selectedValue, 'selectedValueselectedValue')
+      console.log(document.getElementById('userType').value, 'selectedValueselectedValue');
+      
       
       const formDataObject = {
         userName: document.getElementById('userName').value.trim(),
         password: document.getElementById('password').value.trim(),
         RenewPassword: document.getElementById('RenewPassword').value.trim(),
-        userType: selectedValue
+        userType: document.getElementById('userType').value
       };
       
       const sendingFormDataObject = {
         userName: document.getElementById('userName').value.trim(),
         password: document.getElementById('RenewPassword').value.trim(),
-        userType: selectedValue
+        userType: document.getElementById('userType').value
       };
       
       const minLength = 8;
@@ -71,7 +77,7 @@ $( document ).ready(function() {
           setTimeout(() => {
             document.getElementById('addUser').reset();
             document.getElementById('message').style.display = 'block';
-            document.getElementById('message').innerHTML = `<div class="success-message">Hospital added Successfully</div>`;
+            document.getElementById('message').innerHTML = `<div class="success-message">User added Successfully</div>`;
             document.body.classList.remove('data-saving');
             form.querySelector('.submit-wrapper button').classList.remove('button-disabled');
           }, 3000);
@@ -83,8 +89,23 @@ $( document ).ready(function() {
         .catch(error => {
           // Handle errors
           console.error('Error:', error);
-          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Error updating Hospital. Please try again later.</div>`;
+          document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Error adding User. Please try again later.</div>`;
         }); 
+      }
+    });
+  }
+  
+  function passwordToggle() {
+    const passwordField = document.querySelector("password");
+    const togglePassword = document.getElementById("togglePassword");
+
+    togglePassword.addEventListener("click", function() {
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        togglePassword.textContent = "🙈"; // Change icon to hide
+      } else {
+        passwordField.type = "password";
+        togglePassword.textContent = "👁️"; // Change icon to show
       }
     });
   }
