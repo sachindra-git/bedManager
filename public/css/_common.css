@@ -627,9 +627,13 @@ input[readonly] {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
 }
-span#togglePassword {
+span.togglePassword {
   position: absolute;
   right: 7px;
   filter: grayscale(1);
   cursor: pointer;
+  height: fit-content;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }

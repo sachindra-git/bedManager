@@ -120,24 +120,25 @@
           </div>
 
           <div class="field-wrapper">
-            <label for="password">District:</label>
+            <label for="password">Password:</label>
             <input type="text" id="password" name="password" required tabindex="0">
-            <span id="togglePassword" class="toggle-icon">👁️</span>
+            <span id="togglePassword1" class="togglePassword">👁️</span>
           </div>
           <div class="field-wrapper">
-            <label for="province">Province:</label>
-            <input type="text" id="province" name="province" required tabindex="0">
+            <label for="RenewPassword">Retype New Password:</label>
+            <input type="text" id="RenewPassword" name="RenewPassword" tabindex="0" autocomplete="off">
+            <span id="togglePassword2" class="togglePassword">👁️</span>
           </div>
             
           <div class="field-wrapper">
-            <label for="totalIcus">ICU Count:</label>
-            <input type="text" id="totalIcus" name="totalIcus" required tabindex="0">
+            <label for="userType">User Type:</label>
+            <select id="userType" name="userType" required tabindex="0">
+              <option value="">Select user type</option>
+              <option value="admin">Admin</option>
+              <option value="user">User</option>
+            </select>
           </div>
-          
-          <div class="field-wrapper">
-            <label for="contactNumber">Contact Number:</label>
-            <input type="text" id="contactNumber" name="contact" required tabindex="0">
-          </div>
+
           
           <div class="submit-wrapper">
             <button type="submit">
