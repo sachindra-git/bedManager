@@ -8,10 +8,12 @@ $( document ).ready(function() {
     document.getElementById('addUser').addEventListener('submit', function(event) {
       event.preventDefault();
       
-    $('#userType').on('select2:select', function (e) {
-      selectedValue = $(this).val();
-    });
+      $('#userType').on('select2:select', function (e) {
+        selectedValue = $(this).val();
+      });
 
+      console.log(selectedValue, 'selectedValueselectedValue')
+      
       const formDataObject = {
         userName: document.getElementById('userName').value.trim(),
         password: document.getElementById('password').value.trim(),
@@ -21,7 +23,7 @@ $( document ).ready(function() {
       
       const sendingFormDataObject = {
         userName: document.getElementById('userName').value.trim(),
-        password: document.getElementById('newPassword').value.trim(),
+        password: document.getElementById('RenewPassword').value.trim(),
         userType: selectedValue
       };
       
@@ -45,8 +47,12 @@ $( document ).ready(function() {
         document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Password must contain at least one number.</div>`;
       } else if (!hasSpecialChar) {
         document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Password must contain at least one special character (@, $, !, %, etc.).</div>`;
+      } else if( formDataObject.RenewPassword == '' ) {
+        document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please retype Password</div>`;
       } else if( formDataObject.password != formDataObject.RenewPassword ) {
         document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Paswords did not match</div>`;
+      } else if( selectedValue == '' ) {
+        document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please select User Type</div>`;
       } else {
         
         fetch('/addUser', {
@@ -83,7 +89,7 @@ $( document ).ready(function() {
     });
   }
 
-  //formSubmit();
+  formSubmit();
   
 });
 

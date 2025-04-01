@@ -150,9 +150,7 @@ $( document ).ready(function() {
     const userName = decodeBase64(getItemWithExpiry('loggedInUser'));
       users.forEach((user) => {
         if( userName == user.userName ) {
-          console.log(user.userName)
           if(user.userType != 'admin') {
-            console.log(window.location, 'aaaa')
             if( window.location.pathname.includes("add-user.html") ) {
               window.location.href = "index.html";
             }

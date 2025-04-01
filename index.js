@@ -52,6 +52,9 @@ app.use("/user", userRoutes);
 const changePasswordRoutes = require("./routes/changePasswordRoutes");
 app.use("/changePassword", changePasswordRoutes);
 
+const addUserRoutes = require("./routes/addUserRoutes");
+app.use("/addUser", addUserRoutes);
+
 app.post("/add", async (req, res) => {
   try {
     const { name, totalBeds, occupiedBeds, reserveBeds, availableBeds, contact } = req.body;
@@ -76,25 +79,27 @@ app.post("/add", async (req, res) => {
   }
 });
 
-// app.post("/changePassword", async (req, res) => {
-//   try {
-//     const { userName, password } = req.body;
+app.post("/addUser", async (req, res) => {
+  try {
+    const { userName, password, userType } = req.body;
 
-//     // Create a new Hospital instance
-//     const changePassword = new Users({
-//       userName,
-//       password
-//     });
+    // Create a new ICU instance
+    const newUsers = new Users({
+      userName,
+      password,
+      userType
+    });
 
-//     // Save it to the database
-//     const savedChangePassword = await changePassword.save();
+    // Save it to the database
+    const savedUser = await newUsers.save();
 
-//     res.status(201).json({ message: `Password Changed successfully`});
-//   } catch (err) {
-//     console.error("Error Changing Password:", err);
-//     res.status(500).json({ message: "Error Changing Password" });
-//   }
-// });
+    res.status(201).json({ message: `${savedUser.name} added successfully` });
+  } catch (err) {
+    console.error("Error adding User:", err);
+    res.status(500).json({ message: "Error adding User" });
+  }
+});
+
 
 app.post('/changePassword', async (req, res) => {
   const { id, userName, password } = req.body;
