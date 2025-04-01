@@ -100,7 +100,6 @@ $( document ).ready(function() {
       return item.value;
   }
   
-  console.log(getItemWithExpiry('loggedInUser'), 'aaaaaaaaaaaaaaaaaaaaaa')
   
   function decodeBase64(encodedText) {
       return atob(encodedText); // Decode from Base64
