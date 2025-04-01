@@ -637,3 +637,9 @@ span.togglePassword {
   bottom: 0;
   margin: auto;
 }
+
+.seperator-line {
+  border-top: 1px solid #adadad;
+  padding-top: 8px;
+  margin-top: 25px;
+}
