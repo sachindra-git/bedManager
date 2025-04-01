@@ -21,6 +21,23 @@ $( document ).ready(function() {
       return;
     }
     
+    function getItemWithExpiry(key) {
+        const itemStr = localStorage.getItem(key);
+        if (!itemStr) return null;
+
+        const item = JSON.parse(itemStr);
+        const now = new Date().getTime();
+
+        // Check if expired
+        if (now > item.expiry) {
+            localStorage.removeItem(key); // Remove expired item
+            return null;
+        }
+        return item.value;
+    }
+    
+    console.log(getItemWithExpiry('loggedInUser'), ffffffffffffffffffffffff)
+    
     document.getElementById('loginForm').addEventListener('submit', function(event) {
       event.preventDefault();
 
@@ -43,7 +60,18 @@ $( document ).ready(function() {
           document.getElementById('error-message-wrap').innerHTML = "";
           const secretKey = encodeBase64(formDataObject.userName);
           const loginPage = document.querySelector(".login-page");
-          localStorage.setItem("loggedInUser", secretKey);
+          //localStorage.setItem("loggedInUser", secretKey);
+          
+          function setItemWithExpiry(key, value) {
+            const now = new Date();
+            const item = {
+                value: value,
+                expiry: now.getTime() + 2 * 60 * 60 * 1000 // 2 hours in milliseconds
+            };
+            localStorage.setItem("loggedInUser", JSON.stringify(item));
+          }
+          
+          setItemWithExpiry("loggedInUser", secretKey, 2 * 60 * 60 * 1000);
           
           loginPage.classList.add('loading');
           
