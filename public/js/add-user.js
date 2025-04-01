@@ -96,20 +96,24 @@ $( document ).ready(function() {
   }
   
   function passwordToggle() {
-    const passwordField = document.querySelector("password");
-    const togglePassword = document.getElementById("togglePassword");
-
-    togglePassword.addEventListener("click", function() {
-      if (passwordField.type === "password") {
-        passwordField.type = "text";
-        togglePassword.textContent = "🙈"; // Change icon to hide
-      } else {
-        passwordField.type = "password";
-        togglePassword.textContent = "👁️"; // Change icon to show
-      }
+    const passwordFields = document.querySelectorAll("input[type='password']");
+    //const togglePassword = document.getElementById("togglePassword");
+    
+    passwordFields.forEach((el) => {
+      const parentEl = el.parentElement;
+      const togglePassword = parentEl.querySelector('.togglePassword');
+      togglePassword.addEventListener("click", function() {
+        if (el.type === "password") {
+          el.type = "text";
+          togglePassword.textContent = "🙈"; // Change icon to hide
+        } else {
+          el.type = "password";
+          togglePassword.textContent = "👁️"; // Change icon to show
+        }
+      });
     });
   }
-
+  passwordToggle();
   formSubmit();
   
 });
