@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Hospital</title>
+    <title>Add User</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/add-hospital.js"></script>
+    <script src="../js/add-user.js"></script>
     <link rel="icon" type="image/x-icon" href="https://cdn.glitch.global/cbd89b22-5132-4b02-b101-07acb1ac431a/favicon.ico?v=1742098792967">
     <link rel="stylesheet" href="../css/_common.css">
     <link rel="stylesheet" href="../css/_edit-icu.css">
@@ -106,22 +106,23 @@
     <div class="inner-wrapper">
       
       <div class="top-wrapper">
-        <h2>New Hospital Form</h2>
+        <h2>Add New User</h2>
       </div>
       
       <div class="form-wrapper">
         <div id="error-message-wrap"></div>
         <div id="message"></div>
-        <form id="hospitalForm" action="/add" method="post">
+        <form id="addUser" action="/addUser" method="post">
 
           <div class="field-wrapper">
-            <label for="hospital_name">Hospital Name:</label>
-            <input type="text" id="hospital_name" name="name" required tabindex="0">
+            <label for="userName">User Name:</label>
+            <input type="text" id="userName" name="userName" required tabindex="0">
           </div>
 
           <div class="field-wrapper">
-            <label for="district">District:</label>
-            <input type="text" id="district" name="district" required tabindex="0">
+            <label for="password">District:</label>
+            <input type="text" id="password" name="password" required tabindex="0">
+            <span id="togglePassword" class="toggle-icon">👁️</span>
           </div>
           <div class="field-wrapper">
             <label for="province">Province:</label>
