@@ -7,18 +7,32 @@ $( document ).ready(function() {
     let currentPassword;
     let userID;
     
+    function getItemWithExpiry(key) {
+        const itemStr = localStorage.getItem(key);
+        if (!itemStr) return null;
+
+        const item = JSON.parse(itemStr);
+        const now = new Date().getTime();
+
+        // Check if expired
+        if (now > item.expiry) {
+            localStorage.removeItem(key); // Remove expired item
+            return null;
+        }
+        return item.value;
+    }
+    
     function decodeBase64(encodedText) {
         return atob(encodedText); // Decode from Base64
     }
     
-    const currentUser = decodeBase64(localStorage.getItem("loggedInUser"));
+    const currentUser = decodeBase64(getItemWithExpiry('loggedInUser'));
 
     users.forEach((user) => {
       if( currentUser == user.userName ) {
         currentPassword = user.password;
         userID = user._id;
       }
-      console.log(user._id, 'useruseruser')
     });
     
     

@@ -77,14 +77,6 @@ $( document ).ready(function() {
     })
   }
   
-  if (!localStorage.getItem("loggedInUser") && !window.location.pathname.includes("login.html") ) {
-    window.location.href = "login.html";
-  }
-  
-  if (localStorage.getItem("loggedInUser") && window.location.pathname.includes("login.html")) {
-    window.location.href = "index.html";
-  }
-  
   function getItemWithExpiry(key) {
       const itemStr = localStorage.getItem(key);
       if (!itemStr) return null;
@@ -99,6 +91,16 @@ $( document ).ready(function() {
       }
       return item.value;
   }
+  
+  if (!getItemWithExpiry('loggedInUser') && !window.location.pathname.includes("login.html") ) {
+    window.location.href = "login.html";
+  }
+  
+  if (getItemWithExpiry('loggedInUser') && window.location.pathname.includes("login.html")) {
+    window.location.href = "index.html";
+  }
+  
+
   
   
   function decodeBase64(encodedText) {

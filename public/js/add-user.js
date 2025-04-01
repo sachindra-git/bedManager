@@ -11,7 +11,17 @@ $( document ).ready(function() {
   
   
   
-  function formSubmit() {
+  async function formSubmit() {
+    
+    const response = await fetch("/user");
+    const users = await response.json();
+    let userNames = [];
+
+    users.forEach((user) => {
+      userNames.push(user.userName);
+    });
+    
+    
     document.getElementById('addUser').addEventListener('submit', function(event) {
       
       event.preventDefault();
@@ -41,6 +51,8 @@ $( document ).ready(function() {
       
       if (formDataObject.userName == '') {
         document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please enter User Name.</div>`;
+      } else if (userNames.includes(formDataObject.userName)) {
+        document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">User Already Exists.</div>`;
       } else if (formDataObject.password == '') {
         document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please enter Password.</div>`;
       } else if (formDataObject.password.length < minLength) {
