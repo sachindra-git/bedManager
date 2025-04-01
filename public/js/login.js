@@ -16,11 +16,6 @@ $( document ).ready(function() {
       passwords.push(user.password);
     });
     
-    if (localStorage.getItem("loggedInUser")) {
-      window.location.href = "index.html";
-      return;
-    }
-    
     function getItemWithExpiry(key) {
         const itemStr = localStorage.getItem(key);
         if (!itemStr) return null;
@@ -36,7 +31,10 @@ $( document ).ready(function() {
         return item.value;
     }
     
-    console.log(getItemWithExpiry('loggedInUser'), ffffffffffffffffffffffff)
+      if (getItemWithExpiry('loggedInUser')) {
+        window.location.href = "index.html";
+        return;
+      }
     
     document.getElementById('loginForm').addEventListener('submit', function(event) {
       event.preventDefault();

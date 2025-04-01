@@ -85,13 +85,29 @@ $( document ).ready(function() {
     window.location.href = "index.html";
   }
   
+  function getItemWithExpiry(key) {
+      const itemStr = localStorage.getItem(key);
+      if (!itemStr) return null;
+
+      const item = JSON.parse(itemStr);
+      const now = new Date().getTime();
+
+      // Check if expired
+      if (now > item.expiry) {
+          localStorage.removeItem(key); // Remove expired item
+          return null;
+      }
+      return item.value;
+  }
+  
+  console.log(getItemWithExpiry('loggedInUser'), 'aaaaaaaaaaaaaaaaaaaaaa')
   
   function decodeBase64(encodedText) {
       return atob(encodedText); // Decode from Base64
   }
   
   function setUserName() {
-    const userName = decodeBase64(localStorage.getItem("loggedInUser"));
+    const userName = decodeBase64(getItemWithExpiry('loggedInUser'));
     const userElement = document.querySelector('.user_detail');
     if (!userElement) return false;
     if( userName ) {
@@ -106,22 +122,22 @@ $( document ).ready(function() {
     const userDropdown = document.querySelector('.user-dropdown');
     const userDetail = document.querySelector('.user_detail');
     document.querySelectorAll(".loggedin-user").forEach(element => {
-        element.addEventListener("click", function() {
-            userDropdown?.classList.toggle("active");
-        });
+      element.addEventListener("click", function() {
+          userDropdown?.classList.toggle("active");
+      });
     });
     document.addEventListener("click", function(event) {
-        if (!event.target.closest(".user_detail") && userDropdown?.classList.contains('active')) {
-          userDropdown?.classList.remove("active");
-        }
+      if (!event.target.closest(".user_detail") && userDropdown?.classList.contains('active')) {
+        userDropdown?.classList.remove("active");
+      }
     });
   }
   
   function signOut() {
     const signOut = document.querySelector('.sign-out a');
-    signOut.addEventListener("click", function(event) {
+    signOut?.addEventListener("click", function(event) {
       event.preventDefault();
-      if(localStorage.getItem("loggedInUser")) {
+      if(getItemWithExpiry('loggedInUser')) {
         localStorage.removeItem("loggedInUser");
         window.location.href = "login.html";
       }
