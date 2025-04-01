@@ -16,7 +16,7 @@ $( document ).ready(function() {
       passwords.push(user.password);
     });
     
-    if (sessionStorage.getItem("loggedInUser")) {
+    if (localStorage.getItem("loggedInUser")) {
       window.location.href = "index.html";
       return;
     }
@@ -43,7 +43,7 @@ $( document ).ready(function() {
           document.getElementById('error-message-wrap').innerHTML = "";
           const secretKey = encodeBase64(formDataObject.userName);
           const loginPage = document.querySelector(".login-page");
-          sessionStorage.setItem("loggedInUser", secretKey);
+          localStorage.setItem("loggedInUser", secretKey);
           
           loginPage.classList.add('loading');
           

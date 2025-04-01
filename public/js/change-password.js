@@ -11,7 +11,7 @@ $( document ).ready(function() {
         return atob(encodedText); // Decode from Base64
     }
     
-    const currentUser = decodeBase64(sessionStorage.getItem("loggedInUser"));
+    const currentUser = decodeBase64(localStorage.getItem("loggedInUser"));
 
     users.forEach((user) => {
       if( currentUser == user.userName ) {
@@ -91,8 +91,8 @@ $( document ).ready(function() {
 
           setTimeout(() => {
             document.getElementById('message').style.display = 'none';
-            if(sessionStorage.getItem("loggedInUser")) {
-              sessionStorage.removeItem("loggedInUser");
+            if(localStorage.getItem("loggedInUser")) {
+              localStorage.removeItem("loggedInUser");
               window.location.href = "login.html";
             }
           }, 6000);

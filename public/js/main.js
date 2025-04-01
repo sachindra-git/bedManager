@@ -77,11 +77,11 @@ $( document ).ready(function() {
     })
   }
   
-  if (!sessionStorage.getItem("loggedInUser") && !window.location.pathname.includes("login.html") ) {
+  if (!localStorage.getItem("loggedInUser") && !window.location.pathname.includes("login.html") ) {
     window.location.href = "login.html";
   }
   
-  if (sessionStorage.getItem("loggedInUser") && window.location.pathname.includes("login.html")) {
+  if (localStorage.getItem("loggedInUser") && window.location.pathname.includes("login.html")) {
     window.location.href = "index.html";
   }
   
@@ -91,7 +91,7 @@ $( document ).ready(function() {
   }
   
   function setUserName() {
-    const userName = decodeBase64(sessionStorage.getItem("loggedInUser"));
+    const userName = decodeBase64(localStorage.getItem("loggedInUser"));
     const userElement = document.querySelector('.user_detail');
     if (!userElement) return false;
     if( userName ) {
@@ -121,12 +121,13 @@ $( document ).ready(function() {
     const signOut = document.querySelector('.sign-out a');
     signOut.addEventListener("click", function(event) {
       event.preventDefault();
-      if(sessionStorage.getItem("loggedInUser")) {
-        sessionStorage.removeItem("loggedInUser");
+      if(localStorage.getItem("loggedInUser")) {
+        localStorage.removeItem("loggedInUser");
         window.location.href = "login.html";
       }
     });
   }
+
 
   showTime();
   showDate();
