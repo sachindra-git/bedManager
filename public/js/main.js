@@ -142,6 +142,10 @@ $( document ).ready(function() {
       }
     });
   }
+  
+  function adminOnly() {
+    
+  }
 
 
   showTime();
