@@ -164,8 +164,26 @@ $( document ).ready(function() {
         }
     });
   }
+  
+  function passwordToggle() {
+    const passwordFields = document.querySelectorAll("input[type='password']");
 
+    passwordFields.forEach((el) => {
+      const parentEl = el.parentElement;
+      const togglePassword = parentEl.querySelector('.togglePassword');
+      togglePassword.addEventListener("click", function() {
+        if (el.type === "password") {
+          el.type = "text";
+          togglePassword.textContent = "🙈"; // Change icon to hide
+        } else {
+          el.type = "password";
+          togglePassword.textContent = "👁️"; // Change icon to show
+        }
+      });
+    });
+  }
 
+  passwordToggle();
   showTime();
   showDate();
   menuToggle();

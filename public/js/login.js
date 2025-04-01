@@ -87,23 +87,23 @@ $( document ).ready(function() {
   });
  }
   
-  function passwordToggle() {
-    const passwordField = document.getElementById("password");
-    const togglePassword = document.getElementById("togglePassword");
+//   function passwordToggle() {
+//     const passwordField = document.getElementById("password");
+//     const togglePassword = document.getElementById("togglePassword");
 
-    togglePassword.addEventListener("click", function() {
-      if (passwordField.type === "password") {
-        passwordField.type = "text";
-        togglePassword.textContent = "🙈"; // Change icon to hide
-      } else {
-        passwordField.type = "password";
-        togglePassword.textContent = "👁️"; // Change icon to show
-      }
-    });
-  }
+//     togglePassword.addEventListener("click", function() {
+//       if (passwordField.type === "password") {
+//         passwordField.type = "text";
+//         togglePassword.textContent = "🙈"; // Change icon to hide
+//       } else {
+//         passwordField.type = "password";
+//         togglePassword.textContent = "👁️"; // Change icon to show
+//       }
+//     });
+//   }
 
   formSubmit();
-  passwordToggle();
+  //passwordToggle();
   
 });
 

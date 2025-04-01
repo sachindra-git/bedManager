@@ -88,6 +88,8 @@ $( document ).ready(function() {
           form.querySelector('.submit-wrapper button').classList.add('button-disabled');
           setTimeout(() => {
             document.getElementById('addUser').reset();
+            document.getElementById('userType').selectedIndex = 0;
+            $('#userType').select2();
             document.getElementById('message').style.display = 'block';
             document.getElementById('message').innerHTML = `<div class="success-message">User added Successfully</div>`;
             document.body.classList.remove('data-saving');
@@ -96,6 +98,7 @@ $( document ).ready(function() {
 
           setTimeout(() => {
             document.getElementById('message').style.display = 'none';
+            location.reload();
           }, 6000);
         })
         .catch(error => {
@@ -107,25 +110,6 @@ $( document ).ready(function() {
     });
   }
   
-  function passwordToggle() {
-    const passwordFields = document.querySelectorAll("input[type='password']");
-    //const togglePassword = document.getElementById("togglePassword");
-    
-    passwordFields.forEach((el) => {
-      const parentEl = el.parentElement;
-      const togglePassword = parentEl.querySelector('.togglePassword');
-      togglePassword.addEventListener("click", function() {
-        if (el.type === "password") {
-          el.type = "text";
-          togglePassword.textContent = "🙈"; // Change icon to hide
-        } else {
-          el.type = "password";
-          togglePassword.textContent = "👁️"; // Change icon to show
-        }
-      });
-    });
-  }
-  passwordToggle();
   formSubmit();
   
 });
