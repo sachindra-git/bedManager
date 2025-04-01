@@ -148,14 +148,20 @@ $( document ).ready(function() {
     const users = await response.json();
     const adminOnly = document.querySelectorAll('.admin-only');
     const userName = decodeBase64(getItemWithExpiry('loggedInUser'));
-    if(adminOnly.length < 1) return
-    adminOnly.forEach((el) => {
       users.forEach((user) => {
-        if( userName == user.userName && user.userType != 'admin' ) {
-          console.log('admin');
-          el.remove();
+        if( userName == user.userName ) {
+          console.log(user.userName)
+          if(user.userType != 'admin') {
+            console.log(window.location, 'aaaa')
+            if( window.location.pathname.includes("add-user.html") ) {
+              window.location.href = "index.html";
+            }
+            if(adminOnly.length < 1) return
+            adminOnly.forEach((el) => {
+              el.remove();
+            });
+          }
         }
-      });
     });
   }
 
