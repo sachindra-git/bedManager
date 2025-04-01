@@ -18,16 +18,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "public")));
 
-const secretKey = crypto.randomBytes(64).toString('hex');
-console.log(secretKey); // Use this generated key as your session secret
-
-// Session middleware
-app.use(session({
-  secret: secretKey,
-  resave: false,
-  saveUninitialized: true,
-}));
-
 
 // Routes
 app.get("/", (req, res) => {

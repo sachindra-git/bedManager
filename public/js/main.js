@@ -108,7 +108,7 @@ $( document ).ready(function() {
   function setUserName() {
     const userName = decodeBase64(getItemWithExpiry('loggedInUser'));
     const userElement = document.querySelector('.user_detail');
-    if (!userElement) return false;
+    if (!userElement) return
     if( userName ) {
       userElement.style.display = 'flex'
       userElement.querySelector('.user_name').textContent = userName;
@@ -143,8 +143,20 @@ $( document ).ready(function() {
     });
   }
   
-  function adminOnly() {
-    
+  async function adminOnly() {
+    const response = await fetch("/user");
+    const users = await response.json();
+    const adminOnly = document.querySelectorAll('.admin-only');
+    const userName = decodeBase64(getItemWithExpiry('loggedInUser'));
+    if(adminOnly.length < 1) return
+    adminOnly.forEach((el) => {
+      users.forEach((user) => {
+        if( userName == user.userName && user.userType != 'admin' ) {
+          console.log('admin');
+          el.remove();
+        }
+      });
+    });
   }
 
 
@@ -155,4 +167,5 @@ $( document ).ready(function() {
   setUserName();
   userToggle();
   signOut();
+  adminOnly();
 });

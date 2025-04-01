@@ -29,6 +29,7 @@ const bedreqSchema = new mongoose.Schema({
 const usersSchema = new mongoose.Schema({
   userName: String,
   password: String,
+  userType: String
 });
 
 
