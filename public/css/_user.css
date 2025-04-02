@@ -63,3 +63,43 @@
   margin-right: 8px;
   color: #9a9898;
 }
+
+.alert-box-wrap {
+    position: fixed;
+    z-index: 9999;
+    background-color: rgba(256,256,256,0.5);
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100vh;
+}
+.alert_box {
+    width: 400px;
+    background-color: #e8e8e8;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: fit-content;
+    padding: 20px 50px 28px;
+    text-align: center;
+    border-top: 25px solid #364aa5;
+    border-radius: 10px;
+}
+.alert_header {
+    color: #8c1515;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+.alert-message {
+  margin-bottom: 25px;
+  font-family: "Roboto Slab", serif;
+}
+.alert_btn {
+  border: none;
+  font-family: "Open Sans", serif;
+  text-transform: uppercase;
+  font-size: 14px;
+}
