@@ -147,18 +147,20 @@ async function getUserList() {
     // Update total users
     totalUsersEl.innerHTML = totalUsers;
   
-    
+    let reMoveuserID;
     document.querySelectorAll(".remove-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
-        let userID = btn.dataset.id; // Ensure button has a data-id attribute
-        if (!userID) {
+        reMoveuserID = btn.dataset.id; // Ensure button has a data-id attribute
+        
+        console.log(reMoveuserID, 'xxxxxxxxxxxxxxxx')
+        if (!reMoveuserID) {
           alert("User ID not found!");
           return;
         } else {
           const alertMsgWrap = document.querySelector('.alert-box-wrap');
           const alertMsgEl = document.querySelector('.alert-message');
           users.forEach((user) => {
-            if( userID == user._id ) {
+            if( reMoveuserID == user._id ) {
               alertMsgEl.innerHTML = 'Are you sure you want to delete user [' + user.userName + '] ?';
               alertMsgWrap.classList.add('active');
             }
@@ -171,26 +173,23 @@ async function getUserList() {
       alertBtn.addEventListener("click", () => {
         
         const btnType = alertBtn.dataset.id;
+        const alertMsgWrap = document.querySelector('.alert-box-wrap');
+        const userObject = {
+          _id: reMoveuserID,
+        };
+        
+        console.log(userObject, 'userObjectuserObjectuserObject')
         
         if( btnType == 'yes' ) {
-          
-        }
-        
-        let userID = btn.dataset.id; // Ensure button has a data-id attribute
-        if (!userID) {
-          alert("User ID not found!");
-          return;
+          alertMsgWrap.classList.remove('active');
+          deletUser(userObject);
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
         } else {
-          const alertMsgWrap = document.querySelector('.alert-box-wrap');
-          const alertMsgEl = document.querySelector('.alert-message');
-          users.forEach((user) => {
-            if( userID == user._id ) {
-              alertMsgEl.innerHTML = 'Are you sure you want to delete user [' + user.userName + '] ?';
-              alertMsgWrap.classList.add('active');
-            }
-          });
+          alertMsgWrap.classList.remove('active');
         }
-        
+
         
       });
     });
@@ -216,7 +215,7 @@ function deletUser(userObject) {
   .then(data => {
     setTimeout(() => {
       document.getElementById('message').innerHTML = `<div class="success-message">User deleted Successfully</div>`;
-    }, 3000);
+    }, 1000);
   })
   .catch(error => {
     // Handle errors
