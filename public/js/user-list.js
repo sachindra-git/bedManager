@@ -126,6 +126,45 @@ async function getUserList() {
     console.error("Error fetching Users:", error);
   }
 }
+  
+function deletUser(userObject) {
+  fetch('/deleteUser', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userObject)
+  })
+  .then(response => response.text())
+  .then(data => {
+    const form = document.querySelector('#changePassword');
+
+    document.getElementById('error-message-wrap').innerHTML = '';
+    document.body.classList.add('data-saving');
+    form.querySelector('.submit-wrapper button').classList.add('button-disabled');
+    setTimeout(() => {
+      document.getElementById('changePassword').reset();
+      document.getElementById('message').style.display = 'block';
+      document.getElementById('message').innerHTML = `<div class="success-message">Password updated Successfully</div>`;
+      document.body.classList.remove('data-saving');
+      form.querySelector('.submit-wrapper button').classList.remove('button-disabled');
+    }, 3000);
+
+    setTimeout(() => {
+      document.getElementById('message').style.display = 'none';
+      if(localStorage.getItem("loggedInUser")) {
+        localStorage.removeItem("loggedInUser");
+        window.location.href = "login.html";
+      }
+    }, 6000);
+
+  })
+  .catch(error => {
+    // Handle errors
+    console.error('Error:', error);
+    document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Error deleting User. Please try again later.</div>`;
+  });
+}
 
 getUserList();
   

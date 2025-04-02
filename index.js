@@ -58,7 +58,21 @@ app.use("/addUser", addUserRoutes);
 const deleteUserRoutes = require("./routes/deleteUserRoutes");
 app.use("/deleteUser", deleteUserRoutes);
 
+app.delete("/deleteUser/:userName", async (req, res) => {
+  try {
+    const { userName } = req.params;
+    const deletedUser = await Users.findOneAndDelete({ userName });
 
+    if (!deletedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ message: `User deleted successfully` });
+  } catch (err) {
+    console.error("Error deleting user:", err);
+    res.status(500).json({ message: "Error deleting user" });
+  }
+});
 
 
 app.post("/add", async (req, res) => {
