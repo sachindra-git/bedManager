@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-  
 async function getUserList() {
   try {
     const response = await fetch("/user");
@@ -7,12 +6,26 @@ async function getUserList() {
     const userTableWrap = document.querySelector('.user-table .table_body');
     const totalUsersEl = document.querySelector('.total-content .total-users');
     const paginationControls = document.querySelector('.pagination-controls'); // Add this container in your HTML
+    const removeUserBtns = document.querySelectorAll('.remove-btn');
     
     let totalUsers = users.length;
     let currentPage = 1;
     const itemsPerPage = 15;
     
     users.sort((a, b) => a.userName.localeCompare(b.userName));
+    
+    
+    removeUserBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        alert('aaaa');
+        let userID = btn.dataset.id;
+        const userObject = {
+          userName: userID,
+        };
+        deletUser(userObject);
+      });
+    });
+    
 
     function displayUsers(userPage) {
       userTableWrap.innerHTML = "";
@@ -137,27 +150,9 @@ function deletUser(userObject) {
   })
   .then(response => response.text())
   .then(data => {
-    const form = document.querySelector('#changePassword');
-
-    document.getElementById('error-message-wrap').innerHTML = '';
-    document.body.classList.add('data-saving');
-    form.querySelector('.submit-wrapper button').classList.add('button-disabled');
     setTimeout(() => {
-      document.getElementById('changePassword').reset();
-      document.getElementById('message').style.display = 'block';
-      document.getElementById('message').innerHTML = `<div class="success-message">Password updated Successfully</div>`;
-      document.body.classList.remove('data-saving');
-      form.querySelector('.submit-wrapper button').classList.remove('button-disabled');
+      document.getElementById('message').innerHTML = `<div class="success-message">User deleted Successfully</div>`;
     }, 3000);
-
-    setTimeout(() => {
-      document.getElementById('message').style.display = 'none';
-      if(localStorage.getItem("loggedInUser")) {
-        localStorage.removeItem("loggedInUser");
-        window.location.href = "login.html";
-      }
-    }, 6000);
-
   })
   .catch(error => {
     // Handle errors

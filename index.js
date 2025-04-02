@@ -58,7 +58,7 @@ app.use("/addUser", addUserRoutes);
 const deleteUserRoutes = require("./routes/deleteUserRoutes");
 app.use("/deleteUser", deleteUserRoutes);
 
-app.delete("/deleteUser/:userName", async (req, res) => {
+app.delete("/deleteUser/:_id", async (req, res) => {
   try {
     const { userName } = req.params;
     const deletedUser = await Users.findOneAndDelete({ userName });
