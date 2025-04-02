@@ -153,7 +153,7 @@ $( document ).ready(function() {
       users.forEach((user) => {
         if( userName == user.userName ) {
           if(user.userType != 'admin') {
-            if( window.location.pathname.includes("add-user.html") ) {
+            if( window.location.pathname.includes("add-user.html") || window.location.pathname.includes("user-list.html") ) {
               window.location.href = "index.html";
             }
             if(adminOnly.length < 1) return
