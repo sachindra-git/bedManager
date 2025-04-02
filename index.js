@@ -58,10 +58,10 @@ app.use("/addUser", addUserRoutes);
 const deleteUserRoutes = require("./routes/deleteUserRoutes");
 app.use("/deleteUser", deleteUserRoutes);
 
-app.delete("/deleteUser/:_id", async (req, res) => {
+app.delete("/deleteUser", async (req, res) => {
   try {
-    const { userName } = req.params;
-    const deletedUser = await Users.findOneAndDelete({ userName });
+    const { _id } = req.params;
+    const deletedUser = await Users.findOneAndDelete({ _id });
 
     if (!deletedUser) {
       return res.status(404).json({ message: "User not found" });

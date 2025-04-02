@@ -6,25 +6,13 @@ async function getUserList() {
     const userTableWrap = document.querySelector('.user-table .table_body');
     const totalUsersEl = document.querySelector('.total-content .total-users');
     const paginationControls = document.querySelector('.pagination-controls'); // Add this container in your HTML
-    const removeUserBtns = document.querySelectorAll('.remove-btn');
     
     let totalUsers = users.length;
     let currentPage = 1;
     const itemsPerPage = 15;
     
     users.sort((a, b) => a.userName.localeCompare(b.userName));
-    
-    
-    removeUserBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        alert('aaaa');
-        let userID = btn.dataset.id;
-        const userObject = {
-          userName: userID,
-        };
-        deletUser(userObject);
-      });
-    });
+  
     
 
     function displayUsers(userPage) {
@@ -134,15 +122,32 @@ async function getUserList() {
 
     // Update total users
     totalUsersEl.innerHTML = totalUsers;
+    
+    const removeUserBtns = document.querySelectorAll('.remove-btn');
+    console.log(removeUserBtns, 'ssssssssssssssssssssssssss');
+    removeUserBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        alert('aaaa');
+        let userID = btn.dataset.id;
+        const userObject = {
+          _id: userID,
+        };
+        deletUser(userObject);
+      });
+    });
 
   } catch (error) {
     console.error("Error fetching Users:", error);
   }
 }
   
+getUserList();
+  
+
+  
 function deletUser(userObject) {
   fetch('/deleteUser', {
-    method: 'POST',
+    method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -161,6 +166,6 @@ function deletUser(userObject) {
   });
 }
 
-getUserList();
+
   
 });
