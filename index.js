@@ -55,6 +55,12 @@ app.use("/changePassword", changePasswordRoutes);
 const addUserRoutes = require("./routes/addUserRoutes");
 app.use("/addUser", addUserRoutes);
 
+const deleteUserRoutes = require("./routes/deleteUserRoutes");
+app.use("/deleteUser", deleteUserRoutes);
+
+
+
+
 app.post("/add", async (req, res) => {
   try {
     const { name, totalBeds, occupiedBeds, reserveBeds, availableBeds, contact } = req.body;

@@ -48,3 +48,18 @@
   font-size: 20px;
   padding: 0 6px;
 }
+.remove-btn {
+  background-color: transparent;
+  border: none;
+  font-family: "Open Sans", serif;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+.remove-btn::before {
+  content: "\f2ed";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 8px;
+  color: #9a9898;
+}
