@@ -58,23 +58,6 @@ app.use("/addUser", addUserRoutes);
 const deleteUserRoutes = require("./routes/deleteUserRoutes");
 app.use("/deleteUser", deleteUserRoutes);
 
-app.delete("/deleteUser", async (req, res) => {
-  try {
-    const { _id } = req.params;
-    const deletedUser = await Users.findOneAndDelete({ _id });
-
-    if (!deletedUser) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
-    res.json({ message: `User deleted successfully` });
-  } catch (err) {
-    console.error("Error deleting user:", err);
-    res.status(500).json({ message: "Error deleting user" });
-  }
-});
-
-
 app.post("/add", async (req, res) => {
   try {
     const { name, totalBeds, occupiedBeds, reserveBeds, availableBeds, contact } = req.body;
@@ -211,6 +194,22 @@ app.post('/update', async (req, res) => {
   } catch (err) {
     console.error('Error updating ICU:', err);
     res.status(500).send('Error updating ICU');
+  }
+});
+
+app.delete("/deleteUser", async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const deletedUser = await Users.findOneAndDelete({ _id });
+
+    if (!deletedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ message: `User deleted successfully` });
+  } catch (err) {
+    console.error("Error deleting user:", err);
+    res.status(500).json({ message: "Error deleting user" });
   }
 });
 

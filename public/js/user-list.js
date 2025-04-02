@@ -123,16 +123,22 @@ async function getUserList() {
     // Update total users
     totalUsersEl.innerHTML = totalUsers;
     
-    const removeUserBtns = document.querySelectorAll('.remove-btn');
-    console.log(removeUserBtns, 'ssssssssssssssssssssssssss');
-    removeUserBtns.forEach((btn) => {
+    document.querySelectorAll(".remove-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
-        alert('aaaa');
-        let userID = btn.dataset.id;
-        const userObject = {
-          _id: userID,
-        };
-        deletUser(userObject);
+        let userID = btn.dataset.id; // Ensure button has a data-id attribute
+        if (!userID) {
+          alert("User ID not found!");
+          return;
+        } else {
+          users.forEach((user) => {
+            if( userID == user._id ) {
+              alert('Deleting User?')
+            }
+          });
+          const userObject = { _id: userID };
+          deletUser(userObject);
+        }
+
       });
     });
 
