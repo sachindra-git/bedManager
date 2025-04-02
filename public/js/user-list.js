@@ -4,59 +4,43 @@ async function getUserList() {
   try {
     const response = await fetch("/user");
     const users = await response.json();
-    const hospitalTableWrap = document.querySelector('.user-table .table_body');
+    const userTableWrap = document.querySelector('.user-table .table_body');
     const totalUsersEl = document.querySelector('.total-content .total-users');
     const paginationControls = document.querySelector('.pagination-controls'); // Add this container in your HTML
     
     let totalUsers = users.length;
     let currentPage = 1;
-    const itemsPerPage = 2;
+    const itemsPerPage = 15;
     
-    users.sort((a, b) => a.name.localeCompare(b.name));
+    users.sort((a, b) => a.userName.localeCompare(b.userName));
 
     function displayUsers(userPage) {
-      hospitalTableWrap.innerHTML = "";
+      userTableWrap.innerHTML = "";
 
       if (userPage.length === 0) {
-        hospitalTableWrap.innerHTML = "<div class='no-result'>No results found</div>";
+        userTableWrap.innerHTML = "<div class='no-result'>No results found</div>";
         return;
       }
 
       userPage.forEach((data) => {
-        const HoswrapperDiv = document.createElement('DIV');
+        const userwrapperDiv = document.createElement('DIV');
         const newDiv2 = document.createElement('DIV');
-        const newDiv3 = document.createElement('DIV');
-        const newDiv4 = document.createElement('DIV');
-        const newDiv5 = document.createElement('DIV');
-        const newDiv6 = document.createElement('DIV');
-        const anchor = document.createElement('a');
+        const newDiv3 = document.createElement('DIV');;
 
-        HoswrapperDiv.classList.add('table_row');
-        newDiv2.classList.add('name');
-        newDiv3.classList.add('district');
-        newDiv4.classList.add('province');
-        newDiv5.classList.add('count');
-        newDiv6.classList.add('contact');
-        anchor.classList.add('contact-link');
-        anchor.href = 'tel:' + data.contact;
+        userwrapperDiv.classList.add('table_row');
+        newDiv2.classList.add('user-name');
+        newDiv3.classList.add('user-type');
 
         // Fill content
-        newDiv2.innerHTML = data.name;
-        newDiv3.innerHTML = data.district;
-        newDiv4.innerHTML = data.province;
-        newDiv5.innerHTML = data.totalIcus;
-        anchor.innerHTML = data.contact;
+        newDiv2.innerHTML = data.userName;
+        newDiv3.innerHTML = data.userType;
 
         // Build row
-        newDiv6.appendChild(anchor);
-        HoswrapperDiv.appendChild(newDiv2);
-        HoswrapperDiv.appendChild(newDiv3);
-        HoswrapperDiv.appendChild(newDiv4);
-        HoswrapperDiv.appendChild(newDiv5);
-        HoswrapperDiv.appendChild(newDiv6);
+        userwrapperDiv.appendChild(newDiv2);
+        userwrapperDiv.appendChild(newDiv3);
 
         // Append to table
-        hospitalTableWrap.appendChild(HoswrapperDiv);
+        userTableWrap.appendChild(userwrapperDiv);
       });
     }
 
@@ -101,41 +85,41 @@ async function getUserList() {
       paginationControls.appendChild(nextButton);
     }
 
-    function updatePagination(filteredHospitals = hospitals) {
+    function updatePagination(filteredUsers = users) {
       // Calculate the items to display on the current page
       const startIndex = (currentPage - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
-      const userPage = filteredHospitals.slice(startIndex, endIndex);
+      const userPage = filteredUsers.slice(startIndex, endIndex);
 
       // Display the current page data
       displayUsers(userPage);
 
       // Update pagination controls
-      createPaginationControls(filteredHospitals.length);
+      createPaginationControls(filteredUsers.length);
     }
 
     // Add search functionality
-    const searchBar = document.querySelector("#hospital-search");
+    const searchBar = document.querySelector("#user-search");
     searchBar.addEventListener("input", (e) => {
       const searchTerm = e.target.value.toLowerCase();
 
-      // Filter hospitals based on the search term
-      const filteredHospitals = hospitals.filter((hospital) =>
-        hospital.name.toLowerCase().includes(searchTerm)
+      // Filter users based on the search term
+      const filteredUsers = users.filter((user) =>
+        user.userName.toLowerCase().includes(searchTerm)
       );
 
       currentPage = 1; // Reset to the first page when searching
-      updatePagination(filteredHospitals);
+      updatePagination(filteredUsers);
     });
 
     // Initial display
     updatePagination();
 
-    // Update total hospitals
+    // Update total users
     totalUsersEl.innerHTML = totalUsers;
 
   } catch (error) {
-    console.error("Error fetching hospitals:", error);
+    console.error("Error fetching Users:", error);
   }
 }
 
