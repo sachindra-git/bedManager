@@ -130,13 +130,14 @@ async function getUserList() {
           alert("User ID not found!");
           return;
         } else {
+          const alertMsgEl = document.querySelector('.alert-message');
           users.forEach((user) => {
             if( userID == user._id ) {
-              alert('Deleting User?')
+              alertMsgEl.innerHTML = 'Are you sure you want to delete user? [' + user.userName + ']';
             }
           });
-          const userObject = { _id: userID };
-          deletUser(userObject);
+          //const userObject = { _id: userID };
+          //deletUser(userObject);
         }
 
       });
