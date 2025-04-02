@@ -22,6 +22,27 @@ async function getUserList() {
         userTableWrap.innerHTML = "<div class='no-result'>No results found</div>";
         return;
       }
+      
+      function getItemWithExpiry(key) {
+          const itemStr = localStorage.getItem(key);
+          if (!itemStr) return null;
+
+          const item = JSON.parse(itemStr);
+          const now = new Date().getTime();
+
+          // Check if expired
+          if (now > item.expiry) {
+              localStorage.removeItem(key); // Remove expired item
+              return null;
+          }
+          return item.value;
+      }
+
+      function decodeBase64(encodedText) {
+          return atob(encodedText); // Decode from Base64
+      }
+
+      const currentUserName = decodeBase64(getItemWithExpiry('loggedInUser'));
 
       userPage.forEach((data) => {
         const userwrapperDiv = document.createElement('DIV');
@@ -37,7 +58,10 @@ async function getUserList() {
         // Fill content
         newDiv2.innerHTML = data.userName;
         newDiv3.innerHTML = data.userType;
-        newDiv4.innerHTML = '<button data-id="'+ data._id  +'" class="remove-btn">Remove User</button>';
+        if( currentUserName != data.userName ) {
+          newDiv4.innerHTML = '<button data-id="'+ data._id  +'" class="remove-btn">Remove User</button>';
+        }
+        
 
         // Build row
         userwrapperDiv.appendChild(newDiv2);
@@ -122,6 +146,7 @@ async function getUserList() {
 
     // Update total users
     totalUsersEl.innerHTML = totalUsers;
+  
     
     document.querySelectorAll(".remove-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -130,13 +155,43 @@ async function getUserList() {
           alert("User ID not found!");
           return;
         } else {
+          const alertMsgWrap = document.querySelector('.alert-box-wrap');
           const alertMsgEl = document.querySelector('.alert-message');
           users.forEach((user) => {
             if( userID == user._id ) {
-              alertMsgEl.innerHTML = 'Are you sure you want to delete user [' + user.userName + ']?';
+              alertMsgEl.innerHTML = 'Are you sure you want to delete user [' + user.userName + '] ?';
+              alertMsgWrap.classList.add('active');
             }
           });
         }
+      });
+    });
+    
+    document.querySelectorAll(".alert_btn").forEach((alertBtn) => {
+      alertBtn.addEventListener("click", () => {
+        
+        const btnType = alertBtn.dataset.id;
+        
+        if( btnType == 'yes' ) {
+          
+        }
+        
+        let userID = btn.dataset.id; // Ensure button has a data-id attribute
+        if (!userID) {
+          alert("User ID not found!");
+          return;
+        } else {
+          const alertMsgWrap = document.querySelector('.alert-box-wrap');
+          const alertMsgEl = document.querySelector('.alert-message');
+          users.forEach((user) => {
+            if( userID == user._id ) {
+              alertMsgEl.innerHTML = 'Are you sure you want to delete user [' + user.userName + '] ?';
+              alertMsgWrap.classList.add('active');
+            }
+          });
+        }
+        
+        
       });
     });
 

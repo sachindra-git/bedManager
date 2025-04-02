@@ -74,6 +74,9 @@
   top: 0;
   height: 100vh;
 }
+.alert-box-wrap.active {
+  display: block;
+}
 .alert_box {
   width: 400px;
   background-color: #e8e8e8;
@@ -86,7 +89,7 @@
   height: fit-content;
   padding: 20px 50px 28px;
   text-align: center;
-  border-top: 25px solid #364aa5;
+  border-top: 25px solid #3d4c90;
   border-radius: 10px;
 }
 .alert_header {
