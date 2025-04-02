@@ -1,16 +1,12 @@
 .table_header .table_col {
-  width: 50%;
+  width: 33.33%;
 }
 /* .table_header .table_col.col-name {
   width: 50%;
 } */
 .table_header .table_col.col-count {
   width: 13%;
-  text-align: center;
-}
-.table_header .table_col.col-contact {
-  width: 16%;
-  text-align: center;
+  text-align: center; 
 }
 .user-table-wrapper {
     width: 50%;
@@ -29,23 +25,8 @@
   background-color: #FFFFFF;
 }
 .table_row div {
-  width: 18%;
+  width: 33.33%;
   font-family: "Open Sans", serif;
-}
-.table_row .name {
-  width: 35%;
-}
-.table_row .count {
-  width: 13%;
-  text-align: center;
-}
-.table_row .contact {
-  width: 16%;
-  text-align: center;
-}
-.contact .contact-link {
-  text-decoration: none;
-  color: #3B7A99;
 }
 .inner-wrapper .top-wrapper {
   padding-bottom: 10px;
@@ -63,7 +44,7 @@
   column-gap: 20px;
   align-items: center;
 }
-.total-content .total-hospitals {
+.total-content .total-users {
   font-size: 20px;
   padding: 0 6px;
 }

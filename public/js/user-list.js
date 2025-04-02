@@ -25,19 +25,23 @@ async function getUserList() {
       userPage.forEach((data) => {
         const userwrapperDiv = document.createElement('DIV');
         const newDiv2 = document.createElement('DIV');
-        const newDiv3 = document.createElement('DIV');;
+        const newDiv3 = document.createElement('DIV');
+        const newDiv4 = document.createElement('DIV');
 
         userwrapperDiv.classList.add('table_row');
         newDiv2.classList.add('user-name');
         newDiv3.classList.add('user-type');
+        newDiv4.classList.add('remove-user');
 
         // Fill content
         newDiv2.innerHTML = data.userName;
         newDiv3.innerHTML = data.userType;
+        newDiv4.innerHTML = '<button data-id="'+ data._id  +'" class="remove-btn">Remove User</button>';
 
         // Build row
         userwrapperDiv.appendChild(newDiv2);
         userwrapperDiv.appendChild(newDiv3);
+        userwrapperDiv.appendChild(newDiv4);
 
         // Append to table
         userTableWrap.appendChild(userwrapperDiv);
@@ -123,9 +127,6 @@ async function getUserList() {
   }
 }
 
-  
-  
-  getUserList();
- 
+getUserList();
   
 });
