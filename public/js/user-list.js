@@ -133,13 +133,10 @@ async function getUserList() {
           const alertMsgEl = document.querySelector('.alert-message');
           users.forEach((user) => {
             if( userID == user._id ) {
-              alertMsgEl.innerHTML = 'Are you sure you want to delete user? [' + user.userName + ']';
+              alertMsgEl.innerHTML = 'Are you sure you want to delete user [' + user.userName + ']?';
             }
           });
-          //const userObject = { _id: userID };
-          //deletUser(userObject);
         }
-
       });
     });
 
