@@ -11,22 +11,9 @@ async function getICUdata() {
     let totalIcus = icus.length;
     let currentPage = 1;
     const itemsPerPage = 15;
-    let currentUserLocation;
-
-    async function getLocation() {
-        try {
-            let response = await fetch('https://ipinfo.io/json');
-            let data = await response.json();
-            currentUserLocation = data.city;
-            console.log(currentUserLocation, 'xxxxx'); // Now it will have a value
-        } catch (error) {
-            console.error('Error fetching location:', error);
-        }
-    }
     
     icus.sort((a, b) => a.name.localeCompare(b.name));
-    
-    
+  
 
     function displayICUs(icuPage) {
       icuTableWrap.innerHTML = "";
