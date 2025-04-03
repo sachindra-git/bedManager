@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+
    async function getICUdata() {
         try {
           const response = await fetch("/icus");
@@ -206,10 +207,37 @@ $( document ).ready(function() {
       }
    }
   
+function getAppendableCount(containerSelector) {
+    const container = document.querySelector(containerSelector);
+    if (!container) return 0;
+
+    const viewportHeight = window.innerHeight;
+    const containerRect = container.getBoundingClientRect();
+  
+  console.log(viewportHeight, 'viewportHeight');
+  console.log(containerRect, 'containerRect');
+    
+    // Calculate the available height (distance from container top to bottom of viewport)
+    const availableHeight = viewportHeight - containerRect.top;
+  
+  console.log(availableHeight, 'availableHeight')
+
+    // Each element's total height (56px height + 6px margin-bottom)
+    const elementHeight = 56 + 7; 
+
+    // Calculate the maximum number of elements that can fit
+    return Math.floor(availableHeight / elementHeight);
+}
+
+
   
   
   getICUdata();
   getHospitalData();
   getBedRequestData();
+  
+// Example usage
+const count = getAppendableCount('.available_icu_table .table_body');
+console.log(`You can append ${count} elements.`);
   
 });
