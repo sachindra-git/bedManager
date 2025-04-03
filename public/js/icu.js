@@ -10,7 +10,7 @@ async function getICUdata() {
     
     let totalIcus = icus.length;
     let currentPage = 1;
-    const itemsPerPage = 5;
+    const itemsPerPage = 15;
     
     icus.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -58,7 +58,7 @@ async function getICUdata() {
         newDiv6.innerHTML = data.availableBeds;
         anchor.innerHTML = data.contact;
         if( data.updatedUser && data.updatedDate && data.updatedTime ) {
-          span.innerHTML = "Last updated by," + data.updatedUser + "," + data.updatedDate + data.updatedTime;
+          span.innerHTML = "Last update: " + data.updatedUser + ", " + data.updatedDate + ", " + data.updatedTime;
         } else {
           span.innerHTML = "Last update: Initial";
         }

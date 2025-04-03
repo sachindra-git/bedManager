@@ -31,6 +31,15 @@
 .table_row .name {
   width: 35%;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+}
+span.updated-detail {
+  font-size: 10px;
+  font-family: "Roboto Slab", serif;
+  color: #8b8b8c;
+  text-transform: capitalize;
 }
 a.edit-link {
   display: inline-block;
