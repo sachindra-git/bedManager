@@ -59,6 +59,7 @@
   display: flex;
   align-items: flex-start;
   gap: 50px;
+  height: 100dvh;
 }
 .dashboard_inner_left {
   width: 65%;
