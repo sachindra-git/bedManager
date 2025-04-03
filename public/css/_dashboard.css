@@ -55,7 +55,7 @@
   margin: auto 0 auto auto;
 }
 .dashboard_container {
-  padding: 80px 50px;
+  padding: 75px 50px 50px;
   display: flex;
   align-items: flex-start;
   gap: 50px;
