@@ -19,6 +19,7 @@ function decodeBase64(encodedText) {
 }
   
 const contactUserName = decodeBase64(getItemWithExpiry('loggedInUser'));
+
   
 async function getICUdata() {
   try {
@@ -82,6 +83,30 @@ async function getICUdata() {
   function formSubmit() {
     document.getElementById('icuForm').addEventListener('submit', function(event) {
       event.preventDefault();
+      
+      function getFormattedDate() {
+        const date = new Date();
+        const day = date.getDate();
+        const suffix = (day % 10 === 1 && day !== 11) ? "st" :
+                       (day % 10 === 2 && day !== 12) ? "nd" :
+                       (day % 10 === 3 && day !== 13) ? "rd" : "th";
+        const month = date.toLocaleString('en-US', { month: 'long' });
+        const year = date.getFullYear();
+
+        return `${day}${suffix} ${month}, ${year}`;
+      }
+
+      function getCurrentTime() {
+        const date = new Date();
+        let hours = date.getHours();
+        const minutes = date.getMinutes();
+        const seconds = date.getSeconds();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+
+        hours = hours % 12 || 12; // Convert 0 to 12 for AM/PM format
+
+        return `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} ${ampm}`;
+      }
 
       const formDataObject = {
         id: document.getElementById('icuName').value,
@@ -90,7 +115,11 @@ async function getICUdata() {
         reserveBeds: document.getElementById('reserveBeds').value,
         availableBeds: document.getElementById('availableBeds').value,
         updatedUser: contactUserName,
+        updatedDate: getFormattedDate(),
+        updatedTime: getCurrentTime(),
       };
+      
+      console.log(formDataObject, 'formDataObjectformDataObjectformDataObjectformDataObject');
       
       if( parseInt(formDataObject.occupiedBeds) + parseInt(formDataObject.availableBeds) + parseInt(formDataObject.reserveBeds) != parseInt(formDataObject.totalBeds) ) {
         document.getElementById('error-message-wrap').innerHTML = `<div class="error-message">Please check the entered bed Counts. Total Bed Count did not match</div>`;
