@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-
+  let bedCount;
    async function getICUdata() {
         try {
           const response = await fetch("/icus");
@@ -30,8 +30,10 @@ $( document ).ready(function() {
             totalAvailableBedsPerc = totalAvailableBeds/totalBeds * 100;
             totalReserveBedsPerc = totalReserveBeds/totalBeds * 100;
             totalOccupiedBedsPerc = totalOccupiedBeds/totalBeds * 100;
+            const indexCount = parseInt(bedCount) + 1;
+            console.log(bedCount, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
           
-            if( data.availableBeds > 0 && index < 9 ) {
+            if( data.availableBeds > 0 && index < parseInt(bedCount) ) {
                     wrapperDiv = document.createElement('DIV');
               const newDiv2 = document.createElement('DIV');
               const newDiv3 = document.createElement('DIV');
@@ -218,7 +220,7 @@ function getAppendableCount(containerSelector) {
   console.log(containerRect, 'containerRect');
     
     // Calculate the available height (distance from container top to bottom of viewport)
-    const availableHeight = viewportHeight - containerRect.top;
+    const availableHeight = viewportHeight - 390;
   
   console.log(availableHeight, 'availableHeight')
 
@@ -237,7 +239,7 @@ function getAppendableCount(containerSelector) {
   getBedRequestData();
   
 // Example usage
-const count = getAppendableCount('.available_icu_table .table_body');
-console.log(`You can append ${count} elements.`);
+bedCount = getAppendableCount('.available_icu_table .table_body');
+console.log(`You can append ${bedCount} elements.`);
   
 });
