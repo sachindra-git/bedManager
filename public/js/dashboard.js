@@ -1,5 +1,6 @@
 $( document ).ready(function() {
   let bedCount;
+  let HosCount;
    async function getICUdata() {
         try {
           const response = await fetch("/icus");
@@ -30,8 +31,6 @@ $( document ).ready(function() {
             totalAvailableBedsPerc = totalAvailableBeds/totalBeds * 100;
             totalReserveBedsPerc = totalReserveBeds/totalBeds * 100;
             totalOccupiedBedsPerc = totalOccupiedBeds/totalBeds * 100;
-            const indexCount = parseInt(bedCount) + 1;
-            console.log(bedCount, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
           
             if( data.availableBeds > 0 && index < parseInt(bedCount) ) {
                     wrapperDiv = document.createElement('DIV');
@@ -209,29 +208,44 @@ $( document ).ready(function() {
       }
    }
   
-function getAppendableCount(containerSelector) {
-    const container = document.querySelector(containerSelector);
-    if (!container) return 0;
+  function getAppendableIcuCount(containerSelector) {
+      const container = document.querySelector(containerSelector);
+      if (!container) return 0;
 
-    const viewportHeight = window.innerHeight;
-    const containerRect = container.getBoundingClientRect();
-  
-  console.log(viewportHeight, 'viewportHeight');
-  console.log(containerRect, 'containerRect');
-    
-    // Calculate the available height (distance from container top to bottom of viewport)
-    const availableHeight = viewportHeight - 390;
-  
-  console.log(availableHeight, 'availableHeight')
+      const viewportHeight = window.innerHeight;
+      const containerRect = container.getBoundingClientRect();
 
-    // Each element's total height (56px height + 6px margin-bottom)
-    const elementHeight = 56 + 7; 
+      // Calculate the available height (distance from container top to bottom of viewport)
+      const availableHeight = viewportHeight - 390;
 
-    // Calculate the maximum number of elements that can fit
-    return Math.floor(availableHeight / elementHeight);
-}
+      // Each element's total height (56px height + 6px margin-bottom)
+      const elementHeight = 56 + 7; 
 
+      // Calculate the maximum number of elements that can fit
+      return Math.floor(availableHeight / elementHeight);
+  }
 
+  function getAppendableHosCount(containerSelector) {
+      const container = document.querySelector(containerSelector);
+      if (!container) return 0;
+
+      const viewportHeight = window.innerHeight;
+      const containerRect = container.getBoundingClientRect();
+
+    console.log(viewportHeight, 'viewportHeight');
+    console.log(containerRect, 'containerRect');
+
+      // Calculate the available height (distance from container top to bottom of viewport)
+      const availableHeight = viewportHeight - 399;
+
+    console.log(availableHeight, 'availableHeight')
+
+      // Each element's total height (56px height + 6px margin-bottom)
+      const elementHeight = 56 + 7; 
+
+      // Calculate the maximum number of elements that can fit
+      return Math.floor(availableHeight / elementHeight);
+  }
   
   
   getICUdata();
@@ -239,7 +253,8 @@ function getAppendableCount(containerSelector) {
   getBedRequestData();
   
 // Example usage
-bedCount = getAppendableCount('.available_icu_table .table_body');
-console.log(`You can append ${bedCount} elements.`);
+bedCount = getAppendableIcuCount('.available_icu_table .table_body');
+HosCount = getAppendableHosCount('.hospital_table .table_body');
+console.log(`You can append ${HosCount} elements.`);
   
 });
