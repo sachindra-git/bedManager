@@ -88,7 +88,8 @@ async function getICUdata() {
         totalBeds: document.getElementById('totalBeds').value,
         occupiedBeds: document.getElementById('occupiedBeds').value,
         reserveBeds: document.getElementById('reserveBeds').value,
-        availableBeds: document.getElementById('availableBeds').value
+        availableBeds: document.getElementById('availableBeds').value,
+        updatedUser: contactUserName,
       };
       
       if( parseInt(formDataObject.occupiedBeds) + parseInt(formDataObject.availableBeds) + parseInt(formDataObject.reserveBeds) != parseInt(formDataObject.totalBeds) ) {
