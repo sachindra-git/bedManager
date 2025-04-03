@@ -23,7 +23,7 @@ $(document).ready(function () {
       const bedreqs = await response.json();
       let filteredReqs = [...bedreqs];
       let currentPage = 1;
-      const itemsPerPage = 5;
+      const itemsPerPage = 15;
       const totalReqsEl = document.querySelector('.total-content .total-req');
       
       let totalReqs = bedreqs.length;

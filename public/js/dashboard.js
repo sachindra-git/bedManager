@@ -71,8 +71,8 @@ $( document ).ready(function() {
                 datasets: [{    
                     data: [totalOccupiedBeds,	totalReserveBeds,	totalAvailableBeds],
 
-                    borderColor: ['#2196f38c', '#f443368c', '#3f51b570'],
-                    backgroundColor: ['#2196f38c', '#f443368c', '#99ffbb',],
+                    borderColor: ['#7daed4', '#e39595', '#99ffbb'],
+                    backgroundColor: ['#7daed4', '#e39595', '#99ffbb',],
                     borderWidth: 1
                 }]},         
               options: {

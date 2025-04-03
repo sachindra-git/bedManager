@@ -10,7 +10,7 @@ async function getHospitalData() {
     
     let totalHospitals = hospitals.length;
     let currentPage = 1;
-    const itemsPerPage = 2;
+    const itemsPerPage = 15;
     
     hospitals.sort((a, b) => a.name.localeCompare(b.name));
 

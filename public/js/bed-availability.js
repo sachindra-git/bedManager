@@ -12,7 +12,7 @@ async function getICUdata() {
     let totalAvailableIcus = 0;
     let totalAvailableBeds = 0;
     let currentPage = 1;
-    const itemsPerPage = 5;
+    const itemsPerPage = 15;
 
     function displayICUs(icuPage) {
       icuTableWrap.innerHTML = "";
