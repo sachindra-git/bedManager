@@ -1,5 +1,25 @@
 $( document ).ready(function() {
   
+function getItemWithExpiry(key) {
+    const itemStr = localStorage.getItem(key);
+    if (!itemStr) return null;
+
+    const item = JSON.parse(itemStr);
+    const now = new Date().getTime();
+
+    // Check if expired
+    if (now > item.expiry) {
+        localStorage.removeItem(key); // Remove expired item
+        return null;
+    }
+    return item.value;
+}
+function decodeBase64(encodedText) {
+    return atob(encodedText); // Decode from Base64
+}
+  
+const contactUserName = decodeBase64(getItemWithExpiry('loggedInUser'));
+  
 async function getICUdata() {
   try {
     const response = await fetch("/icus");
