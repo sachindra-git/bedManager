@@ -173,7 +173,7 @@ app.post("/addBedReq", async (req, res) => {
 
 
 app.post('/update', async (req, res) => {
-  const { id, name, contact, totalBeds, occupiedBeds, reserveBeds, availableBeds } = req.body;
+  const { id, name, contact, totalBeds, occupiedBeds, reserveBeds, availableBeds, updatedUser, updatedDate, updatedTime } = req.body;
 
   try {
     // Use async/await to update ICU info
@@ -185,7 +185,10 @@ app.post('/update', async (req, res) => {
         totalBeds,
         occupiedBeds,
         reserveBeds,
-        availableBeds
+        availableBeds,
+        updatedUser,
+        updatedDate,
+        updatedTime
       },
       { new: true, upsert: true } // Return the updated document or insert if not found
     );
