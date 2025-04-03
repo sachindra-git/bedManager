@@ -114,7 +114,7 @@ $( document ).ready(function() {
           let totalHospitals = hospitals.length;
           hospitals.sort((a, b) => a.name.localeCompare(b.name));
           hospitals.forEach((data, index) => {
-            if( index < 9 ) {
+            if( index < parseInt(HosCount) ) {
               HoswrapperDiv = document.createElement('DIV');
               const newDiv2 = document.createElement('DIV');
               const newDiv3 = document.createElement('DIV');
@@ -241,7 +241,7 @@ $( document ).ready(function() {
     console.log(availableHeight, 'availableHeight')
 
       // Each element's total height (56px height + 6px margin-bottom)
-      const elementHeight = 56 + 7; 
+      const elementHeight = 40; 
 
       // Calculate the maximum number of elements that can fit
       return Math.floor(availableHeight / elementHeight);
