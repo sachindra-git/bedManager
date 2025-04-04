@@ -131,19 +131,41 @@ async function getICUdata() {
       // Update pagination controls
       createPaginationControls(filteredicus.length);
     }
-
-    // Add search functionality
-    const searchBar = document.querySelector("#icu-search");
-    searchBar.addEventListener("input", (e) => {
+    
+    function debounce(func, delay) {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func(...args), delay);
+      };
+    }
+    
+    const searchHandler = (e) => {
       const searchTerm = e.target.value.toLowerCase();
-
-      // Filter icus based on the search term
       const filteredicus = icus.filter((icu) =>
         icu.name.toLowerCase().includes(searchTerm)
       );
-
-      currentPage = 1; // Reset to the first page when searching
+      currentPage = 1;
       updatePagination(filteredicus);
+    };
+
+
+    const searchBar = document.querySelector("#icu-search");
+    let debounceTimeout;
+
+    searchBar.addEventListener("input", (e) => {
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(() => {
+        const searchTerm = e.target.value.toLowerCase();
+
+        // Filter icus based on the search term
+        const filteredicus = icus.filter((icu) =>
+          icu.name.toLowerCase().includes(searchTerm)
+        );
+
+        currentPage = 1; // Reset to the first page when searching
+        updatePagination(filteredicus);
+      }, 300);
     });
 
     // Initial display
