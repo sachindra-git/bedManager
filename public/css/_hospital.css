@@ -62,3 +62,29 @@
   font-size: 20px;
   padding: 0 6px;
 }
+@media only screen and (max-width: 767px) {
+  .inner-wrapper .top-wrapper {
+    flex-direction: column;
+    row-gap: 15px;
+  }
+  .top-wrapper .right-wrapper {
+    flex-direction: column;
+    row-gap: 15px;
+  }
+  .print {
+    display: none;
+  }
+  .search-bar {
+    margin-bottom: 5px;
+  }
+  .table_header .table_col {
+    width: 18%;
+    font-size: 12px;
+  }
+  .table_header .table_col.col-name {
+    width: 30%;
+  }
+  .table_row .name {
+      width: 30%;
+  }
+}

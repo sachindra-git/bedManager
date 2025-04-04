@@ -667,12 +667,4 @@ span.togglePassword {
     margin: 0 auto;
     padding: 80px 12px 30px;
   }
-  .inner-wrapper .top-wrapper {
-    flex-direction: column;
-    row-gap: 15px;
-  }
-  .top-wrapper .right-wrapper {
-    flex-direction: column;
-    row-gap: 15px;
-  }
 }
