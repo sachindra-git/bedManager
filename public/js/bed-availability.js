@@ -117,16 +117,21 @@ async function getICUdata() {
 
     // Add search functionality
     const searchBar = document.querySelector("#icu-search");
+    let debounceTimeout;
+
     searchBar.addEventListener("input", (e) => {
-      const searchTerm = e.target.value.toLowerCase();
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(() => {
+        const searchTerm = e.target.value.toLowerCase();
 
-      // Filter icus based on the search term
-      const filteredicus = icus.filter((icu) =>
-        icu.availableBeds > 0 & icu.name.toLowerCase().includes(searchTerm)
-      );
+        // Filter icus based on the search term
+        const filteredicus = icus.filter((icu) =>
+          icu.name.toLowerCase().includes(searchTerm)
+        );
 
-      currentPage = 1; // Reset to the first page when searching
-      updatePagination(filteredicus);
+        currentPage = 1; // Reset to the first page when searching
+        updatePagination(filteredicus);
+      }, 300);
     });
 
     // Initial display
