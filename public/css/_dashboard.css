@@ -242,3 +242,9 @@
   text-align: center;
   padding: 35px 0 5px;
 }
+
+/* ------- Mobile Only Style ------- */
+.dashboard_container {
+  display: block;
+  padding: 65px 12px 30px;
+}
