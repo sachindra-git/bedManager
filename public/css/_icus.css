@@ -41,10 +41,6 @@ span.updated-detail {
   color: #8b8b8c;
   text-transform: capitalize;
 }
-a.edit-link {
-  display: inline-block;
-  margin-inline-start: 8px;
-}
 .table_row .contact {
   width: 17%;
 }

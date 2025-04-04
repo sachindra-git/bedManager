@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
 }
-button {
+button, a {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -727,7 +727,18 @@ span.togglePassword {
     padding-inline-start: 4px;
     font-size: 14px;
   }
-  .user-table-wrapper {
+  .sub-container .user-table-wrapper {
     width: 100%;
+  }
+  .remove-user button {
+    font-size: 11px;
+  }
+  .req-table-wrapper .table_row div {
+    word-break: break-all;
+    padding-inline-end: 3px;
+  }
+  .sub-container .filter-wrapper {
+    flex-direction: column;
+    row-gap: 16px;
   }
 }
