@@ -661,4 +661,18 @@ span.togglePassword {
   .header_wrapper {
     padding: 10px;
   }
+  .sub-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 12px 30px;
+  }
+  .inner-wrapper .top-wrapper {
+    flex-direction: column;
+    row-gap: 15px;
+  }
+  .top-wrapper .right-wrapper {
+    flex-direction: column;
+    row-gap: 15px;
+  }
 }
