@@ -661,6 +661,9 @@ span.togglePassword {
   .header_wrapper {
     padding: 10px;
   }
+  .more-menu .menu-item .menu-link {
+    font-size: 15px;
+  }
   .sub-container {
     width: 100%;
     max-width: 1280px;
@@ -689,5 +692,21 @@ span.togglePassword {
   }
   .table_header .table_col {
     padding: 0 2px;
+  }
+  .inner-wrapper .top-wrapper {
+    padding-inline-end: 0 !important;
+  }
+  .sub-container .icu-table.general-table {
+    width: 100%;
+    font-size: 12px;
+  }
+  .table_row div {
+    font-size: 12px;
+  }
+  .search-bar input.search {
+    font-size: 13px;
+  }
+  .top-wrapper .total-content {
+    font-size: 15px;
   }
 }
