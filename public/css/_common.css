@@ -651,6 +651,8 @@ span.togglePassword {
 
 
 /* ------- Mobile Only Style ------- */
-.header_wrapper {
-  padding: 10px;
+@media only screen and (max-width: 767px) {
+  .header_wrapper {
+    padding: 10px;
+  }
 }

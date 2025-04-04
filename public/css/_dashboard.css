@@ -89,7 +89,7 @@
 ********** Hospital Table
 */
 .hospital_wrap .h3_title {
-  background-color: #fff;
+  background-color: #FFFFFF;
   margin: 0;
   padding: 14px 15px;
   text-align: center;
@@ -125,13 +125,13 @@
 }
 
 .pie_chart_wrap {
-  background-color: #fff;
+  background-color: #FFFFFF;
   padding: 15px 25px;
   height: calc(calc(100dvh - 233px)/2);
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 }
 .donut_chart_wrap {
-  background-color: #fff;
+  background-color: #FFFFFF;
   padding: 15px 25px;
   height: calc(calc(100dvh - 283px) / 2);
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
@@ -145,14 +145,14 @@
 }
 
 .available_icu_table .h3_title {
-  background-color: #fff;
+  background-color: #FFFFFF;
   padding: 19px 15px;
   margin: 0;
   font-family: "Roboto", sans-serif;
 }
 
 .available_icu_table .available_count {
-  background-color: #fff;
+  background-color: #FFFFFF;
   padding: 0 15px 19px;
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -244,7 +244,33 @@
 }
 
 /* ------- Mobile Only Style ------- */
-.dashboard_container {
-  display: block;
-  padding: 65px 12px 30px;
+@media only screen and (max-width: 767px) {
+  .dashboard_container {
+    display: block;
+    padding: 65px 12px 30px;
+  }
+  .dashboard_inner_left {
+      width: 100%;
+  }
+  .detail_list_inner {
+    gap: 20px 10px;
+  }
+  .detail_item {
+    width: calc(calc(100% - 20px)/3);
+  }
+  .detail_title {
+      font-size: 15px;
+      text-align: center;
+  }
+  .detail_item .count {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 5px;
+  }
+  .bottom_layer {
+    display: initial;
+  }
+  .bottom_layer .left_container {
+    width: 100%;
+  }
 }
