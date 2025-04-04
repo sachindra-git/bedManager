@@ -272,5 +272,14 @@
   }
   .bottom_layer .left_container {
     width: 100%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  .bottom_layer .right_container {
+    display: initial;
+    margin-top: 25px;
+  }
+  .donut_chart_wrap {
+    margin-top: 25px;
   }
 }
