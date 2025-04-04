@@ -340,6 +340,7 @@ input[readonly] {
   display: flex;
   margin-bottom: 20px;
   position: relative;
+  align-items: center;
 }
 .field-wrapper label {
   font-family: "Open Sans", serif;
@@ -602,6 +603,7 @@ input[readonly] {
   bottom: 0;
   margin: auto 0;
   height: fit-content;
+  pointer-events: none;
 }
 .button-disabled {
   pointer-events: none;
@@ -652,7 +654,15 @@ span.togglePassword {
 
 /* ------- Upto Tablet portrait ------- */
 @media only screen and (max-width: 1023px) {
-  .clock, .current-date {display: none}
+  .clock, .current-date {
+    display: none
+  }
+  .print {
+    display: none;
+  }
+  .form-wrapper {
+    max-width: 75%;
+  }
 }
 
 
@@ -684,9 +694,6 @@ span.togglePassword {
     flex-direction: column;
     row-gap: 15px;
   }
-  .print {
-    display: none;
-  }
   .search-bar {
     margin-bottom: 5px;
   }
@@ -708,5 +715,19 @@ span.togglePassword {
   }
   .top-wrapper .total-content {
     font-size: 15px;
+  }
+  .sub-container .top-wrapper h2 {
+    font-size: 19px;
+  }
+  .form-wrapper {
+    max-width: 100%;
+    padding: 30px 20px;
+  }
+  .field-wrapper label {
+    padding-inline-start: 4px;
+    font-size: 14px;
+  }
+  .user-table-wrapper {
+    width: 100%;
   }
 }
