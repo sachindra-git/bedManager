@@ -741,4 +741,19 @@ span.togglePassword {
     flex-direction: column;
     row-gap: 16px;
   }
+  .sub-container .filter-wrapper .search {
+    width: auto;
+  }
+  .filter-wrapper .filter-date label {
+    width: 53px;
+    display: inline-block;
+    font-size: 13px;
+  }
+  .sub-container .filter-wrapper button {
+    width: 50%;
+    margin: auto;
+  }
+  .login-container .login-form-wrapper {
+    width: 85%;
+  }
 }
