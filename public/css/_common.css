@@ -757,3 +757,9 @@ span.togglePassword {
     width: 85%;
   }
 }
+.required {
+  color: #d70303;
+  display: inline;
+  margin-inline-start: 6px;
+  font-weight: bold;
+}
