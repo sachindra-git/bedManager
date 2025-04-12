@@ -10,7 +10,7 @@ async function getICUdata() {
     
     let totalIcus = icus.length;
     let currentPage = 1;
-    const itemsPerPage = 15;
+    const itemsPerPage = 20;
     
     icus.sort((a, b) => a.name.localeCompare(b.name));
   
