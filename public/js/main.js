@@ -140,11 +140,6 @@ $( document ).ready(function() {
     forgotPW.addEventListener("click", function() {
         forgotPWMsg?.classList.toggle("active");
     });
-    document.addEventListener("click", function(event) {
-      if (!event.target.closest(".fp-message-wrap") && userDropdown?.classList.contains('active')) {
-        forgotPWMsg?.classList.remove("active");
-      }
-    });
   }
   
   function signOut() {

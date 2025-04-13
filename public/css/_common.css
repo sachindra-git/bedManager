@@ -766,12 +766,11 @@ span.togglePassword {
 .fp-message-wrap {
   color: #cf0707;
   margin-top: 10px;
-  text-transform: capitalize;
   font-size: 13px;
   text-align: right;
   transform: scaleY(0);
   transform-origin: top;
-  transition: al 0.3s ease-in-out;
+  transition: 0.3s all ease-in-out;
 }
 .fp-message-wrap.active {
   transform: scaleY(1);
