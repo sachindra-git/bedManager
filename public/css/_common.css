@@ -763,3 +763,8 @@ span.togglePassword {
   margin-inline-start: 6px;
   font-weight: bold;
 }
+.fp-message-wrap {
+  color: #cf0707;
+  margin-top: 10px;
+  text-transform: capitalize;
+}
