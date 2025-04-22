@@ -14,10 +14,10 @@ body {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
-*:focus,*:active {
+/* *:focus,*:active {
   outline: none;
   background-color: none;
-}
+} */
 .container {
   width: 100%;
   max-width: 1440px;
@@ -34,7 +34,7 @@ a:focus,
 input:focus,
 textarea:focus {
   outline: none;
-  border: 1px dotted #a93a3a;
+  border: 2px solid #a93a3a;
   border-radius: 4px;
 }
 ul {

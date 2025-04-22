@@ -137,13 +137,11 @@ $( document ).ready(function() {
   function forgotPasswordToggle() {
     const forgotPW = document.querySelector('.forgot-password');
     const forgotPWMsg = document.querySelector('.fp-message-wrap');
-    
     if(forgotPW && forgotPWMsg ) {
       forgotPW.addEventListener("click", function() {
-          forgotPWMsg?.classList.toggle("active");
+          forgotPWMsg.classList.toggle("active");
       }); 
     }
-
   }
   
   function signOut() {
