@@ -137,9 +137,13 @@ $( document ).ready(function() {
   function forgotPasswordToggle() {
     const forgotPW = document.querySelector('.forgot-password');
     const forgotPWMsg = document.querySelector('.fp-message-wrap');
-    forgotPW.addEventListener("click", function() {
-        forgotPWMsg?.classList.toggle("active");
-    });
+    
+    if(forgotPW && forgotPWMsg ) {
+      forgotPW.addEventListener("click", function() {
+          forgotPWMsg?.classList.toggle("active");
+      }); 
+    }
+
   }
   
   function signOut() {
@@ -190,6 +194,14 @@ $( document ).ready(function() {
       });
     });
   }
+  
+  
+  function tabindexInit() {
+    document.querySelectorAll('a').forEach(el => {
+      el.setAttribute('tabindex', '0');
+    });
+  }
+  
 
   passwordToggle();
   showTime();
@@ -201,4 +213,5 @@ $( document ).ready(function() {
   signOut();
   adminOnly();
   forgotPasswordToggle();
+  tabindexInit();
 });
